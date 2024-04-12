@@ -1,0 +1,4 @@
+sim_dir
+gls_dir
+*.fst
+synth/build
