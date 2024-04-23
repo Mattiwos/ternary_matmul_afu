@@ -11,6 +11,8 @@ typedef logic signed [FixedPointPrecision-1:0] fixed_point_t;
 localparam fixed_point_t FixedPointMin = (1 << (FixedPointPrecision-1));
 localparam fixed_point_t FixedPointMax = (FixedPointMin - 1);
 
+localparam UnaryOperationLutSize = (2 ** FixedPointPrecision);
+
 parameter D = 4;
 
 typedef logic signed [1:0] ternary_t;

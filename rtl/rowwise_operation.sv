@@ -35,9 +35,8 @@ end MUL: begin
 always_comb operation_result = fixed_point_mul(a_i[counter_q], b_i[counter_q]);
 
 end EXP: begin
-localparam ExponentLutSize = (2 ** FixedPointPrecision);
-fixed_point_t EXPONENT_LUT [ExponentLutSize];
-initial $readmemh("rtl/exponent/exponent_table.mem", EXPONENT_LUT);
+fixed_point_t EXPONENT_LUT [UnaryOperationLutSize];
+initial $readmemh("rtl/luts/exp_lut.mem", EXPONENT_LUT);
 always_comb operation_result = EXPONENT_LUT[a_i[counter_q]];
 
 end
