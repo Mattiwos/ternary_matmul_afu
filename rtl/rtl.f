@@ -1,12 +1,11 @@
 
 rtl/config_pkg.sv
-rtl/ternary_matmul.sv
 
-rtl/rowwise_div.sv
-rtl/rowwise_mul.sv
-rtl/rowwise_sub.sv
-rtl/rowwise_add.sv
-rtl/rowwise_exp.sv
-rtl/rowwise_sig.sv
-
-rtl/rms.sv
+rtl/fus/ternary_matmul.sv
+rtl/fus/rowwise_div.sv
+rtl/fus/rowwise_mul.sv
+rtl/fus/rowwise_sub.sv
+rtl/fus/rowwise_add.sv
+rtl/fus/rowwise_exp.sv
+rtl/fus/rowwise_sig.sv
+rtl/fus/rms.sv
