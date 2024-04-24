@@ -34,6 +34,13 @@ synth/build/synth.v: synth/build/rtl.sv2v.v synth/yosys.tcl mems
 	mkdir -p synth/build
 	yosys -p 'tcl synth/yosys.tcl synth/build/rtl.sv2v.v' -l synth/build/yosys.log
 
+xc7: synth/build/xc7.v
+
+synth/build/xc7.v: synth/build/rtl.sv2v.v synth/yosys-xc7.tcl mems
+	rm -rf slpp_all
+	mkdir -p synth/build
+	yosys -p 'tcl synth/yosys-xc7.tcl synth/build/rtl.sv2v.v' -l synth/build/yosys-xc7.log
+
 clean:
 	rm -rf \
 	 synth/build \
