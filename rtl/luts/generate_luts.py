@@ -55,7 +55,7 @@ class UnaryOperationLut:
         if (x < 0):
             return 0
         return math.sqrt(x)
-    def squ(x):
+    def sqa(x):
         return (x ** 2)
     def exp(x):
         return math.exp(x)
@@ -66,7 +66,7 @@ class UnaryOperationLut:
         file.write(f"// {self.operation.__name__} LUT\n")
         file.write(f"// in_precision={self.fpin.precision} in_exponent={self.fpin.exponent}\n")
         file.write(f"// out_precision={self.fpout.precision} out_exponent={self.fpout.exponent}\n")
-        file.write(f"// average clipping={int(self.average_clipping())}\n")
+        file.write(f"// average clipping={self.average_clipping():.2f}\n")
         file.write(f"\n")
 
     def exportDecodedTable(self, filename):
@@ -91,7 +91,8 @@ class UnaryOperationLut:
             for i in range(self.tableSize()):
                 decoded_in = self.fpin.decode(i)
                 result = self.fpout.encode(self.operation(decoded_in))
-                hex_result = hex(result)[2:] # Remove '0x' prefix
+                padding = math.ceil(self.fpout.precision / 4)
+                hex_result = f"{result:0{padding}x}"
                 file.write(str(hex_result) + '\n')
 
     def average_clipping(self):
@@ -112,3 +113,24 @@ if __name__ == "__main__":
         out_precision=8,
         out_exponent=-3
     ).exportEncodedTableHex("exp_lut.mem")
+    UnaryOperationLut(
+        operation=UnaryOperationLut.sig,
+        in_precision=8,
+        in_exponent=-3,
+        out_precision=8,
+        out_exponent=-3
+    ).exportEncodedTableHex("sig_lut.mem")
+    UnaryOperationLut(
+        operation=UnaryOperationLut.sqa,
+        in_precision=8,
+        in_exponent=-3,
+        out_precision=9,
+        out_exponent=0
+    ).exportEncodedTableHex("rms_sqa_lut.mem")
+    UnaryOperationLut(
+        operation=UnaryOperationLut.sqt,
+        in_precision=9,
+        in_exponent=0,
+        out_precision=8,
+        out_exponent=-3
+    ).exportEncodedTableHex("rms_sqt_lut.mem")

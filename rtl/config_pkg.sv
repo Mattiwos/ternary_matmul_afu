@@ -1,10 +1,8 @@
 
 package config_pkg;
 
-parameter FixedPointIntegerPrecision = 5;
-parameter FixedPointFractionalPrecision = 3;
-
-localparam FixedPointPrecision = FixedPointIntegerPrecision + FixedPointFractionalPrecision;
+parameter FixedPointPrecision = 8;
+parameter FixedPointExponent = -3;
 
 typedef logic signed [FixedPointPrecision-1:0] fixed_point_t;
 
@@ -19,55 +17,31 @@ typedef logic signed [1:0] ternary_t;
 typedef fixed_point_t [D-1:0] vector_t;
 typedef ternary_t [D-1:0][D-1:0] ternary_matrix_t;
 
-typedef enum logic [2:0] {
-    NOP,
-    ADD,
-    SUB,
-    DIV,
-    MUL,
-    EXP
-} operation_t;
+parameter RmsFixedPointPrecision = 9;
+parameter RmsFixedPointExponent = 0;
 
-function automatic fixed_point_t ternary_mul(ternary_t ternary, fixed_point_t fixed_point);
-    unique case (ternary)
-        0: return '0;
-        1: return fixed_point;
-        -1: return -fixed_point;
-        default: return 'x;
-    endcase
+localparam RmsUnaryOperationLutSize = (2 ** RmsFixedPointPrecision);
+
+typedef logic signed [RmsFixedPointPrecision-1:0] rms_fixed_point_t;
+
+typedef rms_fixed_point_t [D-1:0] rms_vector_t;
+
+function automatic rms_fixed_point_t rms_in2internal(fixed_point_t x);
+    localparam internalSize = $bits(rms_fixed_point_t) + $bits(fixed_point_t);
+    if (RmsFixedPointExponent < FixedPointExponent) begin
+        return internalSize'(x) << (FixedPointExponent - RmsFixedPointExponent);
+    end else begin
+        return internalSize'(x) >>> (RmsFixedPointExponent - FixedPointExponent);
+    end
 endfunction
 
-function automatic fixed_point_t fixed_point_mul(fixed_point_t a, fixed_point_t b);
-    logic signed [2*FixedPointPrecision-1:0] out = a * b;
-    // arithmetic shift
-    out = out >>> FixedPointFractionalPrecision;
-    if (out > FixedPointMax) out = FixedPointMax;
-    if (out < FixedPointMin) out = FixedPointMin;
-    return out;
-endfunction
-
-function automatic fixed_point_t fixed_point_div(fixed_point_t a, fixed_point_t b);
-    logic signed [2*FixedPointPrecision-1:0] out;
-    // arithmetic shift
-    b = b >>> FixedPointFractionalPrecision;
-    out = a / b;
-    if (out > FixedPointMax) out = FixedPointMax;
-    if (out < FixedPointMin) out = FixedPointMin;
-    return out;
-endfunction
-
-function automatic fixed_point_t fixed_point_add(fixed_point_t a, fixed_point_t b);
-    logic signed [FixedPointPrecision:0] out = a + b;
-    if (out > FixedPointMax) out = FixedPointMax;
-    if (out < FixedPointMin) out = FixedPointMin;
-    return out;
-endfunction
-
-function automatic fixed_point_t fixed_point_sub(fixed_point_t a, fixed_point_t b);
-    logic signed [FixedPointPrecision:0] out = a - b;
-    if (out > FixedPointMax) out = FixedPointMax;
-    if (out < FixedPointMin) out = FixedPointMin;
-    return out;
+function automatic fixed_point_t rms_internal2out(rms_fixed_point_t x);
+    localparam internalSize = $bits(rms_fixed_point_t) + $bits(fixed_point_t);
+    if (RmsFixedPointExponent < FixedPointExponent) begin
+        return internalSize'(x) >>> (FixedPointExponent - RmsFixedPointExponent);
+    end else begin
+        return internalSize'(x) << (RmsFixedPointExponent - FixedPointExponent);
+    end
 endfunction
 
 endpackage

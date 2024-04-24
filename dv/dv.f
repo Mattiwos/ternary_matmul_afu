@@ -1,7 +1,7 @@
 
 dv/dv_pkg.sv
 dv/ternary_matmul_tb.sv
-dv/rowwise_operation_tb.sv
+dv/rms_tb.sv
 
 --timing
 -j 0
@@ -15,3 +15,7 @@ dv/rowwise_operation_tb.sv
 // Run with +verilator+rand+reset+2
 --x-assign unique
 --x-initial unique
+
+-Wno-PINMISSING
+-Wno-GENUNNAMED
+-Wno-UNUSEDPARAM

@@ -27,6 +27,22 @@ enum logic [1:0] {
 assign in_ready_o = (state_q == WAITING_FOR_IN);
 assign out_valid_o = (state_q == WAITING_FOR_OUT);
 
+function automatic fixed_point_t ternary_mul(ternary_t ternary, fixed_point_t fixed_point);
+    unique case (ternary)
+        0: return '0;
+        1: return fixed_point;
+        -1: return -fixed_point;
+        default: return 'x;
+    endcase
+endfunction
+
+function automatic fixed_point_t fixed_point_add(fixed_point_t a, fixed_point_t b);
+    logic signed [FixedPointPrecision:0] out = a + b;
+    if (out > FixedPointMax) out = FixedPointMax;
+    if (out < FixedPointMin) out = FixedPointMin;
+    return out;
+endfunction
+
 always_comb begin
     integer i = 'x;
     counter_d = counter_q;

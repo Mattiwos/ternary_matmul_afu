@@ -37,14 +37,14 @@ endfunction
 
 function automatic real fixed_point2real(fixed_point_t x);
     real out = $itor(x);
-    out /= (2 ** FixedPointFractionalPrecision);
+    out *= (2.0 ** FixedPointExponent);
     return out;
 endfunction
 
 function automatic vector_t random_vector;
     vector_t out;
     for (integer i = 0; i < D; i++) begin
-        out[i] = $urandom_range(0, fixed_point_t'(-1));
+        out[i] = fixed_point_t'($urandom_range(0, fixed_point_t'(-1)));
     end
     return out;
 endfunction
@@ -55,7 +55,7 @@ function automatic ternary_matrix_t random_ternary_matrix;
         for (integer j = 0; j < D; j++) begin
             out[i][j] = -2;
             while (out[i][j] == -2)
-                out[i][j] = $urandom_range(0, 3);
+                out[i][j] = 2'($urandom_range(0, 3));
         end
     end
     return out;
