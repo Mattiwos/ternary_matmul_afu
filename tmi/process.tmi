@@ -1,0 +1,73 @@
+
+; vector registers: v0..v3
+; ternary matrix register: tm0
+
+; DDR: X, WK, WQ, WV, eM, eNW, A, B, O
+
+; always blocks destination registers:
+; tmatmul
+; ldv
+; ldtm
+
+; ldv sv ldtm stm
+; add div mul exp sig
+; norm
+; tmatmul
+
+	ldv	v0,X ; v0 = X
+
+	norm	v0 ; v0 = norm(X)
+	ldtm	tm0,WK ; tm0 = WK
+
+	tmatmul	v1,v0,tm0 ; v1 = K
+	ldv	v2,eM ; v2 = eM
+
+	ldtm	tm0,WV ; tm0 = WV
+	exp	v1,v1 ; v1 = eK
+
+	tmatmul	v3,v0,tm0 ; v3 = V
+	mul	v2,v2,v1 ; v2 = eM * eK
+
+	mul	v1,v2,v3 ; v2 = eM * eK * V
+	ldv	v0,B ; v0 = B
+
+	add	v2,v2,v0 ; v2 = denominator
+	ldv	v3,A ; v3 = A
+
+	add	v1,v1,v3 ; numerator
+	ldv	v0,X ; v0 = X
+
+	div	v1,v1,v2
+	norm	v0 ; v0 = norm(X)
+	ldtm	tm0,WQ ; tm0 = WQ
+
+	tmatmul	v2,v0,tm0 ; v2 = Q
+	ldtm	tm0,WK ; tm0 = WK
+
+	sig	v2,v2 ; v2 = sig(Q)
+	tmatmul	v3,v0,tm0 ; v3 = K
+
+	mul	v2,v2,v1 ; final calculation of Y
+	ldtm	tm0,WV ; tm0 = WV
+
+	exp	v3,v3 ; v3 = eK
+	norm	v2 ; normalize O
+	tmatmul	v0,v0,tm0 ; v0 = V
+	ldv	v1,eNW ; v1 = eNW
+
+	sv	v2,O ; Save O
+	mul	v0,v3,v0 ; v0 = eK * V
+
+	ldv	v2,A ; v2 = A
+
+	mul	v2,v1,v2 ; v2 = eNW * A
+	ldv	v0,B ; v0 = B
+
+	add	v2,v2,v1 ; v2 = A[t+1]
+
+	sv	v2,A
+	mul	v0,v1,v0 ; v0 = eNW * B
+
+	add	v0,v0,v3 ; v0 = B[t+1]
+
+	sv	v0,B
