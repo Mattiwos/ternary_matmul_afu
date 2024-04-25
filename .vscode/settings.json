@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.tmi": "asm-collection"
+    },
+    "[asm-collection]": {
+        "editor.tabSize": 8
+    },
+}

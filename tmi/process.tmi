@@ -4,15 +4,10 @@
 
 ; DDR: X, WK, WQ, WV, eM, eNW, A, B, O
 
-; always blocks destination registers:
-; tmatmul
-; ldv
-; ldtm
-
-; ldv sv ldtm stm
-; add div mul exp sig
-; norm
-; tmatmul
+; instructions:
+; memory: ldv sv ldtm stm
+; operations: add div mul exp sig
+; misc: norm tmatmul
 
 	ldv	v0,X ; v0 = X
 
@@ -28,7 +23,7 @@
 	tmatmul	v3,v0,tm0 ; v3 = V
 	mul	v2,v2,v1 ; v2 = eM * eK
 
-	mul	v1,v2,v3 ; v2 = eM * eK * V
+	mul	v1,v2,v3 ; v1 = eM * eK * V
 	ldv	v0,B ; v0 = B
 
 	add	v2,v2,v0 ; v2 = denominator
@@ -37,7 +32,7 @@
 	add	v1,v1,v3 ; numerator
 	ldv	v0,X ; v0 = X
 
-	div	v1,v1,v2
+	div	v1,v1,v2 ; v1 = big division
 	norm	v0 ; v0 = norm(X)
 	ldtm	tm0,WQ ; tm0 = WQ
 
@@ -63,7 +58,7 @@
 	mul	v2,v1,v2 ; v2 = eNW * A
 	ldv	v0,B ; v0 = B
 
-	add	v2,v2,v1 ; v2 = A[t+1]
+	add	v2,v2,v0 ; v2 = A[t+1]
 
 	sv	v2,A
 	mul	v0,v1,v0 ; v0 = eNW * B
