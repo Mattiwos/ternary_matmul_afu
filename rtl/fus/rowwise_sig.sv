@@ -5,7 +5,7 @@ module rowwise_sig import config_pkg::*; (
 );
 
 fixed_point_t SIGMOID_LUT [UnaryOperationLutSize];
-initial $readmemh("rtl/luts/sig_lut.mem", SIGMOID_LUT);
-assign operation_result = SIGMOID_LUT[a_i];
+initial $readmemh("rtl/luts/sig_lut.memh", SIGMOID_LUT);
+assign y_o = SIGMOID_LUT[a_i];
 
 endmodule

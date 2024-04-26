@@ -6,7 +6,7 @@
 
 ; instructions:
 ; memory: ldv sv ldtm stm
-; operations: add div mul exp sig
+; operations: add sub mul div exp sig
 ; misc: norm tmatmul
 
 	ldv	v0,X ; v0 = X
@@ -32,21 +32,22 @@
 	add	v1,v1,v3 ; numerator
 	ldv	v0,X ; v0 = X
 
-	div	v1,v1,v2 ; v1 = big division
 	norm	v0 ; v0 = norm(X)
+	div	v1,v1,v2 ; v1 = big division
 	ldtm	tm0,WQ ; tm0 = WQ
 
 	tmatmul	v2,v0,tm0 ; v2 = Q
+
 	ldtm	tm0,WK ; tm0 = WK
-
 	sig	v2,v2 ; v2 = sig(Q)
+
 	tmatmul	v3,v0,tm0 ; v3 = K
-
 	mul	v2,v2,v1 ; final calculation of Y
-	ldtm	tm0,WV ; tm0 = WV
 
-	exp	v3,v3 ; v3 = eK
 	norm	v2 ; normalize O
+	ldtm	tm0,WV ; tm0 = WV
+	exp	v3,v3 ; v3 = eK
+
 	tmatmul	v0,v0,tm0 ; v0 = V
 	ldv	v1,eNW ; v1 = eNW
 

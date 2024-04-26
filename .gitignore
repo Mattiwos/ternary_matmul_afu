@@ -1,4 +1,8 @@
+
+__pycache__
 sim_dir
 gls_dir
 *.fst
 synth/build
+*.memb
+*.memh

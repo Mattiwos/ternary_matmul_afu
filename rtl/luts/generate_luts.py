@@ -112,25 +112,25 @@ if __name__ == "__main__":
         in_exponent=-3,
         out_precision=8,
         out_exponent=-3
-    ).exportEncodedTableHex("exp_lut.mem")
+    ).exportEncodedTableHex("exp_lut.memh")
     UnaryOperationLut(
         operation=UnaryOperationLut.sig,
         in_precision=8,
         in_exponent=-3,
         out_precision=8,
         out_exponent=-3
-    ).exportEncodedTableHex("sig_lut.mem")
+    ).exportEncodedTableHex("sig_lut.memh")
     UnaryOperationLut(
         operation=UnaryOperationLut.sqa,
         in_precision=8,
         in_exponent=-3,
         out_precision=9,
         out_exponent=0
-    ).exportEncodedTableHex("rms_sqa_lut.mem")
+    ).exportEncodedTableHex("rms_sqa_lut.memh")
     UnaryOperationLut(
         operation=UnaryOperationLut.sqt,
         in_precision=9,
         in_exponent=0,
         out_precision=8,
         out_exponent=-3
-    ).exportEncodedTableHex("rms_sqt_lut.mem")
+    ).exportEncodedTableHex("rms_sqt_lut.memh")

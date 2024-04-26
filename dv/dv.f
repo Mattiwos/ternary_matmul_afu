@@ -2,6 +2,7 @@
 dv/dv_pkg.sv
 dv/ternary_matmul_tb.sv
 dv/rms_tb.sv
+dv/matrix_unit_tb.sv
 
 --timing
 -j 0

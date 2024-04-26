@@ -1,16 +1,14 @@
 
 module rms import config_pkg::*; (
-    input  logic         clk_i,
-    input  logic         rst_ni,
+    input  logic    clk_i,
+    input  logic    rst_ni,
 
-    output logic         in_ready_o,
-    input  logic         in_valid_i,
-    input  vector_t      a_i,
+    output logic    in_ready_o,
+    input  logic    in_valid_i,
+    input  vector_t a_i,
 
-    input  logic         out_ready_i,
-    output logic         out_valid_o,
-    output fixed_point_t rms_o,
-    output vector_t      y_o
+    output logic    out_valid_o,
+    output vector_t result_o
 );
 
 localparam PARALLEL = 2;
@@ -36,18 +34,16 @@ enum logic [2:0] {
     SQUARING,
     AVERAGING,
     DIVIDING,
-    WAITING_FOR_OUT
+    SENDING_OUT
 } state_d, state_q;
-
 
 rms_vector_t rms_vector_d, rms_vector_q;
 vector_t out_vector_d, out_vector_q;
 counter_t i1_d, i1_q;
 counter_t i2_d, i2_q;
 fixed_point_t rms_value_d, rms_value_q;
-assign rms_o = rms_value_q;
 
-assign y_o = out_vector_d;
+assign result_o = out_vector_q;
 
 always_ff @(posedge clk_i) begin
     if (!rst_ni) begin
@@ -78,10 +74,10 @@ rowwise_div rowwise_div (
 );
 
 rms_fixed_point_t SQUARE_LUT [UnaryOperationLutSize];
-initial $readmemh("rtl/luts/rms_sqa_lut.mem", SQUARE_LUT);
+initial $readmemh("rtl/luts/rms_sqa_lut.memh", SQUARE_LUT);
 
 fixed_point_t SQRT_LUT [RmsUnaryOperationLutSize];
-initial $readmemh("rtl/luts/rms_sqt_lut.mem", SQRT_LUT);
+initial $readmemh("rtl/luts/rms_sqt_lut.memh", SQRT_LUT);
 
 integer i;
 logic signed [RmsFixedPointPrecision-2+PARALLEL:0] rolling_sum;
@@ -123,10 +119,6 @@ always_comb begin
         rolling_sum /= PARALLEL;
         rms_vector_d[i1_q] = rolling_sum;
 
-        `ifndef SYNTHESIS
-        $display("i1=%d i2=%d", i1_q, i2_q);
-        `endif
-
         i1_d++;
         if (i1_d == levelWidth(i2_q+1)) begin
             i1_d = 0;
@@ -144,18 +136,12 @@ always_comb begin
         out_vector_d[i1_q] = div_y;
         i1_d++;
         if (i1_d == D) begin
-            state_d = WAITING_FOR_OUT;
+            state_d = SENDING_OUT;
             i1_d = 0;
         end
-    end else if (state_q == WAITING_FOR_OUT) begin
+    end else if (state_q == SENDING_OUT) begin
         out_valid_o = 1;
-        if (out_ready_i) begin
-            state_d = WAITING_FOR_IN;
-        end
-    end else begin
-        // `ifndef SYNTHESIS
-        // $error("Unknown state");
-        // `endif
+        state_d = WAITING_FOR_IN;
     end
 end
 

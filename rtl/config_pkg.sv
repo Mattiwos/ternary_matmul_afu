@@ -44,4 +44,51 @@ function automatic fixed_point_t rms_internal2out(rms_fixed_point_t x);
     end
 endfunction
 
+localparam NumVectorRegisters = 4;
+typedef logic [$clog2(NumVectorRegisters)-1:0] v_addr_t;
+
+typedef enum logic [2:0] {
+    ADD,
+    SUB,
+    MUL,
+    DIV,
+    EXP,
+    SIG
+} operation_t;
+
+typedef enum logic [1:0] {
+    LDV,
+    SV,
+    LDTM,
+    STM
+} load_store_operation_t;
+
+typedef enum logic [2:0] {
+    NOP,
+    LOAD_STORE,
+    ROWWISE_OPERATION,
+    TMATMUL,
+    RMS
+} fu_t;
+
+localparam DdrAddressWidth = 16;
+localparam DdrDataWidth = 8;
+
+typedef logic [DdrAddressWidth-1:0] ddr_address_t;
+typedef logic [DdrDataWidth-1:0] ddr_data_t;
+
+typedef struct packed {
+    fu_t fu;
+    operation_t operation;
+    v_addr_t v_a;
+    v_addr_t v_b;
+    v_addr_t v_y;
+    load_store_operation_t load_store_operation;
+    ddr_address_t ddr_address;
+} instruction_t;
+
+localparam NumInstructions = 38;
+
+typedef logic [$clog2(NumInstructions)-1:0] pc_t;
+
 endpackage

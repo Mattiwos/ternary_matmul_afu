@@ -61,4 +61,13 @@ function automatic ternary_matrix_t random_ternary_matrix;
     return out;
 endfunction
 
+function automatic ddr_data_t random_ddr_data;
+    ddr_data_t out = $urandom();
+    for (integer i = 0; i < DdrAddressWidth/32; i++) begin
+        out <<= 32;
+        out |= $urandom();
+    end
+    return out;
+endfunction
+
 endpackage
