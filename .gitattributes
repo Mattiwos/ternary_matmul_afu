@@ -1,0 +1,11 @@
+
+*       text eol=lf
+
+# Language Corrections
+*.tmi   linguist-language=Assembly
+*.vh    linguist-language=Verilog
+# Verilator
+*.vlt   linguist-language=SystemVerilog
+*.f     linguist-language=SystemVerilog
+# Vivado
+*.xci   linguist-language=XML
