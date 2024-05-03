@@ -5,22 +5,20 @@
 ; DDR: X, WK, WQ, WV, eM, eNW, A, B, O
 
 ; instructions:
-; memory: ldv sv ldtm stm
+; memory: ldv sv
 ; operations: add sub mul div exp sig
 ; misc: norm tmatmul
 
 	ldv	v0,X ; v0 = X
 
 	norm	v0 ; v0 = norm(X)
-	ldtm	tm0,WK ; tm0 = WK
 
-	tmatmul	v1,v0,tm0 ; v1 = K
+	tmatmul	v1,v0,WK ; v1 = K
 	ldv	v2,eM ; v2 = eM
 
-	ldtm	tm0,WV ; tm0 = WV
 	exp	v1,v1 ; v1 = eK
 
-	tmatmul	v3,v0,tm0 ; v3 = V
+	tmatmul	v3,v0,WV ; v3 = V
 	mul	v2,v2,v1 ; v2 = eM * eK
 
 	mul	v1,v2,v3 ; v1 = eM * eK * V
@@ -34,21 +32,18 @@
 
 	norm	v0 ; v0 = norm(X)
 	div	v1,v1,v2 ; v1 = big division
-	ldtm	tm0,WQ ; tm0 = WQ
 
-	tmatmul	v2,v0,tm0 ; v2 = Q
+	tmatmul	v2,v0,WQ ; v2 = Q
 
-	ldtm	tm0,WK ; tm0 = WK
 	sig	v2,v2 ; v2 = sig(Q)
 
-	tmatmul	v3,v0,tm0 ; v3 = K
+	tmatmul	v3,v0,WK ; v3 = K
 	mul	v2,v2,v1 ; final calculation of Y
 
 	norm	v2 ; normalize O
-	ldtm	tm0,WV ; tm0 = WV
 	exp	v3,v3 ; v3 = eK
 
-	tmatmul	v0,v0,tm0 ; v0 = V
+	tmatmul	v0,v0,WV ; v0 = V
 	ldv	v1,eNW ; v1 = eNW
 
 	sv	v2,O ; Save O

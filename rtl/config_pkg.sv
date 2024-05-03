@@ -13,9 +13,10 @@ localparam UnaryOperationLutSize = (2 ** FixedPointPrecision);
 
 parameter D = 4;
 
+// index into dimension size
+typedef logic [$clog2(D)-1:0] DI_t;
+
 typedef logic signed [1:0] ternary_t;
-typedef fixed_point_t [D-1:0] vector_t;
-typedef ternary_t [D-1:0][D-1:0] ternary_matrix_t;
 
 parameter RmsFixedPointPrecision = 9;
 parameter RmsFixedPointExponent = 0;
@@ -23,8 +24,6 @@ parameter RmsFixedPointExponent = 0;
 localparam RmsUnaryOperationLutSize = (2 ** RmsFixedPointPrecision);
 
 typedef logic signed [RmsFixedPointPrecision-1:0] rms_fixed_point_t;
-
-typedef rms_fixed_point_t [D-1:0] rms_vector_t;
 
 function automatic rms_fixed_point_t rms_in2internal(fixed_point_t x);
     localparam internalSize = $bits(rms_fixed_point_t) + $bits(fixed_point_t);
@@ -58,9 +57,7 @@ typedef enum logic [2:0] {
 
 typedef enum logic [1:0] {
     LDV,
-    SV,
-    LDTM,
-    STM
+    SV
 } load_store_operation_t;
 
 typedef enum logic [2:0] {

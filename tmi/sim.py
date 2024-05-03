@@ -43,20 +43,14 @@ def norm(v_target):
     norm = np.sqrt(np.average(vector_registers[v_target] ** 2))
     vector_registers[v_target] /= norm
 
-def tmatmul(v_destination, v_a, tm_b):
-    vector_registers[v_destination] = np.matmul(vector_registers[v_a], ternary_matrix_registers[tm_b])
+def tmatmul(v_destination, v_a, address):
+    vector_registers[v_destination] = np.matmul(vector_registers[v_a], memory[address])
 
 def ldv(v_destination, address):
     vector_registers[v_destination] = memory[address]
 
 def sv(v_source, address):
     memory[address] = vector_registers[v_source]
-
-def ldtm(tm_destination, address):
-    ternary_matrix_registers[tm_destination] = memory[address]
-
-def stm(tm_source, address):
-    memory[address] = ternary_matrix_registers[tm_source]
 
 
 # Parsing TMI File
@@ -85,9 +79,7 @@ def execute_instructions(instructions):
         'norm': norm,
         'tmatmul': tmatmul,
         'ldv': ldv,
-        'sv': sv,
-        'ldtm': ldtm,
-        'stm': stm,
+        'sv': sv
     }
     for instruction in instructions:
         opcode = instruction[0]

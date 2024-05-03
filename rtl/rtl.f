@@ -2,9 +2,10 @@
 rtl/config_pkg.sv
 
 rtl/matrix_unit.sv
-rtl/registers.sv
+rtl/ddr_arbiter.sv
 
-rtl/fus/load_store.sv
+rtl/vector_registers.sv
+rtl/fus/vector_load_store.sv
 
 rtl/fus/rowwise_operation.sv
 rtl/fus/rowwise_add.sv
