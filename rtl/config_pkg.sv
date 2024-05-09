@@ -88,4 +88,6 @@ localparam NumInstructions = 38;
 
 typedef logic [$clog2(NumInstructions)-1:0] pc_t;
 
+parameter MatrixFifoSize = 2048;
+
 endpackage

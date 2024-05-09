@@ -25,7 +25,7 @@ output fixed_point_t [NumVectorRegisters-1:0] r_v_data_o;
 
 * `load_store` instructions and `ternary_matmul` instructions now block each other.
 
-* Create a general-purpose DDR arbiter to choose between
+* Create stalling logic to choose between
   * `load_store` DDR requests and `ternary_matmul` requests
   * `matrix_unit` DDR requests and UART DMA requests
 
@@ -39,8 +39,6 @@ output fixed_point_t [NumVectorRegisters-1:0] r_v_data_o;
 * Nearly unchanged modules:
   * `rowwise_*`
   * `rms`
-* Modules to add:
-  * `ddr_arbiter`
 
 ## References
 

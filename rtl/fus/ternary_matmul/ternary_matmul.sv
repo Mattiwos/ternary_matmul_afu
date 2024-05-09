@@ -6,6 +6,8 @@ module ternary_matmul import config_pkg::*; (
     output logic         in_ready_o,
     input  logic         in_valid_i,
 
+    input  ddr_address_t maxtrix_memory_address_i,
+
     output logic         vector_w_en_o,
     output DI_t          vector_w_addr_o,
     output fixed_point_t vector_w_data_o,
@@ -17,5 +19,15 @@ module ternary_matmul import config_pkg::*; (
     input  ddr_data_t    ddr_r_data_i,
     input  logic         ddr_r_valid_i
 );
+
+    enum logic [1:0] {
+        WAITING_FOR_IN,
+        WORKING
+    } state_d, state_q;
+
+// vector_d[i1] =
+//     fixed_point_add(vector_q[i1],
+//                     ternary_mul(matrix_i[i1][i2],
+//                                 vector_i[i2]));
 
 endmodule
