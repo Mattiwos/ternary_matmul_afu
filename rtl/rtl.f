@@ -14,7 +14,7 @@ rtl/fus/rowwise_div.sv
 rtl/fus/rowwise_exp.sv
 rtl/fus/rowwise_sig.sv
 
-rtl/common/fifo.sv
-rtl/fus/ternary_matmul.sv
+rtl/fus/ternary_matmul/matrix_fifo.sv
+rtl/fus/ternary_matmul/ternary_matmul.sv
 
 rtl/fus/rms.sv

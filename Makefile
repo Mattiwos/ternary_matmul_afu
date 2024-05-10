@@ -2,7 +2,8 @@
 RTL := $(shell python3 misc/convert_filelist.py Makefile rtl/rtl.f)
 # TOP := ternary_matmul_tb
 # TOP := rms_tb
-TOP := matrix_unit_tb
+# TOP := matrix_unit_tb
+TOP := matrix_fifo_tb
 
 YOSYS_DATDIR := $(shell yosys-config --datdir)
 
