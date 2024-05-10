@@ -16,8 +16,6 @@ module rowwise_operation import config_pkg::*; (
 
 logic [$clog2(D)-1:0] counter_d, counter_q;
 
-fixed_point_t vector_w_data_o;
-
 enum logic [1:0] {
     WAITING_FOR_IN,
     WORKING

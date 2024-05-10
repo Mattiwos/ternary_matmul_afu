@@ -4,7 +4,7 @@ module rms import config_pkg::*; (
     input  logic         rst_ni,
 
     output logic         in_ready_o,
-    input  logic         in_valid_i,
+    input  logic         in_start_i,
 
     output logic         vector_w_en_o,
     output DI_t          vector_w_addr_o,
@@ -119,7 +119,7 @@ always_comb begin
 
     if (state_q == WAITING_FOR_IN) begin
         in_ready_o = 1;
-        if (in_valid_i) begin
+        if (in_start_i) begin
             state_d = SQUARING;
             i1_d = 0;
             i2_d = 0;
@@ -147,10 +147,14 @@ always_comb begin
         rolling_sum_d[i1_q % PARALLEL] /= PARALLEL;
 
         i1_d++;
-        if (i1_d == levelWidth(i2_q+1)) begin
+        if ((i1_d % PARALLEL) == 0) begin
             rms_vector_w_addr = (i1_q / PARALLEL);
-            rms_vector_w_data[i1_q] = rolling_sum_d;
+            for (i = 0; i < PARALLEL; i++) begin
+                rms_vector_w_data[i] = rolling_sum_d[i];
+            end
             rms_vector_w_en = 1;
+        end
+        if (i1_d == levelWidth(i2_q+1)) begin
             i1_d = 0;
             i2_d++;
         end
