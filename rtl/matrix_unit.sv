@@ -276,10 +276,11 @@ always_comb begin
     stall = 0;
     // check if FU is busy
     unique case (instruction.fu)
-        LOAD_STORE:        stall |= loadstore_busy;
+        // TMATMUL and LOAD_STORE block each other due to DDR accesses
+        LOAD_STORE:        stall |= (loadstore_busy | tmatmul_busy);
         ROWWISE_OPERATION: stall |= rowwise_operation_busy;
-        // TMATMUL and RMS block each other due to DDR accesses
-        TMATMUL, RMS:      stall |= (tmatmul_busy | rms_busy);
+        TMATMUL:           stall |= (tmatmul_busy | loadstore_busy);
+        RMS:               stall |= rms_busy;
         default: ;
     endcase
     // check if vector registers are in use
@@ -368,9 +369,9 @@ end
 
 always_comb begin
     ddr_address_o = loadstore_ddr_address | tmatmul_ddr_address;
-    ddr_w_en_o = loadstore_ddr_w_en | tmatmul_ddr_r_en;
+    ddr_w_en_o = loadstore_ddr_w_en;
     ddr_w_data_o = loadstore_ddr_w_data;
-    ddr_r_en_o = loadstore_ddr_r_en;
+    ddr_r_en_o = loadstore_ddr_r_en | tmatmul_ddr_r_en;
 
     loadstore_ddr_w_done = ddr_w_done_i;
     loadstore_ddr_r_data = ddr_r_data_i;

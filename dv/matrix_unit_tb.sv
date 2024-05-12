@@ -4,12 +4,14 @@ module matrix_unit_tb
     import dv_pkg::*;
     ;
 
-logic         clk_i;
-logic         rst_ni;
+logic      clk_i;
+logic      rst_ni;
 
-logic         start_i;
+logic      start_i;
 
-ddr_data_t    ddr_r_data_i;
+logic      ddr_w_done_i;
+ddr_data_t ddr_r_data_i;
+logic      ddr_r_valid_i;
 
 matrix_unit matrix_unit (
     .clk_i,
@@ -17,7 +19,9 @@ matrix_unit matrix_unit (
 
     .start_i,
 
-    .ddr_r_data_i
+    .ddr_w_done_i,
+    .ddr_r_data_i,
+    .ddr_r_valid_i
 );
 
 initial begin
@@ -29,7 +33,7 @@ initial begin
 end
 
 initial begin
-    repeat(D * NumInstructions * 2) @(posedge clk_i);
+    repeat(D * D * NumInstructions) @(posedge clk_i);
     $display("Timed out");
     $fatal;
 end
@@ -47,9 +51,26 @@ always @(posedge clk_i) if (rst_ni) begin : driver
     start_i <= 0;
 end
 
-always @(posedge clk_i) if (rst_ni) begin
-    if (matrix_unit.ddr_r_en_o)
-        ddr_r_data_i <= random_ddr_data();
+ddr_data_t ddr_data [D*D];
+always @(posedge clk_i) begin
+    ddr_w_done_i <= 0;
+    if (matrix_unit.ddr_w_en_o) begin
+        ddr_address_t ddr_address = matrix_unit.ddr_address_o;
+        ddr_data_t ddr_w_data = matrix_unit.ddr_w_data_o;
+        repeat(2) @(posedge clk_i);
+        ddr_data[ddr_address] <= ddr_w_data;
+        ddr_w_done_i <= 1;
+    end
+end
+always @(posedge clk_i) begin
+    ddr_r_data_i <= 'x;
+    ddr_r_valid_i <= 0;
+    if (matrix_unit.ddr_r_en_o) begin
+        ddr_address_t ddr_address = matrix_unit.ddr_address_o;
+        repeat(2) @(posedge clk_i);
+        ddr_r_data_i <= ddr_data[ddr_address];
+        ddr_r_valid_i <= 1;
+    end
 end
 
 // monitor

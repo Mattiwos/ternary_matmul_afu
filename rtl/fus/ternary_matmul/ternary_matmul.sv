@@ -60,7 +60,6 @@ localparam NumDdrReads = D*D / CellsPerData;
 typedef logic [$clog2(NumDdrReads):0] ddr_counter_t;
 ddr_counter_t ddr_counter_d, ddr_counter_q;
 
-
 always_comb begin
     fifo_push = 0;
     fifo_data_i = 'x;
@@ -82,10 +81,11 @@ always_comb begin
         fifo_push = 1;
         fifo_data_i = ddr_r_data_i;
         ddr_counter_d++;
-        if (ddr_counter_q < D-1) begin
+        if (ddr_counter_d < NumDdrReads) begin
             ddr_state_d = START;
         end else begin
             ddr_state_d = DONE;
+            ddr_counter_d = 0;
         end
     end else if (ddr_state_q == DONE && state_q != WORKING) begin
         ddr_state_d = IDLE;
@@ -96,7 +96,7 @@ always_ff @(posedge clk_i) begin
     ddr_counter_q <= ddr_counter_d;
 end
 always_ff @(posedge clk_i) begin
-    if (rst_ni) begin
+    if (!rst_ni) begin
         ddr_state_q <= IDLE;
     end else begin
         ddr_state_q <= ddr_state_d;
@@ -188,7 +188,7 @@ always_comb begin
             i2_d++;
         end
         if (i2_d >= D) begin
-            i1_d = 0;
+            i2_d = 0;
             state_d = COPYING;
         end
     end else if (state_q == COPYING) begin
@@ -196,11 +196,15 @@ always_comb begin
         vector_w_en_o = 1;
         vector_w_data_o = rolling_sum_r_data_clamped;
         i1_d++;
+        if (i1_d >= D) begin
+            i1_d = 0;
+            state_d = WAITING_FOR_IN;
+        end
     end
 end
 
 always_ff @(posedge clk_i) begin
-    if (rst_ni) begin
+    if (!rst_ni) begin
         state_q <= WAITING_FOR_IN;
     end else begin
         state_q <= state_d;

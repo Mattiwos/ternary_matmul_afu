@@ -11,7 +11,7 @@ localparam fixed_point_t FixedPointMax = (FixedPointMin - 1);
 
 localparam UnaryOperationLutSize = (2 ** FixedPointPrecision);
 
-parameter D = 4;
+parameter D = 16;
 
 // index into dimension size
 typedef logic [$clog2(D)-1:0] DI_t;
@@ -84,7 +84,7 @@ typedef struct packed {
     ddr_address_t ddr_address;
 } instruction_t;
 
-localparam NumInstructions = 38;
+localparam NumInstructions = 33;
 
 typedef logic [$clog2(NumInstructions)-1:0] pc_t;
 
