@@ -1,9 +1,8 @@
 
 dv/dv_pkg.sv
-dv/ternary_matmul_tb.sv
 dv/rms_tb.sv
-dv/matrix_unit_tb.sv
 dv/matrix_fifo_tb.sv
+dv/vector_load_store_tb.sv
 
 --timing
 -j 0

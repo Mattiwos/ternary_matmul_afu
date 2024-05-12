@@ -5,7 +5,6 @@ module vector_load_store import config_pkg::*; (
 
     output logic                  in_ready_o,
     input  logic                  in_valid_i,
-
     input  load_store_operation_t vector_operation_i,
     input  ddr_address_t          vector_memory_address_i,
 
