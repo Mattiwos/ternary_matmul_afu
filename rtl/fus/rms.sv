@@ -6,10 +6,9 @@ module rms import config_pkg::*; (
     output logic         in_ready_o,
     input  logic         in_start_i,
 
+    output DI_t          vector_addr_o,
     output logic         vector_w_en_o,
-    output DI_t          vector_w_addr_o,
     output fixed_point_t vector_w_data_o,
-    output DI_t          vector_r_addr_o,
     input  fixed_point_t vector_r_data_i
 );
 
@@ -101,9 +100,8 @@ always_comb begin
     i2_d = i2_q;
     rms_value_d = rms_value_q;
 
-    vector_r_addr_o = 'x;
+    vector_addr_o = 'x;
     vector_w_en_o = 0;
-    vector_w_addr_o = 'x;
     vector_w_data_o = 'x;
 
     rms_vector_r_addr = 'x;
@@ -125,7 +123,7 @@ always_comb begin
             i2_d = 0;
         end
     end else if (state_q == SQUARING) begin
-        vector_r_addr_o = i1_q;
+        vector_addr_o = i1_q;
         rms_vector_w_addr = (i1_q / PARALLEL);
         rms_vector_r_addr = (i1_q / PARALLEL);
 
@@ -167,9 +165,8 @@ always_comb begin
         end
     end else if (state_q == DIVIDING) begin
         vector_w_en_o = 1;
-        vector_w_addr_o = i1_q;
         vector_w_data_o = div_y;
-        vector_r_addr_o = i1_q;
+        vector_addr_o = i1_q;
         div_a = vector_r_data_i;
         div_b = rms_value_q;
         i1_d++;

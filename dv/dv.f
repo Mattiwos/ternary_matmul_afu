@@ -17,6 +17,4 @@ dv/vector_load_store_tb.sv
 --x-assign unique
 --x-initial unique
 
--Wno-PINMISSING
--Wno-GENUNNAMED
--Wno-UNUSEDPARAM
+lint.vlt

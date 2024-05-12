@@ -5,7 +5,6 @@ module ternary_matmul import config_pkg::*; (
 
     output logic         in_ready_o,
     input  logic         in_valid_i,
-
     input  ddr_address_t maxtrix_memory_address_i,
 
     output DI_t          vector_addr_o,
@@ -61,7 +60,6 @@ localparam NumDdrReads = D*D / CellsPerData;
 typedef logic [$clog2(NumDdrReads):0] ddr_counter_t;
 ddr_counter_t ddr_counter_d, ddr_counter_q;
 
-ddr_address_t maxtrix_memory_address_d, maxtrix_memory_address_q;
 
 always_comb begin
     fifo_push = 0;
@@ -77,7 +75,7 @@ always_comb begin
         ddr_counter_d = 0;
         ddr_state_d = START;
     end else if (ddr_state_q == START && !fifo_full) begin
-        ddr_address_o = maxtrix_memory_address_q + ddr_counter_q;
+        ddr_address_o = maxtrix_memory_address_i + ddr_counter_q;
         ddr_r_en_o = 1;
         ddr_state_d = READING;
     end else if (ddr_state_q == READING && ddr_r_valid_i) begin
@@ -95,7 +93,6 @@ always_comb begin
 end
 
 always_ff @(posedge clk_i) begin
-    maxtrix_memory_address_q <= maxtrix_memory_address_d;
     ddr_counter_q <= ddr_counter_d;
 end
 always_ff @(posedge clk_i) begin

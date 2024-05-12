@@ -5,8 +5,8 @@ module rowwise_operation import config_pkg::*; (
 
     output logic         in_ready_o,
     input  logic         in_valid_i,
-
     input  operation_t   vector_operation_i,
+
     output DI_t          vector_addr_o,
     output logic         vector_w_en_o,
     output fixed_point_t vector_w_data_o,

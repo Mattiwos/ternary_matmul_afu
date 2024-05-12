@@ -80,7 +80,7 @@ typedef struct packed {
     v_addr_t v_a;
     v_addr_t v_b;
     v_addr_t v_y;
-    load_store_operation_t load_store_operation;
+    load_store_operation_t loadstore_operation;
     ddr_address_t ddr_address;
 } instruction_t;
 
