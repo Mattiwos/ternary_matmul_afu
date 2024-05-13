@@ -27,10 +27,14 @@ def encode(instruction):
         'sig':'101'
     }
     vector_registers = {
-        'v0': '00',
-        'v1': '01',
-        'v2': '10',
-        'v3': '11'
+        'v0': '000',
+        'v1': '001',
+        'v2': '010',
+        'v3': '011',
+        'v4': '100',
+        'v5': '101',
+        'v6': '110',
+        'v7': '111'
     }
     load_store_operations = {
         'ldv' : '00',
@@ -50,7 +54,7 @@ def encode(instruction):
     out = ''
     if instruction[0] == 'ldv':
         out += fus[instruction[0]] + '_'
-        out += '000_00_00_'
+        out += '000_000_000_'
         out += vector_registers[instruction[1]] + '_'
         out += load_store_operations[instruction[0]] + '_'
         out += ddr_addresses[instruction[2]]
@@ -59,7 +63,7 @@ def encode(instruction):
         out += fus[instruction[0]] + '_'
         out += '000_'
         out += vector_registers[instruction[1]] + '_'
-        out += '00_00_'
+        out += '000_000_'
         out += load_store_operations[instruction[0]] + '_'
         out += ddr_addresses[instruction[2]]
         out += ' // ' + ' '.join(instruction)
@@ -75,7 +79,7 @@ def encode(instruction):
         out += fus[instruction[0]] + '_'
         out += operations[instruction[0]] + '_'
         out += vector_registers[instruction[2]] + '_'
-        out += '00_'
+        out += '000_'
         out += vector_registers[instruction[1]] + '_'
         out += '00_0000000000000000'
         out += ' // ' + ' '.join(instruction)
@@ -83,7 +87,7 @@ def encode(instruction):
         out += fus[instruction[0]] + '_'
         out += '000_'
         out += vector_registers[instruction[2]] + '_'
-        out += '00_'
+        out += '000_'
         out += vector_registers[instruction[1]] + '_'
         out += '00_'
         out += ddr_addresses[instruction[3]]
@@ -92,7 +96,7 @@ def encode(instruction):
         out += fus[instruction[0]] + '_'
         out += '000_'
         out += vector_registers[instruction[1]] + '_'
-        out += '00_'
+        out += '000_'
         out += vector_registers[instruction[1]] + '_'
         out += '00_0000000000000000'
         out += ' // ' + ' '.join(instruction)

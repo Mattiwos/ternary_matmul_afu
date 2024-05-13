@@ -43,7 +43,7 @@ function automatic fixed_point_t rms_internal2out(rms_fixed_point_t x);
     end
 endfunction
 
-localparam NumVectorRegisters = 4;
+localparam NumVectorRegisters = 8;
 typedef logic [$clog2(NumVectorRegisters)-1:0] v_addr_t;
 
 typedef enum logic [2:0] {
@@ -84,7 +84,7 @@ typedef struct packed {
     ddr_address_t ddr_address;
 } instruction_t;
 
-localparam NumInstructions = 33;
+localparam NumInstructions = 29;
 
 typedef logic [$clog2(NumInstructions)-1:0] pc_t;
 

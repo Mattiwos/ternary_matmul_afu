@@ -13,21 +13,21 @@
 
 	norm	v0 ; v0 = norm(X)
 
-	tmatmul	v1,v0,WK ; v1 = K
+	tmatmul	v6,v0,WK ; v6 = K
+
 	ldv	v2,eM ; v2 = eM
+	exp	v6,v6 ; v6 = eK
 
-	exp	v1,v1 ; v1 = eK
+	tmatmul	v5,v0,WV ; v5 = V
+	mul	v2,v2,v6 ; v2 = eM * eK
 
-	tmatmul	v3,v0,WV ; v3 = V
-	mul	v2,v2,v1 ; v2 = eM * eK
-
-	mul	v1,v2,v3 ; v1 = eM * eK * V
+	mul	v1,v2,v5 ; v1 = eM * eK * V
 	ldv	v0,B ; v0 = B
 
 	add	v2,v2,v0 ; v2 = denominator
-	ldv	v3,A ; v3 = A
+	ldv	v4,A ; v4 = A
 
-	add	v1,v1,v3 ; numerator
+	add	v1,v1,v4 ; numerator
 	ldv	v0,X ; v0 = X
 
 	norm	v0 ; v0 = norm(X)
@@ -37,28 +37,23 @@
 
 	sig	v2,v2 ; v2 = sig(Q)
 
-	tmatmul	v3,v0,WK ; v3 = K
 	mul	v2,v2,v1 ; final calculation of Y
 
 	norm	v2 ; normalize O
-	exp	v3,v3 ; v3 = eK
 
-	tmatmul	v0,v0,WV ; v0 = V
 	ldv	v1,eNW ; v1 = eNW
 
 	sv	v2,O ; Save O
-	mul	v0,v3,v0 ; v0 = eK * V
+	mul	v5,v6,v5 ; v5 = eK * V
 
-	ldv	v2,A ; v2 = A
-
-	mul	v2,v1,v2 ; v2 = eNW * A
+	mul	v4,v1,v4 ; v4 = eNW * A
 	ldv	v0,B ; v0 = B
 
-	add	v2,v2,v0 ; v2 = A[t+1]
+	add	v4,v4,v0 ; v4 = A[t+1]
 
-	sv	v2,A
+	sv	v4,A
 	mul	v0,v1,v0 ; v0 = eNW * B
 
-	add	v0,v0,v3 ; v0 = B[t+1]
+	add	v0,v0,v6 ; v0 = B[t+1]
 
 	sv	v0,B
