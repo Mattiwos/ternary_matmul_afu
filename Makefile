@@ -41,6 +41,12 @@ synth/build/synth.v: synth/build/rtl.sv2v.v synth/yosys.tcl mems
 
 xc7: synth/build/xc7.v
 
+vivado: mems
+	rm -rf synth/build/matrix_unit
+	mkdir -p synth/build
+	cd synth/build && \
+	 vivado -nolog -nojournal -mode tcl -source ../vivado.tcl
+
 synth/build/xc7.v: synth/build/rtl.sv2v.v synth/yosys-xc7.tcl mems
 	rm -rf slpp_all
 	mkdir -p synth/build

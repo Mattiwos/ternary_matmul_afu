@@ -40,7 +40,7 @@ enum logic [1:0] {
     DIVIDING
 } state_d, state_q;
 
-rms_fixed_point_t [PARALLEL-1:0] rms_vector [D / PARALLEL];
+logic [FixedPointPrecision*PARALLEL-1:0] rms_vector [D / PARALLEL];
 
 logic [$clog2(D/PARALLEL)-1:0] rms_vector_r_addr;
 wire rms_fixed_point_t [PARALLEL-1:0] rms_vector_r_data = rms_vector[rms_vector_r_addr];

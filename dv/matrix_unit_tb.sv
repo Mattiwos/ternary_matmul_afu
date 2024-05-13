@@ -27,7 +27,7 @@ matrix_unit matrix_unit (
 initial begin
     clk_i = 0;
     forever begin
-        #1;
+        #15ns;
         clk_i = !clk_i;
     end
 end
@@ -52,11 +52,21 @@ always @(posedge clk_i) if (rst_ni) begin : driver
 end
 
 ddr_data_t ddr_data [D*D];
+localparam CellsPerData = (DdrDataWidth / $bits(ternary_t));
+initial begin
+    for (int i = 0; i < D*D; i++) begin
+        automatic ddr_data_t data = 0;
+        for (int j = 0; j < CellsPerData; j++)
+            data = {data, 2'($urandom_range(0,2))};
+        ddr_data[i] = data;
+    end
+end
+
 always @(posedge clk_i) begin
     ddr_w_done_i <= 0;
     if (matrix_unit.ddr_w_en_o) begin
-        ddr_address_t ddr_address = matrix_unit.ddr_address_o;
-        ddr_data_t ddr_w_data = matrix_unit.ddr_w_data_o;
+        automatic ddr_address_t ddr_address = matrix_unit.ddr_address_o;
+        automatic ddr_data_t ddr_w_data = matrix_unit.ddr_w_data_o;
         repeat(2) @(posedge clk_i);
         ddr_data[ddr_address] <= ddr_w_data;
         ddr_w_done_i <= 1;
@@ -66,7 +76,7 @@ always @(posedge clk_i) begin
     ddr_r_data_i <= 'x;
     ddr_r_valid_i <= 0;
     if (matrix_unit.ddr_r_en_o) begin
-        ddr_address_t ddr_address = matrix_unit.ddr_address_o;
+        automatic ddr_address_t ddr_address = matrix_unit.ddr_address_o;
         repeat(2) @(posedge clk_i);
         ddr_r_data_i <= ddr_data[ddr_address];
         ddr_r_valid_i <= 1;

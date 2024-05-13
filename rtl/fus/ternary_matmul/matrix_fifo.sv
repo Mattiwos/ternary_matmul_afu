@@ -14,7 +14,7 @@ module matrix_fifo import config_pkg::*; (
 
 localparam CellsPerData = (DdrDataWidth / $bits(ternary_t));
 
-ternary_t [CellsPerData-1:0] MEM [MatrixFifoSize];
+logic [$bits(ternary_t)*CellsPerData-1:0] MEM [MatrixFifoSize];
 logic we;
 
 logic [$clog2(MatrixFifoSize):0] hi_head_d, hi_head_q;
@@ -24,7 +24,8 @@ logic [$clog2(MatrixFifoSize):0] size_d, size_q;
 
 assign full_o = (size_q == MatrixFifoSize);
 assign valid_o = (size_q != 0);
-assign data_o = valid_o ? MEM[hi_head_q][lo_head_q] : 'x;
+wire ternary_t [CellsPerData-1:0] current_row = valid_o ? MEM[hi_head_q] : 'x;
+assign data_o = current_row[lo_head_q];
 
 always_comb begin
     hi_head_d = hi_head_q;

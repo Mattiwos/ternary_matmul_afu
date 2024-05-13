@@ -16,8 +16,8 @@ module matrix_unit import config_pkg::*; (
 );
 
 enum logic [1:0] {
-    WAITING_FOR_IN,
-    WORKING
+    WAITING_FOR_IN = 1,
+    WORKING = 2
 } state_d, state_q;
 
 logic [$bits(instruction_t)-1:0] IMEM [NumInstructions];
@@ -189,6 +189,23 @@ v_addr_t reg_tmatmul_y_d, reg_tmatmul_y_q;
 
 v_addr_t reg_norm_x_d, reg_norm_x_q;
 
+vector_registers vector_registers (
+    .clk_i,
+
+    .vector_w_en_i(registers_w_en),
+    .vector_w_addr_i(registers_w_addr),
+    .vector_w_data_i(registers_w_data),
+    .vector_r_addr_i(registers_r_addr),
+    .vector_r_data_o(registers_r_data)
+);
+
+wire loadstore_busy         = (!loadstore_in_ready         || loadstore_in_valid_q);
+wire rowwise_operation_busy = (!rowwise_operation_in_ready || rowwise_operation_in_valid_q);
+wire tmatmul_busy           = (!tmatmul_in_ready           || tmatmul_in_valid_q);
+wire rms_busy               = (!rms_in_ready               || rms_in_start_q);
+
+assign busy = (loadstore_busy || rowwise_operation_busy || tmatmul_busy || rms_busy || stall);
+
 always_comb begin
     registers_w_en = '0;
     registers_w_addr = '0;
@@ -234,23 +251,6 @@ always_comb begin
         rms_vector_r_data |= registers_r_data[reg_norm_x_q];
     end
 end
-
-vector_registers vector_registers (
-    .clk_i,
-
-    .vector_w_en_i(registers_w_en),
-    .vector_w_addr_i(registers_w_addr),
-    .vector_w_data_i(registers_w_data),
-    .vector_r_addr_i(registers_r_addr),
-    .vector_r_data_o(registers_r_data)
-);
-
-wire loadstore_busy         = (!loadstore_in_ready         || loadstore_in_valid_q);
-wire rowwise_operation_busy = (!rowwise_operation_in_ready || rowwise_operation_in_valid_q);
-wire tmatmul_busy           = (!tmatmul_in_ready           || tmatmul_in_valid_q);
-wire rms_busy               = (!rms_in_ready               || rms_in_start_q);
-
-assign busy = (loadstore_busy || rowwise_operation_busy || tmatmul_busy || rms_busy || stall);
 
 logic [NumVectorRegisters-1:0] reg_busy;
 always_comb begin

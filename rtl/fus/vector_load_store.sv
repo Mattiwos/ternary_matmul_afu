@@ -74,7 +74,7 @@ if (DdrDataWidth == FixedPointPrecision) begin
             if (vector_counter_q < D-1) begin
                 // request more memory
                 vector_counter_d++;
-                ddr_address_o = vector_memory_address_i + vector_counter_d;
+                ddr_address_o = vector_memory_address_q + vector_counter_d;
                 ddr_r_en_o = 1;
             end else begin
                 state_d = WAITING_FOR_IN;
@@ -86,7 +86,7 @@ if (DdrDataWidth == FixedPointPrecision) begin
                 vector_addr_o = vector_counter_d;
                 // save memory
                 ddr_w_data_o = vector_r_data_i;
-                ddr_address_o = vector_memory_address_i + vector_counter_d;
+                ddr_address_o = vector_memory_address_q + vector_counter_d;
                 ddr_w_en_o = 1;
             end else begin
                 state_d = WAITING_FOR_IN;
