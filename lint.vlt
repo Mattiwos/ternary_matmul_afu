@@ -2,3 +2,6 @@
 
 lint_off -rule WIDTH
 lint_off -rule PINMISSING
+lint_off -rule GENUNNAMED
+lint_off -rule UNUSEDPARAM
+lint_off -rule UNOPTFLAT

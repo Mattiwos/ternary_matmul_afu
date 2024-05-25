@@ -3,6 +3,9 @@ package dv_pkg;
 
 import config_pkg::*;
 
+typedef fixed_point_t vector_t [D];
+typedef ternary_t ternary_matrix_t [D][D];
+
 function automatic void fdisplay_vector(integer fd, vector_t v, bit T = 0);
     for (integer i = 0; i < D; i++) begin
         $fwrite(fd, fixed_point2real(v[i]));

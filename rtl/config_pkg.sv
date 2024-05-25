@@ -11,11 +11,12 @@ localparam fixed_point_t FixedPointMax = (FixedPointMin - 1);
 
 localparam UnaryOperationLutSize = (2 ** FixedPointPrecision);
 
-parameter D = 4;
+parameter D = 512;
+
+// index into dimension size
+typedef logic [$clog2(D)-1:0] DI_t;
 
 typedef logic signed [1:0] ternary_t;
-typedef fixed_point_t [D-1:0] vector_t;
-typedef ternary_t [D-1:0][D-1:0] ternary_matrix_t;
 
 parameter RmsFixedPointPrecision = 9;
 parameter RmsFixedPointExponent = 0;
@@ -23,8 +24,6 @@ parameter RmsFixedPointExponent = 0;
 localparam RmsUnaryOperationLutSize = (2 ** RmsFixedPointPrecision);
 
 typedef logic signed [RmsFixedPointPrecision-1:0] rms_fixed_point_t;
-
-typedef rms_fixed_point_t [D-1:0] rms_vector_t;
 
 function automatic rms_fixed_point_t rms_in2internal(fixed_point_t x);
     localparam internalSize = $bits(rms_fixed_point_t) + $bits(fixed_point_t);
@@ -44,7 +43,7 @@ function automatic fixed_point_t rms_internal2out(rms_fixed_point_t x);
     end
 endfunction
 
-localparam NumVectorRegisters = 4;
+localparam NumVectorRegisters = 8;
 typedef logic [$clog2(NumVectorRegisters)-1:0] v_addr_t;
 
 typedef enum logic [2:0] {
@@ -58,9 +57,7 @@ typedef enum logic [2:0] {
 
 typedef enum logic [1:0] {
     LDV,
-    SV,
-    LDTM,
-    STM
+    SV
 } load_store_operation_t;
 
 typedef enum logic [2:0] {
@@ -83,12 +80,14 @@ typedef struct packed {
     v_addr_t v_a;
     v_addr_t v_b;
     v_addr_t v_y;
-    load_store_operation_t load_store_operation;
+    load_store_operation_t loadstore_operation;
     ddr_address_t ddr_address;
 } instruction_t;
 
-localparam NumInstructions = 38;
+localparam NumInstructions = 29;
 
 typedef logic [$clog2(NumInstructions)-1:0] pc_t;
+
+parameter MatrixFifoSize = 2048;
 
 endpackage

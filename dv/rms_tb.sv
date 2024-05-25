@@ -4,27 +4,24 @@ module rms_tb
     import dv_pkg::*;
     ;
 
-logic               clk_i;
-logic               rst_ni;
-
-vector_t            a;
-logic               in_ready;
-logic               in_valid;
-
-logic               out_ready;
-logic               out_valid;
+logic         clk_i;
+logic         rst_ni;
+logic         in_start_i;
+fixed_point_t vector_r_data_i;
 
 rms rms (
     .clk_i,
     .rst_ni,
-
-    .a_i(a),
-    .in_ready_o(in_ready),
-    .in_valid_i(in_valid),
-
-    .out_ready_i(out_ready),
-    .out_valid_o(out_valid)
+    .in_start_i,
+    .vector_r_data_i
 );
+
+vector_t a;
+always_ff @(posedge clk_i) begin
+    if (rms.vector_w_en_o)
+        a[rms.vector_w_addr_o] <= rms.vector_w_data_o;
+end
+assign vector_r_data_i = a[rms.vector_r_addr_o];
 
 initial begin
     clk_i = 0;
@@ -35,47 +32,36 @@ initial begin
 end
 
 initial begin
-    repeat(1000) @(posedge clk_i);
+    repeat(5 * D*D) @(posedge clk_i);
     $display("Timed out");
     $fatal;
 end
 
-// driver
-always @(posedge clk_i) if (rst_ni) begin : driver
-    // wait until adder is ready for input
-    in_valid <= 0;
-    while (!in_ready)
-        @(posedge clk_i);
-
-    // generate random input
-    a <= random_vector();
-
-    // send data
-    in_valid <= 1;
-    @(posedge clk_i);
-    in_valid <= 0;
-end
-
 integer fd;
 
-// monitor
-integer num_tests = 0;
-always @(posedge clk_i) if (rst_ni) begin : monitor
-    // wait until adder output is valid
-    out_ready <= 1;
-    while (!out_valid || !out_ready)
+// driver
+always @(posedge clk_i) if (rst_ni) begin : driver
+    // wait until ready to start
+    in_start_i <= 0;
+    while (!rms.in_ready_o)
         @(posedge clk_i);
-    out_ready <= 0;
 
-    $fdisplay(fd, "Vector Input:");
-    fdisplay_vector(fd, a, 1);
+    // print previous result
     $fdisplay(fd, "RMS Value:");
-    $fdisplay(fd, fixed_point2real(rms.rms_o));
+    $fdisplay(fd, fixed_point2real(rms.rms_value_q));
     $fdisplay(fd, "Vector Output:");
-    fdisplay_vector(fd, rms.y_o, 1);
+    fdisplay_vector(fd, a, 1);
     $fdisplay(fd, "\n");
 
-    num_tests <= num_tests+1;
+    // generate random input
+    a = random_vector();
+    $fdisplay(fd, "Vector Input:");
+    fdisplay_vector(fd, a, 1);
+
+    // send data
+    in_start_i <= 1;
+    @(posedge clk_i);
+    in_start_i <= 0;
 end
 
 // Run
@@ -91,7 +77,7 @@ initial begin
     @(negedge clk_i);
     rst_ni = 1;
 
-    repeat(100) @(posedge clk_i);
+    repeat(5) @(posedge in_start_i);
 
     $display( "End simulation." );
     $finish();

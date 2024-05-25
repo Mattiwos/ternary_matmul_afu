@@ -1,7 +1,8 @@
 
 RTL := $(shell python3 misc/convert_filelist.py Makefile rtl/rtl.f)
-# TOP := ternary_matmul_tb
 # TOP := rms_tb
+# TOP := matrix_fifo_tb
+# TOP := vector_load_store_tb
 TOP := matrix_unit_tb
 
 YOSYS_DATDIR := $(shell yosys-config --datdir)
@@ -39,6 +40,12 @@ synth/build/synth.v: synth/build/rtl.sv2v.v synth/yosys.tcl mems
 	yosys -p 'tcl synth/yosys.tcl synth/build/rtl.sv2v.v' -l synth/build/yosys.log
 
 xc7: synth/build/xc7.v
+
+vivado: mems
+	rm -rf synth/build/matrix_unit
+	mkdir -p synth/build
+	cd synth/build && \
+	 vivado -nolog -nojournal -mode tcl -source ../vivado.tcl
 
 synth/build/xc7.v: synth/build/rtl.sv2v.v synth/yosys-xc7.tcl mems
 	rm -rf slpp_all
