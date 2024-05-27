@@ -1,0 +1,17 @@
+# Platform Designer Matrix Unit System IPs
+mu_afu_system.qsys
+ip/mu_afu_system/mu_afu_csr_bridge.ip
+ip/mu_afu_system/mu_afu_ddr4_bridge.ip
+ip/mu_afu_system/mu_afu_dma_clock.ip
+ip/mu_afu_system/mu_afu_dma_rst.ip
+ip/mu_afu_system/mu_afu_farreach_read.ip
+ip/mu_afu_system/mu_afu_farreach_write.ip
+ip/mu_afu_system/mu_afu_id_afu.ip
+ip/mu_afu_system/mu_afu_id_dma.ip
+ip/mu_afu_system/mu_afu_id_matmul.ip
+ip/mu_afu_system/mu_afu_matmul_clock.ip
+ip/mu_afu_system/mu_afu_matmul_ddr4a_bridge.ip
+ip/mu_afu_system/mu_afu_matmul_ready.ip
+ip/mu_afu_system/mu_afu_matmul_rst.ip
+ip/mu_afu_system/mu_afu_pgm_ram.ip
+ip/mu_afu_system/mu_afu_start_matmul.ip

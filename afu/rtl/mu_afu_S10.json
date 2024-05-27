@@ -1,0 +1,32 @@
+{
+   "version": 1,
+   "afu-image": {
+      "power": 0,
+      "clock-frequency-high" : "auto-75",
+      "clock-frequency-low"  : "auto-35.5",
+      "afu-top-interface":
+         {
+            "class": "ccip_std_afu_avalon_mm",
+            "module-arguments" :
+               [
+                  {
+                     "class": "local-memory",
+                     "params":
+                        {
+                           "clock": "pClk",
+                           "add-timing-reg-stages": 1
+                        }
+                  }
+               ]
+         },
+      "accelerator-clusters":
+         [
+            {
+               "name": "ternary_matrix_mult_afu",
+               "total-contexts": 1,
+               "accelerator-type-uuid": "BF8A475D-817F-4BEC-9E87-7816BE249566"
+            }
+         ]
+   }
+}
+

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy
+ date="2024.05.26.15:15:31"
+ outputDirectory="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/">
+ <perimeter>
+  <parameter
+     name="AUTO_GENERATION_ID"
+     type="Integer"
+     defaultValue="0"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_UNIQUE_ID"
+     type="String"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_FAMILY"
+     type="String"
+     defaultValue="Stratix 10"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE"
+     type="String"
+     defaultValue="1SX280HN2F43E2VG"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DEVICE_SPEEDGRADE"
+     type="String"
+     defaultValue="2"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_RATE"
+     type="Long"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_CLOCK_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_CLOCK_RESET_DOMAIN"
+     type="Integer"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DESCRIPTOR_FETCH_MASTER_ADDRESS_MAP"
+     type="AddressMap"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DESCRIPTOR_FETCH_MASTER_ADDRESS_WIDTH"
+     type="AddressWidthType"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DESCRIPTOR_STORE_MASTER_ADDRESS_MAP"
+     type="AddressMap"
+     defaultValue=""
+     onHdl="0"
+     affectsHdl="1" />
+  <parameter
+     name="AUTO_DESCRIPTOR_STORE_MASTER_ADDRESS_WIDTH"
+     type="AddressWidthType"
+     defaultValue="-1"
+     onHdl="0"
+     affectsHdl="1" />
+  <interface name="clock" kind="clock" start="0">
+   <property name="clockRate" value="0" />
+   <property name="externallyDriven" value="false" />
+   <property name="ptfSchematicName" value="" />
+   <port name="clk" direction="input" role="clk" width="1" />
+  </interface>
+  <interface name="reset" kind="reset" start="0">
+   <property name="associatedClock" value="clock" />
+   <property name="synchronousEdges" value="BOTH" />
+   <port name="reset" direction="input" role="reset" width="1" />
+  </interface>
+  <interface name="csr_slave" kind="avalon" start="0">
+   <property name="addressAlignment" value="DYNAMIC" />
+   <property name="addressGroup" value="0" />
+   <property name="addressSpan" value="64" />
+   <property name="addressUnits" value="WORDS" />
+   <property name="alwaysBurstMaxBurst" value="false" />
+   <property name="associatedClock" value="clock" />
+   <property name="associatedReset" value="reset" />
+   <property name="bitsPerSymbol" value="8" />
+   <property name="bridgedAddressOffset" value="0" />
+   <property name="bridgesToMaster" value="" />
+   <property name="burstOnBurstBoundariesOnly" value="false" />
+   <property name="burstcountUnits" value="WORDS" />
+   <property name="constantBurstBehavior" value="false" />
+   <property name="explicitAddressSpan" value="0" />
+   <property name="holdTime" value="0" />
+   <property name="interleaveBursts" value="false" />
+   <property name="isBigEndian" value="false" />
+   <property name="isFlash" value="false" />
+   <property name="isMemoryDevice" value="false" />
+   <property name="isNonVolatileStorage" value="false" />
+   <property name="linewrapBursts" value="false" />
+   <property name="maximumPendingReadTransactions" value="0" />
+   <property name="maximumPendingWriteTransactions" value="0" />
+   <property name="minimumReadLatency" value="1" />
+   <property name="minimumResponseLatency" value="1" />
+   <property name="minimumUninterruptedRunLength" value="1" />
+   <property name="prSafe" value="false" />
+   <property name="printableDevice" value="false" />
+   <property name="readLatency" value="1" />
+   <property name="readWaitStates" value="1" />
+   <property name="readWaitTime" value="1" />
+   <property name="registerIncomingSignals" value="false" />
+   <property name="registerOutgoingSignals" value="false" />
+   <property name="setupTime" value="0" />
+   <property name="timingUnits" value="Cycles" />
+   <property name="transparentBridge" value="false" />
+   <property name="waitrequestAllowance" value="0" />
+   <property name="wellBehavedWaitrequest" value="false" />
+   <property name="writeLatency" value="0" />
+   <property name="writeWaitStates" value="0" />
+   <property name="writeWaitTime" value="0" />
+   <port name="s_address" direction="input" role="address" width="3" />
+   <port name="s_read" direction="input" role="read" width="1" />
+   <port name="s_readdata" direction="output" role="readdata" width="64" />
+   <port name="s_write" direction="input" role="write" width="1" />
+   <port name="s_writedata" direction="input" role="writedata" width="64" />
+   <port name="s_byteenable" direction="input" role="byteenable" width="8" />
+  </interface>
+  <interface name="descriptor_fetch_master" kind="avalon" start="1">
+   <property name="adaptsTo" value="" />
+   <property name="addressGroup" value="0" />
+   <property name="addressUnits" value="SYMBOLS" />
+   <property name="alwaysBurstMaxBurst" value="false" />
+   <property name="associatedClock" value="clock" />
+   <property name="associatedReset" value="reset" />
+   <property name="bitsPerSymbol" value="8" />
+   <property name="burstOnBurstBoundariesOnly" value="false" />
+   <property name="burstcountUnits" value="WORDS" />
+   <property name="constantBurstBehavior" value="false" />
+   <property name="dBSBigEndian" value="false" />
+   <property name="doStreamReads" value="false" />
+   <property name="doStreamWrites" value="false" />
+   <property name="holdTime" value="0" />
+   <property name="interleaveBursts" value="false" />
+   <property name="isAsynchronous" value="false" />
+   <property name="isBigEndian" value="false" />
+   <property name="isReadable" value="false" />
+   <property name="isWriteable" value="false" />
+   <property name="linewrapBursts" value="false" />
+   <property name="maxAddressWidth" value="32" />
+   <property name="maximumPendingReadTransactions" value="0" />
+   <property name="maximumPendingWriteTransactions" value="0" />
+   <property name="minimumReadLatency" value="1" />
+   <property name="minimumResponseLatency" value="1" />
+   <property name="prSafe" value="false" />
+   <property name="readLatency" value="0" />
+   <property name="readWaitTime" value="1" />
+   <property name="registerIncomingSignals" value="false" />
+   <property name="registerOutgoingSignals" value="false" />
+   <property name="setupTime" value="0" />
+   <property name="timingUnits" value="Cycles" />
+   <property name="waitrequestAllowance" value="0" />
+   <property name="writeWaitTime" value="0" />
+   <port name="m_fetch_address" direction="output" role="address" width="49" />
+   <port name="m_fetch_burst" direction="output" role="burstcount" width="3" />
+   <port
+       name="m_fetch_byteenable"
+       direction="output"
+       role="byteenable"
+       width="64" />
+   <port name="m_fetch_read" direction="output" role="read" width="1" />
+   <port name="m_fetch_readdata" direction="input" role="readdata" width="512" />
+   <port
+       name="m_fetch_readdatavalid"
+       direction="input"
+       role="readdatavalid"
+       width="1" />
+   <port
+       name="m_fetch_waitrequest"
+       direction="input"
+       role="waitrequest"
+       width="1" />
+  </interface>
+  <interface name="descriptor_store_master" kind="avalon" start="1">
+   <property name="adaptsTo" value="" />
+   <property name="addressGroup" value="0" />
+   <property name="addressUnits" value="SYMBOLS" />
+   <property name="alwaysBurstMaxBurst" value="false" />
+   <property name="associatedClock" value="clock" />
+   <property name="associatedReset" value="reset" />
+   <property name="bitsPerSymbol" value="8" />
+   <property name="burstOnBurstBoundariesOnly" value="false" />
+   <property name="burstcountUnits" value="WORDS" />
+   <property name="constantBurstBehavior" value="false" />
+   <property name="dBSBigEndian" value="false" />
+   <property name="doStreamReads" value="false" />
+   <property name="doStreamWrites" value="false" />
+   <property name="holdTime" value="0" />
+   <property name="interleaveBursts" value="false" />
+   <property name="isAsynchronous" value="false" />
+   <property name="isBigEndian" value="false" />
+   <property name="isReadable" value="false" />
+   <property name="isWriteable" value="false" />
+   <property name="linewrapBursts" value="false" />
+   <property name="maxAddressWidth" value="32" />
+   <property name="maximumPendingReadTransactions" value="0" />
+   <property name="maximumPendingWriteTransactions" value="0" />
+   <property name="minimumReadLatency" value="1" />
+   <property name="minimumResponseLatency" value="1" />
+   <property name="prSafe" value="false" />
+   <property name="readLatency" value="0" />
+   <property name="readWaitTime" value="1" />
+   <property name="registerIncomingSignals" value="false" />
+   <property name="registerOutgoingSignals" value="false" />
+   <property name="setupTime" value="0" />
+   <property name="timingUnits" value="Cycles" />
+   <property name="waitrequestAllowance" value="0" />
+   <property name="writeWaitTime" value="0" />
+   <port name="m_store_address" direction="output" role="address" width="49" />
+   <port name="m_store_burst" direction="output" role="burstcount" width="3" />
+   <port
+       name="m_store_byteenable"
+       direction="output"
+       role="byteenable"
+       width="64" />
+   <port
+       name="m_store_waitrequest"
+       direction="input"
+       role="waitrequest"
+       width="1" />
+   <port name="m_store_write" direction="output" role="write" width="1" />
+   <port
+       name="m_store_writedata"
+       direction="output"
+       role="writedata"
+       width="512" />
+  </interface>
+  <interface name="descriptor_source" kind="avalon_streaming" start="1">
+   <property name="associatedClock" value="clock" />
+   <property name="associatedReset" value="reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="256" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="prSafe" value="false" />
+   <property name="readyAllowance" value="0" />
+   <property name="readyLatency" value="0" />
+   <property name="symbolsPerBeat" value="1" />
+   <port name="src_descriptor_data" direction="output" role="data" width="256" />
+   <port name="src_descriptor_ready" direction="input" role="ready" width="1" />
+   <port name="src_descriptor_valid" direction="output" role="valid" width="1" />
+  </interface>
+  <interface name="response_sink" kind="avalon_streaming" start="0">
+   <property name="associatedClock" value="clock" />
+   <property name="associatedReset" value="reset" />
+   <property name="beatsPerCycle" value="1" />
+   <property name="dataBitsPerSymbol" value="256" />
+   <property name="emptyWithinPacket" value="false" />
+   <property name="errorDescriptor" value="" />
+   <property name="firstSymbolInHighOrderBits" value="true" />
+   <property name="highOrderSymbolAtMSB" value="false" />
+   <property name="maxChannel" value="0" />
+   <property name="packetDescription" value="" />
+   <property name="prSafe" value="false" />
+   <property name="readyAllowance" value="0" />
+   <property name="readyLatency" value="0" />
+   <property name="symbolsPerBeat" value="1" />
+   <port name="snk_response_data" direction="input" role="data" width="256" />
+   <port name="snk_response_ready" direction="output" role="ready" width="1" />
+   <port name="snk_response_valid" direction="input" role="valid" width="1" />
+  </interface>
+ </perimeter>
+ <entity kind="msgdma_bbb_frontend" version="1.0" name="msgdma_bbb_frontend">
+  <parameter name="AUTO_CLOCK_CLOCK_RATE" value="-1" />
+  <parameter name="AUTO_DESCRIPTOR_STORE_MASTER_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_CLOCK_CLOCK_DOMAIN" value="-1" />
+  <parameter name="AUTO_CLOCK_RESET_DOMAIN" value="-1" />
+  <parameter name="AUTO_DESCRIPTOR_STORE_MASTER_ADDRESS_WIDTH" value="-1" />
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_DEVICE" value="1SX280HN2F43E2VG" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Stratix 10" />
+  <parameter name="AUTO_DESCRIPTOR_FETCH_MASTER_ADDRESS_MAP" value="" />
+  <parameter name="AUTO_UNIQUE_ID" value="" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="2" />
+  <parameter name="AUTO_DESCRIPTOR_FETCH_MASTER_ADDRESS_WIDTH" value="-1" />
+  <generatedFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/synth/msgdma_bbb_frontend.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/synth/msgdma_bbb_frontend.v"
+       attributes="CONTAINS_INLINE_CONFIGURATION" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend.ip" />
+  </sourceFiles>
+  <childSourceFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_frontend_hw.tcl" />
+  </childSourceFiles>
+  <messages>
+   <message level="Info" culprit="msgdma_bbb_frontend">"Generating: msgdma_bbb_frontend"</message>
+   <message level="Info" culprit="msgdma_bbb_frontend">"Generating: mSGDMA_frontend"</message>
+  </messages>
+ </entity>
+ <entity kind="mSGDMA_frontend" version="1.0" name="mSGDMA_frontend">
+  <parameter name="ADDRESS_WIDTH" value="49" />
+  <parameter name="FETCH_FIFO_DEPTH_LOG2" value="7" />
+  <parameter name="STORE_FIFO_DEPTH_LOG2" value="5" />
+  <parameter name="BURST_WIDTH" value="3" />
+  <parameter name="IRQ_ENABLE" value="0" />
+  <generatedFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_frontend_descriptor_format_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_frontend.sv"
+       attributes="TOP_LEVEL_FILE" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_descriptor_fetch_read_master.sv"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_descriptor_store_write_master.sv"
+       attributes="" />
+  </generatedFiles>
+  <childGeneratedFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_frontend_descriptor_format_pkg.sv"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_frontend.sv"
+       attributes="TOP_LEVEL_FILE" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_descriptor_fetch_read_master.sv"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend/mSGDMA_frontend_10/synth/mSGDMA_descriptor_store_write_master.sv"
+       attributes="" />
+  </childGeneratedFiles>
+  <sourceFiles>
+   <file
+       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_frontend_hw.tcl" />
+  </sourceFiles>
+  <childSourceFiles/>
+  <instantiator instantiator="msgdma_bbb_frontend" as="msgdma_bbb_frontend" />
+  <messages>
+   <message level="Info" culprit="msgdma_bbb_frontend">"Generating: mSGDMA_frontend"</message>
+  </messages>
+ </entity>
+</deploy>

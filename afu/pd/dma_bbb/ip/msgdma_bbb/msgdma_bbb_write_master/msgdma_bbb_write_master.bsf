@@ -1,0 +1,208 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 416 288)
+	(text "msgdma_bbb_write_master" (rect 126 -1 239 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 272 20 284)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "clk" (rect 0 0 10 12)(font "Arial" (font_size 8)))
+		(text "clk" (rect 4 61 22 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 144 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "reset" (rect 0 0 20 12)(font "Arial" (font_size 8)))
+		(text "reset" (rect 4 101 34 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 144 112)(line_width 1))
+	)
+	(port
+		(pt 416 136)
+		(input)
+		(text "master_waitrequest" (rect 0 0 77 12)(font "Arial" (font_size 8)))
+		(text "master_waitrequest" (rect 316 125 424 136)(font "Arial" (font_size 8)))
+		(line (pt 416 136)(pt 272 136)(line_width 1))
+	)
+	(port
+		(pt 416 168)
+		(input)
+		(text "master_response[1..0]" (rect 0 0 89 12)(font "Arial" (font_size 8)))
+		(text "master_response[1..0]" (rect 306 157 432 168)(font "Arial" (font_size 8)))
+		(line (pt 416 168)(pt 272 168)(line_width 3))
+	)
+	(port
+		(pt 416 184)
+		(input)
+		(text "master_writeresponsevalid" (rect 0 0 106 12)(font "Arial" (font_size 8)))
+		(text "master_writeresponsevalid" (rect 281 173 431 184)(font "Arial" (font_size 8)))
+		(line (pt 416 184)(pt 272 184)(line_width 1))
+	)
+	(port
+		(pt 0 152)
+		(input)
+		(text "snk_data[511..0]" (rect 0 0 63 12)(font "Arial" (font_size 8)))
+		(text "snk_data[511..0]" (rect 4 141 100 152)(font "Arial" (font_size 8)))
+		(line (pt 0 152)(pt 144 152)(line_width 3))
+	)
+	(port
+		(pt 0 168)
+		(input)
+		(text "snk_valid" (rect 0 0 37 12)(font "Arial" (font_size 8)))
+		(text "snk_valid" (rect 4 157 58 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 144 168)(line_width 1))
+	)
+	(port
+		(pt 0 224)
+		(input)
+		(text "snk_command_data[255..0]" (rect 0 0 112 12)(font "Arial" (font_size 8)))
+		(text "snk_command_data[255..0]" (rect 4 213 148 224)(font "Arial" (font_size 8)))
+		(line (pt 0 224)(pt 144 224)(line_width 3))
+	)
+	(port
+		(pt 0 240)
+		(input)
+		(text "snk_command_valid" (rect 0 0 83 12)(font "Arial" (font_size 8)))
+		(text "snk_command_valid" (rect 4 229 106 240)(font "Arial" (font_size 8)))
+		(line (pt 0 240)(pt 144 240)(line_width 1))
+	)
+	(port
+		(pt 416 256)
+		(input)
+		(text "src_response_ready" (rect 0 0 84 12)(font "Arial" (font_size 8)))
+		(text "src_response_ready" (rect 310 245 418 256)(font "Arial" (font_size 8)))
+		(line (pt 416 256)(pt 272 256)(line_width 1))
+	)
+	(port
+		(pt 416 72)
+		(output)
+		(text "master_address[48..0]" (rect 0 0 92 12)(font "Arial" (font_size 8)))
+		(text "master_address[48..0]" (rect 304 61 430 72)(font "Arial" (font_size 8)))
+		(line (pt 416 72)(pt 272 72)(line_width 3))
+	)
+	(port
+		(pt 416 88)
+		(output)
+		(text "master_write" (rect 0 0 51 12)(font "Arial" (font_size 8)))
+		(text "master_write" (rect 349 77 421 88)(font "Arial" (font_size 8)))
+		(line (pt 416 88)(pt 272 88)(line_width 1))
+	)
+	(port
+		(pt 416 104)
+		(output)
+		(text "master_byteenable[63..0]" (rect 0 0 101 12)(font "Arial" (font_size 8)))
+		(text "master_byteenable[63..0]" (rect 291 93 435 104)(font "Arial" (font_size 8)))
+		(line (pt 416 104)(pt 272 104)(line_width 3))
+	)
+	(port
+		(pt 416 120)
+		(output)
+		(text "master_writedata[511..0]" (rect 0 0 95 12)(font "Arial" (font_size 8)))
+		(text "master_writedata[511..0]" (rect 296 109 440 120)(font "Arial" (font_size 8)))
+		(line (pt 416 120)(pt 272 120)(line_width 3))
+	)
+	(port
+		(pt 416 152)
+		(output)
+		(text "master_burstcount[2..0]" (rect 0 0 95 12)(font "Arial" (font_size 8)))
+		(text "master_burstcount[2..0]" (rect 298 141 436 152)(font "Arial" (font_size 8)))
+		(line (pt 416 152)(pt 272 152)(line_width 3))
+	)
+	(port
+		(pt 0 184)
+		(output)
+		(text "snk_ready" (rect 0 0 43 12)(font "Arial" (font_size 8)))
+		(text "snk_ready" (rect 4 173 58 184)(font "Arial" (font_size 8)))
+		(line (pt 0 184)(pt 144 184)(line_width 1))
+	)
+	(port
+		(pt 0 256)
+		(output)
+		(text "snk_command_ready" (rect 0 0 89 12)(font "Arial" (font_size 8)))
+		(text "snk_command_ready" (rect 4 245 106 256)(font "Arial" (font_size 8)))
+		(line (pt 0 256)(pt 144 256)(line_width 1))
+	)
+	(port
+		(pt 416 224)
+		(output)
+		(text "src_response_data[255..0]" (rect 0 0 107 12)(font "Arial" (font_size 8)))
+		(text "src_response_data[255..0]" (rect 281 213 431 224)(font "Arial" (font_size 8)))
+		(line (pt 416 224)(pt 272 224)(line_width 3))
+	)
+	(port
+		(pt 416 240)
+		(output)
+		(text "src_response_valid" (rect 0 0 79 12)(font "Arial" (font_size 8)))
+		(text "src_response_valid" (rect 316 229 424 240)(font "Arial" (font_size 8)))
+		(line (pt 416 240)(pt 272 240)(line_width 1))
+	)
+	(drawing
+		(text "Clock" (rect 113 43 256 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "clk" (rect 149 67 316 144)(font "Arial" (color 0 0 0)))
+		(text "Clock_reset" (rect 75 83 216 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "reset" (rect 149 107 328 224)(font "Arial" (color 0 0 0)))
+		(text "Data_Write_Master" (rect 273 43 648 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "address" (rect 235 67 512 144)(font "Arial" (color 0 0 0)))
+		(text "write" (rect 249 83 528 176)(font "Arial" (color 0 0 0)))
+		(text "byteenable" (rect 223 99 506 208)(font "Arial" (color 0 0 0)))
+		(text "writedata" (rect 231 115 516 240)(font "Arial" (color 0 0 0)))
+		(text "waitrequest" (rect 221 131 508 272)(font "Arial" (color 0 0 0)))
+		(text "burstcount" (rect 224 147 508 304)(font "Arial" (color 0 0 0)))
+		(text "response" (rect 230 163 508 336)(font "Arial" (color 0 0 0)))
+		(text "writeresponsevalid" (rect 190 179 488 368)(font "Arial" (color 0 0 0)))
+		(text "Data_Sink" (rect 85 123 224 259)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "data" (rect 149 147 322 304)(font "Arial" (color 0 0 0)))
+		(text "valid" (rect 149 163 328 336)(font "Arial" (color 0 0 0)))
+		(text "ready" (rect 149 179 328 368)(font "Arial" (color 0 0 0)))
+		(text "Command_Sink" (rect 53 195 178 403)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "data" (rect 149 219 322 448)(font "Arial" (color 0 0 0)))
+		(text "valid" (rect 149 235 328 480)(font "Arial" (color 0 0 0)))
+		(text "ready" (rect 149 251 328 512)(font "Arial" (color 0 0 0)))
+		(text "Response_Source" (rect 273 195 636 403)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "data" (rect 251 219 526 448)(font "Arial" (color 0 0 0)))
+		(text "valid" (rect 249 235 528 480)(font "Arial" (color 0 0 0)))
+		(text "ready" (rect 244 251 518 512)(font "Arial" (color 0 0 0)))
+		(text " msgdma_bbb_write_master " (rect 294 272 738 554)(font "Arial" ))
+		(line (pt 144 32)(pt 272 32)(line_width 1))
+		(line (pt 272 32)(pt 272 272)(line_width 1))
+		(line (pt 144 272)(pt 272 272)(line_width 1))
+		(line (pt 144 32)(pt 144 272)(line_width 1))
+		(line (pt 145 52)(pt 145 76)(line_width 1))
+		(line (pt 146 52)(pt 146 76)(line_width 1))
+		(line (pt 145 92)(pt 145 116)(line_width 1))
+		(line (pt 146 92)(pt 146 116)(line_width 1))
+		(line (pt 271 52)(pt 271 188)(line_width 1))
+		(line (pt 270 52)(pt 270 188)(line_width 1))
+		(line (pt 145 132)(pt 145 188)(line_width 1))
+		(line (pt 146 132)(pt 146 188)(line_width 1))
+		(line (pt 145 204)(pt 145 260)(line_width 1))
+		(line (pt 146 204)(pt 146 260)(line_width 1))
+		(line (pt 271 204)(pt 271 260)(line_width 1))
+		(line (pt 270 204)(pt 270 260)(line_width 1))
+		(line (pt 0 0)(pt 416 0)(line_width 1))
+		(line (pt 416 0)(pt 416 288)(line_width 1))
+		(line (pt 0 288)(pt 416 288)(line_width 1))
+		(line (pt 0 0)(pt 0 288)(line_width 1))
+	)
+)

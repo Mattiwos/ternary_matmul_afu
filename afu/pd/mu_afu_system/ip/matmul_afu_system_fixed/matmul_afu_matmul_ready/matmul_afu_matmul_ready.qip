@@ -1,0 +1,63 @@
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TOOL_VERSION "19.2"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TOOL_VENDOR_NAME "Intel Corporation"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TOP_LEVEL_COMPONENT_NAME "altera_avalon_pio"
+set_global_assignment -library "matmul_afu_matmul_ready" -name SOPCINFO_FILE [file join $::quartus(qip_path) "matmul_afu_matmul_ready.sopcinfo"]
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name SLD_INFO "QSYS_NAME matmul_afu_matmul_ready HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "matmul_afu_matmul_ready" -name MISC_FILE [file join $::quartus(qip_path) "matmul_afu_matmul_ready.cmp"]
+set_global_assignment -library "matmul_afu_matmul_ready" -name SLD_FILE [file join $::quartus(qip_path) "matmul_afu_matmul_ready.regmap"]
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_TARGETED_DEVICE_FAMILY "Stratix 10"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_GENERATED_DEVICE_FAMILY "{Stratix 10}"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "matmul_afu_matmul_ready" -name MISC_FILE [file join $::quartus(qip_path) "../matmul_afu_matmul_ready.ip"]
+
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_NAME "bWF0bXVsX2FmdV9tYXRtdWxfcmVhZHlfYWx0ZXJhX2F2YWxvbl9waW9fMTkxX3g2cXd3eXk="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_DISPLAY_NAME "UElPIChQYXJhbGxlbCBJL08pIEludGVsIEZQR0EgSVA="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_VERSION "MTkuMQ=="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "Yml0Q2xlYXJpbmdFZGdlQ2FwUmVn::ZmFsc2U=::RW5hYmxlIGJpdC1jbGVhcmluZyBmb3IgZWRnZSBjYXB0dXJlIHJlZ2lzdGVy"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "Y2FwdHVyZUVkZ2U=::dHJ1ZQ==::U3luY2hyb25vdXNseSBjYXB0dXJl"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGlyZWN0aW9u::SW5wdXQ=::RGlyZWN0aW9u"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZWRnZVR5cGU=::UklTSU5H::RWRnZSBUeXBl"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "Z2VuZXJhdGVJUlE=::ZmFsc2U=::R2VuZXJhdGUgSVJR"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "c2ltRG9UZXN0QmVuY2hXaXJpbmc=::ZmFsc2U=::SGFyZHdpcmUgUElPIGlucHV0cyBpbiB0ZXN0IGJlbmNo"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "d2lkdGg=::MzI=::V2lkdGggKDEtMzIgYml0cyk="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "Y2xvY2tSYXRl::MTI1MDAwMDAw::Y2xvY2tSYXRl"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfdHJp::ZmFsc2U=::ZGVyaXZlZF9oYXNfdHJp"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfb3V0::ZmFsc2U=::ZGVyaXZlZF9oYXNfb3V0"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaW4=::dHJ1ZQ==::ZGVyaXZlZF9oYXNfaW4="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw==::ZmFsc2U=::ZGVyaXZlZF9kb190ZXN0X2JlbmNoX3dpcmluZw=="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9jYXB0dXJl::dHJ1ZQ==::ZGVyaXZlZF9jYXB0dXJl"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9lZGdlX3R5cGU=::UklTSU5H::ZGVyaXZlZF9lZGdlX3R5cGU="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pcnFfdHlwZQ==::Tk9ORQ==::ZGVyaXZlZF9pcnFfdHlwZQ=="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9oYXNfaXJx::ZmFsc2U=::ZGVyaXZlZF9oYXNfaXJx"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_GROUP "UHJvY2Vzc29ycyBhbmQgUGVyaXBoZXJhbHMvUGVyaXBoZXJhbHM="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly9kb2N1bWVudGF0aW9uLmFsdGVyYS5jb20vIy9saW5rL3NmbzE0MDA3ODc5NTI5MzIvaWdhMTQwMTM5NDgyNTkxMQ=="
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly9kb2N1bWVudGF0aW9uLmFsdGVyYS5jb20vIy9saW5rL2hjbzE0MjE2OTgwNDIwODcvaGNvMTQyMTY5NzY4OTMwMA=="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_NAME "bWF0bXVsX2FmdV9tYXRtdWxfcmVhZHk="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_AUTHOR "SW50ZWwgQ29ycG9yYXRpb24="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::U3RyYXRpeCAxMA==::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MVNYMjgwSE4yRjQzRTJWRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Mg==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfUkFURQ==::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfQ0xPQ0tfRE9NQUlO::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "matmul_afu_matmul_ready" -library "matmul_afu_matmul_ready" -name IP_COMPONENT_PARAMETER "QVVUT19DTEtfUkVTRVRfRE9NQUlO::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+
+
+set_global_assignment -library "altera_avalon_pio_191" -name VERILOG_FILE [file join $::quartus(qip_path) "altera_avalon_pio_191/synth/matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy.v"]
+set_global_assignment -library "matmul_afu_matmul_ready" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/matmul_afu_matmul_ready.v"]
+
+
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_TOOL_NAME "altera_avalon_pio"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_TOOL_VERSION "19.1"
+set_global_assignment -entity "matmul_afu_matmul_ready_altera_avalon_pio_191_x6qwwyy" -library "altera_avalon_pio_191" -name IP_TOOL_ENV "QsysPrimePro"
+
