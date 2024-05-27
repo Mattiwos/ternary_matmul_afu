@@ -63,27 +63,27 @@ module mu_afu_system_wrapper import config_pkg::*; #
 `endif
 
   logic dma_clk_clk;
-  logic matmul_clk_clk;
-  logic dma_reset_reset;
+  logic mu_clk_clk;
+  logic host_reset_reset;
 
-  assign dma_reset_reset = reset;
+  assign host_reset_reset = reset;
   assign dma_clk_clk = primary_clk;
-  assign matmul_clk_clk = user_clk;
+  assign mu_clk_clk = user_clk;
 
-  // Most of the signals in this module are implictly connected see the module here:
-  //  
+  // Signals are implicitly connected to see the system module definition see:
+  //  afu/pd/mu_afu_system/mu_afu_system/synth/mu_afu_system.v
   mu_afu_system u0 (
   `ifdef PLATFORM_PROVIDES_LOCAL_MEMORY
-    .ddr4a_master_dma_waitrequest       (local_mem[0].waitrequest),
-    .ddr4a_master_dma_readdata          (local_mem[0].readdata),
-    .ddr4a_master_dma_readdatavalid     (local_mem[0].readdatavalid),
-    .ddr4a_master_dma_burstcount        (local_mem[0].burstcount[2:0]),
-    .ddr4a_master_dma_writedata         (local_mem[0].writedata),
-    .ddr4a_master_dma_address           ({local_mem[0].address,mm_byte_offset[0]}),
-    .ddr4a_master_dma_write             (local_mem[0].write),
-    .ddr4a_master_dma_read              (local_mem[0].read),
-    .ddr4a_master_dma_byteenable        (local_mem[0].byteenable),
-    .ddr4a_master_dma_debugaccess       (),
+    .ddr4a_host_dma_waitrequest       (local_mem[0].waitrequest),
+    .ddr4a_host_dma_readdata          (local_mem[0].readdata),
+    .ddr4a_host_dma_readdatavalid     (local_mem[0].readdatavalid),
+    .ddr4a_host_dma_burstcount        (local_mem[0].burstcount[2:0]),
+    .ddr4a_host_dma_writedata         (local_mem[0].writedata),
+    .ddr4a_host_dma_address           ({local_mem[0].address,mm_byte_offset[0]}),
+    .ddr4a_host_dma_write             (local_mem[0].write),
+    .ddr4a_host_dma_read              (local_mem[0].read),
+    .ddr4a_host_dma_byteenable        (local_mem[0].byteenable),
+    .ddr4a_host_dma_debugaccess       (),
   `endif
     .*
   );

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file
+   path="lpm_divide_191/sim/div_lpm_divide_191_56nrcay.v"
+   type="VERILOG"
+   library="lpm_divide_191" />
+ <file
+   path="sim/div.v"
+   type="VERILOG"
+   library="div"
+   hasInlineConfiguration="true" />
+ <topLevel name="div.div" />
+ <deviceFamily name="stratix10" />
+</simPackage>

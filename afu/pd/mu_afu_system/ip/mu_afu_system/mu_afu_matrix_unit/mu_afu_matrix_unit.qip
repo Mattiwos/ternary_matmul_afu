@@ -1,0 +1,64 @@
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TOOL_VERSION "19.2"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TOOL_VENDOR_NAME "Tyler Sheaves"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TOP_LEVEL_COMPONENT_NAME "matrix_unit"
+set_global_assignment -library "mu_afu_matrix_unit" -name SOPCINFO_FILE [file join $::quartus(qip_path) "mu_afu_matrix_unit.sopcinfo"]
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name SLD_INFO "QSYS_NAME mu_afu_matrix_unit HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "mu_afu_matrix_unit" -name MISC_FILE [file join $::quartus(qip_path) "mu_afu_matrix_unit.cmp"]
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_TARGETED_DEVICE_FAMILY "Stratix 10"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_GENERATED_DEVICE_FAMILY "{Stratix 10}"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "mu_afu_matrix_unit" -name MISC_FILE [file join $::quartus(qip_path) "../mu_afu_matrix_unit.ip"]
+
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_NAME "bWF0cml4X3VuaXRfd3JhcHBlcg=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_DISPLAY_NAME "bWF0cml4X3VuaXQ="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_AUTHOR "VHlsZXIgU2hlYXZlcw=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "ZGRyX2FkZHJfdw==::MzM=::ZGRyX2FkZHJfdw=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "ZGRyX2RhdGFfdw==::OA==::ZGRyX2RhdGFfdw=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "Y3NyX2FkZHJfdw==::OA==::Y3NyX2FkZHJfdw=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "Y3NyX2RhdGFfdw==::MzI=::Y3NyX2RhdGFfdw=="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV9uX2luc3Ry::NjQ=::aW1lbV9uX2luc3Ry"
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV93X2luc3Ry::NjQ=::aW1lbV93X2luc3Ry"
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV93X2FkZHI=::Ng==::aW1lbV93X2FkZHI="
+set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_GROUP "VUNTQyAtIEhhcmR3YXJlIFN5c3RlbXMgQ29sbGVjdGl2ZQ=="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_NAME "bXVfYWZ1X21hdHJpeF91bml0"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_AUTHOR "VHlsZXIgU2hlYXZlcw=="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::U3RyYXRpeCAxMA==::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MVNYMjgwSE4yRjQzRTJWRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Mg==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19VU0VSX0NMT0NLX0NMT0NLX1JBVEU=::LTE=::QXV0byBDTE9DS19SQVRF"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19VU0VSX0NMT0NLX0NMT0NLX0RPTUFJTg==::LTE=::QXV0byBDTE9DS19ET01BSU4="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19VU0VSX0NMT0NLX1JFU0VUX0RPTUFJTg==::LTE=::QXV0byBSRVNFVF9ET01BSU4="
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19BVk1NX0hfRERSX0FERFJFU1NfV0lEVEg=::LTE=::QXV0byBBRERSRVNTX1dJRFRI"
+set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit" -name IP_COMPONENT_PARAMETER "QVVUT19BVkFMT05fQV9JTUVNX0FERFJFU1NfV0lEVEg=::LTE=::QXV0byBBRERSRVNTX1dJRFRI"
+
+
+set_global_assignment -library "matrix_unit_10" -name VERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/div.v"]
+set_global_assignment -library "matrix_unit_10" -name VERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/div_lpm_divide_191_56nrcay.v"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rms.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_add.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_div.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_exp.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_mul.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_operation.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_sig.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_sub.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/vector_load_store.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_fifo.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/ternary_matmul.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/config_pkg.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_unit.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/vector_registers.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_unit_wrapper.sv"]
+set_global_assignment -library "mu_afu_matrix_unit" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/mu_afu_matrix_unit.v"]
+

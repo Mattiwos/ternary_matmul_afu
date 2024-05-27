@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.26.15:15:16"
- outputDirectory="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/">
+ date="2024.05.27.14:13:32"
+ outputDirectory="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -122,21 +122,21 @@
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="2" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/synth/msgdma_bbb_dfh.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/synth/msgdma_bbb_dfh.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/synth/msgdma_bbb_dfh.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/synth/msgdma_bbb_dfh.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh.ip" />
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="msgdma_bbb_dfh">"Generating: msgdma_bbb_dfh"</message>
@@ -156,17 +156,17 @@
   <parameter name="DFH_FEATURE_TYPE" value="2" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/afu_id_avmm_slave_10/synth/afu_id_avmm_slave.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/afu_id_avmm_slave_10/synth/afu_id_avmm_slave.sv"
        attributes="TOP_LEVEL_FILE" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/afu_id_avmm_slave_10/synth/afu_id_avmm_slave.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh/afu_id_avmm_slave_10/synth/afu_id_avmm_slave.sv"
        attributes="TOP_LEVEL_FILE" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="msgdma_bbb_dfh" as="msgdma_bbb_dfh" />

@@ -1,0 +1,76 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 320 120)
+	(text "div" (rect 153 -1 164 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 104 20 116)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "numer[7..0]" (rect 0 0 46 12)(font "Arial" (font_size 8)))
+		(text "numer[7..0]" (rect 4 61 70 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 112 72)(line_width 3))
+	)
+	(port
+		(pt 0 88)
+		(input)
+		(text "denom[7..0]" (rect 0 0 47 12)(font "Arial" (font_size 8)))
+		(text "denom[7..0]" (rect 4 77 70 88)(font "Arial" (font_size 8)))
+		(line (pt 0 88)(pt 112 88)(line_width 3))
+	)
+	(port
+		(pt 320 72)
+		(output)
+		(text "quotient[7..0]" (rect 0 0 49 12)(font "Arial" (font_size 8)))
+		(text "quotient[7..0]" (rect 256 61 340 72)(font "Arial" (font_size 8)))
+		(line (pt 320 72)(pt 192 72)(line_width 3))
+	)
+	(port
+		(pt 320 88)
+		(output)
+		(text "remain[7..0]" (rect 0 0 47 12)(font "Arial" (font_size 8)))
+		(text "remain[7..0]" (rect 262 77 334 88)(font "Arial" (font_size 8)))
+		(line (pt 320 88)(pt 192 88)(line_width 3))
+	)
+	(drawing
+		(text "lpm_divide_input" (rect 15 43 126 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "numer" (rect 117 67 264 144)(font "Arial" (color 0 0 0)))
+		(text "denom" (rect 117 83 264 176)(font "Arial" (color 0 0 0)))
+		(text "lpm_divide_output" (rect 193 43 488 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "quotient" (rect 156 67 360 144)(font "Arial" (color 0 0 0)))
+		(text "remain" (rect 160 83 356 176)(font "Arial" (color 0 0 0)))
+		(text " div " (rect 304 104 638 218)(font "Arial" ))
+		(line (pt 112 32)(pt 192 32)(line_width 1))
+		(line (pt 192 32)(pt 192 104)(line_width 1))
+		(line (pt 112 104)(pt 192 104)(line_width 1))
+		(line (pt 112 32)(pt 112 104)(line_width 1))
+		(line (pt 113 52)(pt 113 92)(line_width 1))
+		(line (pt 114 52)(pt 114 92)(line_width 1))
+		(line (pt 191 52)(pt 191 92)(line_width 1))
+		(line (pt 190 52)(pt 190 92)(line_width 1))
+		(line (pt 0 0)(pt 320 0)(line_width 1))
+		(line (pt 320 0)(pt 320 120)(line_width 1))
+		(line (pt 0 120)(pt 320 120)(line_width 1))
+		(line (pt 0 0)(pt 0 120)(line_width 1))
+	)
+)

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pinplan
+ variation_name="lpm_divide_0"
+ megafunction_name="LPM_DIVIDE"
+ intended_family="Stratix 10"
+ specifies="all_ports">
+ <global>
+  <pin name="numer[7..0]" direction="input" scope="external" />
+  <pin name="denom[7..0]" direction="input" scope="external" />
+  <pin name="quotient[7..0]" direction="output" scope="external" />
+  <pin name="remain[7..0]" direction="output" scope="external" />
+ </global>
+</pinplan>

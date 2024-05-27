@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library>
-  <path path="../../QSYS_IPs/*"  />
-  <path path="../../QSYS_IPs/**/*"  />
-  <path path="../../dma_bbb/*"  />
+  <path path="../QSYS_IPs/*"  />
+  <path path="../QSYS_IPs/**/*"  />
+  <path path="../dma_bbb/*"  />
+  <path path="../matrix_unit/*"  />
 </library>

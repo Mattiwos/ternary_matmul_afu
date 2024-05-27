@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.26.15:15:20"
- outputDirectory="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/">
+ date="2024.05.27.14:13:28"
+ outputDirectory="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -77,17 +77,17 @@
   <parameter name="AUTO_IN_CLK_CLOCK_DOMAIN" value="-1" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/synth/msgdma_bbb_clk.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/synth/msgdma_bbb_clk.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/synth/msgdma_bbb_clk.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk/synth/msgdma_bbb_clk.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk.ip" />
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk.ip" />
   </sourceFiles>
   <childSourceFiles/>
   <messages>

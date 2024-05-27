@@ -1,0 +1,50 @@
+set_global_assignment -entity "div" -library "div" -name IP_TOOL_NAME "QsysPrimePro"
+set_global_assignment -entity "div" -library "div" -name IP_TOOL_VERSION "19.2"
+set_global_assignment -entity "div" -library "div" -name IP_TOOL_ENV "QsysPrimePro"
+set_global_assignment -entity "div" -library "div" -name IP_TOOL_VENDOR_NAME "Altera Corporation"
+set_global_assignment -entity "div" -library "div" -name IP_TOP_LEVEL_COMPONENT_NAME "lpm_divide"
+set_global_assignment -library "div" -name SOPCINFO_FILE [file join $::quartus(qip_path) "div.sopcinfo"]
+set_global_assignment -entity "div" -library "div" -name SLD_INFO "QSYS_NAME div HAS_SOPCINFO 1 GENERATION_ID 0"
+set_global_assignment -library "div" -name MISC_FILE [file join $::quartus(qip_path) "div.cmp"]
+set_global_assignment -entity "div" -library "div" -name IP_TARGETED_DEVICE_FAMILY "Stratix 10"
+set_global_assignment -entity "div" -library "div" -name IP_GENERATED_DEVICE_FAMILY "{Stratix 10}"
+set_global_assignment -entity "div" -library "div" -name IP_QSYS_MODE "STANDALONE"
+set_global_assignment -name SYNTHESIS_ONLY_QIP ON
+set_global_assignment -library "div" -name MISC_FILE [file join $::quartus(qip_path) "../div.ip"]
+
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_NAME "ZGl2X2xwbV9kaXZpZGVfMTkxXzU2bnJjYXk="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_DISPLAY_NAME "TFBNX0RJVklERSBJbnRlbCBGUEdBIElQ"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_AUTHOR "QWx0ZXJhICAgIENvcnBvcmF0aW9u"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_VERSION "MTkuMQ=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_DESCRIPTION "bHBtX2RpdmlkZQ=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "REVWSUNFX0ZBTUlMWQ==::U3RyYXRpeCAxMA==::RGV2aWNlIGZhbWlseQ=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9XSURUSG4=::OA==::SG93IHdpZGUgc2hvdWxkIHRoZSAnbnVtZXJhdG9yJyBpbnB1dCBidXMgYmU/"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9XSURUSGQ=::OA==::SG93IHdpZGUgc2hvdWxkIHRoZSAnZGVub21pbmF0b3InIGlucHV0IGJ1cyBiZT8="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9uUkVQUkVTRU5UQVRJT04=::VW5zaWduZWQ=::TnVtZXJhdG9yIFJlcHJlc2VudGF0aW9u"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9kUkVQUkVTRU5UQVRJT04=::U2lnbmVk::RGVub21pbmF0b3IgUmVwcmVzZW50YXRpb24="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9QSVBFTElORQ==::MA==::T3V0cHV0IGxhdGVuY3k="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX1VTRV9BQ0xS::ZmFsc2U=::Q3JlYXRlIGFuIGFzeW5jaHJvbm91cyBDbGVhciBpbnB1dD8="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX1VTRV9DTEtFTg==::ZmFsc2U=::Q3JlYXRlIGEgQ2xvY2sgRW5hYmxlIGlucHV0Pw=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX01BWElNSVpFX1NQRUVE::U3BlZWQ=::V2hpY2ggZG8geW91IHdpc2ggdG8gb3B0aW1pemU/"
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_PARAMETER "R1VJX0xQTV9SRU1BSU5ERVJQT1NJVElWRQ==::WWVz::QWx3YXlzIHJldHVybiBhIHBvc2l0aXZlIHJlbWFpbmRlcj8="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_GROUP "QmFzaWMgRnVuY3Rpb25zL0FyaXRobWV0aWM="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cDovL3d3dy5hbHRlcmEuY29tL2xpdGVyYXR1cmUvdWcvdWdfbHBtX2FsdF9tZnVnLnBkZg=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly93d3cuYWx0ZXJhLmNvbS9jb250ZW50L2RhbS9hbHRlcmEtd3d3L2dsb2JhbC9lbl9VUy9wZGZzL2xpdGVyYXR1cmUvdWcvdWdfbHBtX2FsdF9tZnVnLnBkZg=="
+set_global_assignment -entity "div_lpm_divide_191_56nrcay" -library "lpm_divide_191" -name IP_COMPONENT_DOCUMENTATION_LINK "aHR0cHM6Ly9kb2N1bWVudGF0aW9uLmFsdGVyYS5jb20vIy9saW5rL2hjbzE0MjE2OTgwNDIwODcvaGNvMTQyMTY5ODAxMzQwOA=="
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_NAME "ZGl2"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_DISPLAY_NAME "c3lzdGVt"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_REPORT_HIERARCHY "On"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_AUTHOR "QWx0ZXJhIENvcnBvcmF0aW9u"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_VERSION "MS4w"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::U3RyYXRpeCAxMA==::QXV0byBERVZJQ0VfRkFNSUxZ"
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::MVNYMjgwSE4yRjQzRTJWRw==::QXV0byBERVZJQ0U="
+set_global_assignment -entity "div" -library "div" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Mg==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
+
+
+set_global_assignment -library "lpm_divide_191" -name VERILOG_FILE [file join $::quartus(qip_path) "lpm_divide_191/synth/div_lpm_divide_191_56nrcay.v"]
+set_global_assignment -library "div" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/div.v"]
+

@@ -1,0 +1,79 @@
+mu_afu_${OPAE_PLATFORM_FPGA_FAMILY}.json
+
+# CCI-P avmm shim
+QI:../pd/BBB_ccip_avmm/hw/par/ccip_avmm_addenda.qsf
+SI:../pd/BBB_ccip_avmm/hw/sim/ccip_avmm_sim_addenda.txt
+
+# MPF
++define+MPF_PLATFORM_DCP_PCIE=1
+QI:../pd/BBB_cci_mpf/hw/par/qsf_cci_mpf_PAR_files.qsf
+SI:../pd/BBB_cci_mpf/hw/sim/cci_mpf_sim_addenda.txt
+
+afu.sv
+ccip_interface_reg.sv
+ccip_std_afu.sv
+
+# Qsys IP search path files for the DMA BBB and top level MU AFU systems
+../pd/mu_afu_system/components.ipx
+../pd/dma_bbb/components.ipx
+
+# Intermediate wrapper between mu_afu and afu.sv
+mu_afu_system_wrapper.sv
+
+# UUID component
+../pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl
+../pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave.sv
+
+# mSGDMA read master modified to track read responses for multiple transfers
+../pd/QSYS_IPs/read_master/dcp_read_master_hw.tcl
+../pd/QSYS_IPs/read_master/dcp_read_master.v
+../pd/QSYS_IPs/read_master/dcp_MM_to_ST_Adapter.v
+../pd/QSYS_IPs/read_master/dcp_read_burst_control.v
+../pd/QSYS_IPs/read_master/dcp_read_master_response_tracking.v
+
+# mSGDMA write master modified to track write responses for multiple transfers
+../pd/QSYS_IPs/write_master/dcp_write_master_hw.tcl
+../pd/QSYS_IPs/write_master/dcp_write_master.v
+../pd/QSYS_IPs/write_master/dcp_byte_enable_generator.v
+../pd/QSYS_IPs/write_master/dcp_ST_to_MM_Adapter.v
+../pd/QSYS_IPs/write_master/dcp_write_burst_control.v
+../pd/QSYS_IPs/write_master/dcp_write_master_response_tracking.v
+
+# mSGDMA dispatcher modifed to support different write response settings
+../pd/QSYS_IPs/dispatcher/dcp_dispatcher_hw.tcl
+../pd/QSYS_IPs/dispatcher/dcp_dispatcher.v
+../pd/QSYS_IPs/dispatcher/dcp_csr_block.v
+../pd/QSYS_IPs/dispatcher/dcp_descriptor_buffers.v
+../pd/QSYS_IPs/dispatcher/dcp_fifo_with_byteenables.v
+../pd/QSYS_IPs/dispatcher/dcp_read_signal_breakout.v
+../pd/QSYS_IPs/dispatcher/dcp_response_block.v
+../pd/QSYS_IPs/dispatcher/dcp_write_signal_breakout.v
+
+# mSGDMA frontend (new) to fetch/store descriptors from main memory to move control and status information
+../pd/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_frontend_hw.tcl
+../pd/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_frontend_descriptor_format_pkg.sv
+../pd/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_frontend.sv
+../pd/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_descriptor_fetch_read_master.sv
+../pd/QSYS_IPs/dcp_msgdma_front_end/mSGDMA_descriptor_store_write_master.sv
+
+# far reach bridge (enhanced AVMM pipelined bridge)
+../pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_hw.tcl
+../pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_stall_free_pipeline.sv
+../pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge.sv
+
+# top level MU design filelist
+C:../pd/mu_afu_system/filelist.txt
+
+# memory-mapped DMA BBB design
+../pd/dma_bbb/msgdma_bbb.qsys
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_clk.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_csr.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dfh.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_dispatcher.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_frontend.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_host_read_bridge.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_host_write_bridge.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_reset.ip
+../pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_write_master.ip

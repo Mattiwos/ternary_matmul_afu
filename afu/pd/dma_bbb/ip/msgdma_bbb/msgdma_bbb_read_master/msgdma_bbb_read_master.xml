@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.26.15:15:22"
- outputDirectory="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/">
+ date="2024.05.27.14:13:28"
+ outputDirectory="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -207,21 +207,21 @@
   <parameter name="AUTO_DATA_READ_MASTER_ADDRESS_WIDTH" value="-1" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/synth/msgdma_bbb_read_master.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/synth/msgdma_bbb_read_master.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/synth/msgdma_bbb_read_master.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/synth/msgdma_bbb_read_master.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master.ip" />
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/read_master/dcp_read_master_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/read_master/dcp_read_master_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="msgdma_bbb_read_master">"Generating: msgdma_bbb_read_master"</message>
@@ -232,35 +232,35 @@
   <parameter name="FIX_ADDRESS_WIDTH" value="49" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master.v"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_MM_to_ST_Adapter.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_MM_to_ST_Adapter.v"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_burst_control.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_burst_control.v"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master_response_tracking.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master_response_tracking.v"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master.v"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_MM_to_ST_Adapter.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_MM_to_ST_Adapter.v"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_burst_control.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_burst_control.v"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master_response_tracking.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_read_master/dcp_dma_read_master_171/synth/dcp_read_master_response_tracking.v"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/read_master/dcp_read_master_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/read_master/dcp_read_master_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="msgdma_bbb_read_master" as="msgdma_bbb_read_master" />

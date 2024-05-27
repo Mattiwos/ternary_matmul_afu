@@ -22,7 +22,7 @@
       "accelerator-clusters":
          [
             {
-               "name": "ternary_matrix_mult_afu",
+               "name": "mu_afu",
                "total-contexts": 1,
                "accelerator-type-uuid": "BF8A475D-817F-4BEC-9E87-7816BE249566"
             }

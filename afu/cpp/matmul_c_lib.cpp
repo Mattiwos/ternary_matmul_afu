@@ -6,7 +6,6 @@
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
-#include <semaphore.h>
 #ifndef USE_ASE
 #include <hwloc.h>
 #include <getopt.h>
@@ -164,7 +163,6 @@ void get_buffer_bytes(unsigned char * byte_pointer, uint64_t n_bytes)
 	unsigned char * byte_pointer_init = byte_pointer;
 	while(n_bytes) {
 		*byte_pointer = *battrs.va;
-		//debug_print("0x%02x\n", *byte_pointer);
 		n_bytes--;
 		byte_pointer++;
 		battrs.va++;

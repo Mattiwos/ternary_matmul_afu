@@ -1,0 +1,18 @@
+# system info div on 2024.05.17.00:07:29
+system_info:
+name,value
+DEVICE,1SX280HN2F43E2VG
+DEVICE_FAMILY,Stratix 10
+GENERATION_ID,0
+#
+#
+# Files generated for div on 2024.05.17.00:07:29
+files:
+filepath,kind,attributes,module,is_top
+sim/div.v,VERILOG,CONTAINS_INLINE_CONFIGURATION,div,true
+lpm_divide_191/sim/div_lpm_divide_191_56nrcay.v,VERILOG,,div_lpm_divide_191_56nrcay,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+div.lpm_divide_0,div_lpm_divide_191_56nrcay

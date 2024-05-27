@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<node xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:altera="http://www.altera.com/XMLSchema/Qsys/SystemTree">
+  <instanceKey xsi:type="xs:string">div</instanceKey>
+  <instanceData xsi:type="data">
+    <parameters></parameters>
+    <interconnectAssignments></interconnectAssignments>
+    <className>div</className>
+    <version>1.0</version>
+    <name>div</name>
+    <uniqueName>div</uniqueName>
+    <nonce>0</nonce>
+    <incidentConnections></incidentConnections>
+  </instanceData>
+  <children>
+    <node>
+      <instanceKey xsi:type="xs:string">lpm_divide_0</instanceKey>
+      <instanceData xsi:type="data">
+        <parameters>
+          <parameter>
+            <name>DEVICE_FAMILY</name>
+            <value>Stratix 10</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_PIPELINE</name>
+            <value>0</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_REMAINDERPOSITIVE</name>
+            <value>Yes</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_WIDTHd</name>
+            <value>8</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_WIDTHn</name>
+            <value>8</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_dREPRESENTATION</name>
+            <value>Signed</value>
+          </parameter>
+          <parameter>
+            <name>GUI_LPM_nREPRESENTATION</name>
+            <value>Unsigned</value>
+          </parameter>
+          <parameter>
+            <name>GUI_MAXIMIZE_SPEED</name>
+            <value>Speed</value>
+          </parameter>
+          <parameter>
+            <name>GUI_USE_ACLR</name>
+            <value>false</value>
+          </parameter>
+          <parameter>
+            <name>GUI_USE_CLKEN</name>
+            <value>false</value>
+          </parameter>
+        </parameters>
+        <interconnectAssignments></interconnectAssignments>
+        <className>lpm_divide</className>
+        <version>19.1</version>
+        <name>lpm_divide_0</name>
+        <uniqueName>div_lpm_divide_191_56nrcay</uniqueName>
+        <nonce>0</nonce>
+        <incidentConnections></incidentConnections>
+        <path>div.lpm_divide_0</path>
+      </instanceData>
+      <children></children>
+    </node>
+  </children>
+</node>

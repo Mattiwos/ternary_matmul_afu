@@ -1,0 +1,7 @@
+	component mu_afu_mu_clock is
+		port (
+			in_clk  : in  std_logic := 'X'; -- clk
+			out_clk : out std_logic         -- clk
+		);
+	end component mu_afu_mu_clock;
+

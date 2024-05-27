@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.26.15:15:18"
- outputDirectory="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/">
+ date="2024.05.27.14:13:32"
+ outputDirectory="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/">
  <perimeter>
   <parameter
      name="AUTO_GENERATION_ID"
@@ -196,21 +196,21 @@
   <parameter name="AUTO_MASTER_ADDRESS_WIDTH" value="-1" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/synth/msgdma_bbb_mem_bridge.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/synth/msgdma_bbb_mem_bridge.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/synth/msgdma_bbb_mem_bridge.v"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/synth/msgdma_bbb_mem_bridge.v"
        attributes="CONTAINS_INLINE_CONFIGURATION" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge.ip" />
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge.ip" />
   </sourceFiles>
   <childSourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_hw.tcl" />
   </childSourceFiles>
   <messages>
    <message level="Info" culprit="msgdma_bbb_mem_bridge">"Generating: msgdma_bbb_mem_bridge"</message>
@@ -242,23 +242,23 @@
   <parameter name="UPSTREAM_CLOCK_CROSSING_ENABLE" value="0" />
   <generatedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge.sv"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge_stall_free_pipeline.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge_stall_free_pipeline.sv"
        attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge.sv"
        attributes="TOP_LEVEL_FILE" />
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge_stall_free_pipeline.sv"
+       path="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/far_reach_avalon_mm_bridge_10/synth/far_reach_avalon_mm_bridge_stall_free_pipeline.sv"
        attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file
-       path="/home/u204427/ternary_matmul_afu/hw/rtl/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_hw.tcl" />
+       path="/home/u204427/ternary_matmul/afu/pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge_hw.tcl" />
   </sourceFiles>
   <childSourceFiles/>
   <instantiator instantiator="msgdma_bbb_mem_bridge" as="msgdma_bbb_mem_bridge" />
