@@ -41,24 +41,23 @@ add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL matrix_unit_wrapper
 set_fileset_property QUARTUS_SYNTH ENABLE_RELATIVE_INCLUDE_PATHS false
 set_fileset_property QUARTUS_SYNTH ENABLE_FILE_OVERWRITE_MODE false
-add_fileset_file div.v VERILOG PATH ternary_matmul/quartus_ip/div/synth/div.v
-add_fileset_file div_lpm_divide_191_56nrcay.v VERILOG PATH ternary_matmul/quartus_ip/div/lpm_divide_191/synth/div_lpm_divide_191_56nrcay.v
-add_fileset_file rms.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rms.sv
-add_fileset_file rowwise_add.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_add.sv
-add_fileset_file rowwise_div.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_div.sv
-add_fileset_file rowwise_exp.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_exp.sv
-add_fileset_file rowwise_mul.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_mul.sv
-add_fileset_file rowwise_operation.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_operation.sv
-add_fileset_file rowwise_sig.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_sig.sv
-add_fileset_file rowwise_sub.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/rowwise_sub.sv
-add_fileset_file vector_load_store.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/vector_load_store.sv
-add_fileset_file matrix_fifo.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/ternary_matmul/matrix_fifo.sv
-add_fileset_file ternary_matmul.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/fus/ternary_matmul/ternary_matmul.sv
-add_fileset_file config_pkg.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/config_pkg.sv
-add_fileset_file matrix_unit.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/matrix_unit.sv
-add_fileset_file vector_registers.sv SYSTEM_VERILOG PATH ternary_matmul/rtl/vector_registers.sv
-add_fileset_file matrix_unit_wrapper.sv SYSTEM_VERILOG PATH matrix_unit_wrapper/matrix_unit_wrapper.sv TOP_LEVEL_FILE
-
+add_fileset_file div.v VERILOG PATH quartus_ip/div/synth/div.v
+add_fileset_file div_lpm_divide_191_56nrcay.v VERILOG PATH quartus_ip/div/lpm_divide_191/synth/div_lpm_divide_191_56nrcay.v
+add_fileset_file rms.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rms.sv
+add_fileset_file rowwise_add.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_add.sv
+add_fileset_file rowwise_div.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_div.sv
+add_fileset_file rowwise_exp.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_exp.sv
+add_fileset_file rowwise_mul.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_mul.sv
+add_fileset_file rowwise_operation.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_operation.sv
+add_fileset_file rowwise_sig.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_sig.sv
+add_fileset_file rowwise_sub.sv SYSTEM_VERILOG PATH ../../../rtl/fus/rowwise_sub.sv
+add_fileset_file vector_load_store.sv SYSTEM_VERILOG PATH ./vector_load_store.sv
+add_fileset_file matrix_fifo.sv SYSTEM_VERILOG PATH ../../../rtl/fus/ternary_matmul/matrix_fifo.sv
+add_fileset_file ternary_matmul.sv SYSTEM_VERILOG PATH ./ternary_matmul.sv
+add_fileset_file config_pkg.sv SYSTEM_VERILOG PATH ./config_pkg.sv
+add_fileset_file matrix_unit.sv SYSTEM_VERILOG PATH .//matrix_unit.sv
+add_fileset_file vector_registers.sv SYSTEM_VERILOG PATH ../../../rtl/vector_registers.sv
+add_fileset_file matrix_unit_wrapper.sv SYSTEM_VERILOG PATH ./matrix_unit_wrapper.sv TOP_LEVEL_FILE
 
 # 
 # parameters
@@ -148,7 +147,6 @@ set_interface_assignment avmm_a_csr embeddedsw.configuration.isFlash 0
 set_interface_assignment avmm_a_csr embeddedsw.configuration.isMemoryDevice 0
 set_interface_assignment avmm_a_csr embeddedsw.configuration.isNonVolatileStorage 0
 set_interface_assignment avmm_a_csr embeddedsw.configuration.isPrintableDevice 0
-
 
 # 
 # connection point user_clock
