@@ -579,7 +579,7 @@
          type = "String";
       }
    }
-   element matmul_afu_id_dma
+   element mu_afu_id_dma
    {
    }
 }

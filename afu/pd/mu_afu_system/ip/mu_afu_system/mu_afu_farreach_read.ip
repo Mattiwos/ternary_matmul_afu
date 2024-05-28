@@ -1022,7 +1022,7 @@
          type = "String";
       }
    }
-   element matmul_afu_farreach_read
+   element mu_afu_farreach_read
    {
    }
 }

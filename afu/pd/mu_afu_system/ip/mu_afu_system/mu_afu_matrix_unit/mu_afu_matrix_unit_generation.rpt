@@ -11,6 +11,6 @@ Info: mu_afu_matrix_unit: "Naming system components in system: mu_afu_matrix_uni
 Info: mu_afu_matrix_unit: "Processing generation queue"
 Info: mu_afu_matrix_unit: "Generating: mu_afu_matrix_unit"
 Info: mu_afu_matrix_unit: "Generating: matrix_unit_wrapper"
-Info: mu_afu_matrix_unit: Done "mu_afu_matrix_unit" with 2 modules, 18 files
+Info: mu_afu_matrix_unit: Done "mu_afu_matrix_unit" with 2 modules, 22 files
 Info: qsys-generate succeeded.
 Info: Finished: Create HDL design files for synthesis

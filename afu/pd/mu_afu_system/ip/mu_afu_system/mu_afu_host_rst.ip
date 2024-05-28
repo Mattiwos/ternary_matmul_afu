@@ -253,7 +253,7 @@
          type = "String";
       }
    }
-   element mu_afu_dma_rst
+   element mu_afu_host_rst
    {
    }
 }

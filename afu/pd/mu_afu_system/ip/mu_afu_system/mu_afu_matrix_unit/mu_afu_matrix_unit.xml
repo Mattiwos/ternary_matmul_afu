@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.27.14:13:39"
+ date="2024.05.27.16:37:47"
  outputDirectory="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/">
  <perimeter>
   <parameter
@@ -310,7 +310,6 @@
  <entity kind="matrix_unit" version="1.0" name="matrix_unit_wrapper">
   <parameter name="ddr_addr_w" value="33" />
   <parameter name="csr_data_w" value="32" />
-  <parameter name="imem_n_instr" value="64" />
   <parameter name="csr_addr_w" value="8" />
   <parameter name="imem_w_instr" value="64" />
   <parameter name="imem_w_addr" value="6" />
@@ -326,6 +325,9 @@
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms.sv"
        attributes="" />
    <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/matrix_unit_wrapper.sv"
+       attributes="TOP_LEVEL_FILE" />
+   <file
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rowwise_add.sv"
        attributes="" />
    <file
@@ -365,8 +367,17 @@
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/vector_registers.sv"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/matrix_unit_wrapper.sv"
-       attributes="TOP_LEVEL_FILE" />
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/exp_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms_sqa_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms_sqt_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/sig_lut.memh"
+       attributes="" />
   </generatedFiles>
   <childGeneratedFiles>
    <file
@@ -379,6 +390,9 @@
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms.sv"
        attributes="" />
    <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/matrix_unit_wrapper.sv"
+       attributes="TOP_LEVEL_FILE" />
+   <file
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rowwise_add.sv"
        attributes="" />
    <file
@@ -418,8 +432,17 @@
        path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/vector_registers.sv"
        attributes="" />
    <file
-       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/matrix_unit_wrapper.sv"
-       attributes="TOP_LEVEL_FILE" />
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/exp_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms_sqa_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/rms_sqt_lut.memh"
+       attributes="" />
+   <file
+       path="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_matrix_unit/matrix_unit_10/synth/sig_lut.memh"
+       attributes="" />
   </childGeneratedFiles>
   <sourceFiles>
    <file

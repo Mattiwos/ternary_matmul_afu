@@ -43,7 +43,7 @@ def load_c_libs(debug_dma=False, quiet=False):
         debug_flag = "FPGA_DMA_DEBUG=1"
     else:
         debug_flag = ""
-    matmul_c_lib_dir  = "{}/cpp/".format(git_top)
+    matmul_c_lib_dir  = "{}/afu/cpp/".format(git_top)
     fpga_dma_path = "{}/fpga_dma.so".format(matmul_c_lib_dir)
     matmul_c_lib_path = "{}/matmul_c_lib.so".format(matmul_c_lib_dir)
     p = subprocess.Popen(['make -C {} clean'.format(matmul_c_lib_dir)], stdout=subprocess.PIPE, shell=True)
@@ -206,6 +206,7 @@ def poll_ready(matmul_c_lib, mmio_group, ready_offst, timeout = 100000):
     ext = 0
     while(ext != 1):
         ext = matmul_c_lib.mmioR32(ctypes.c_uint64(ready_offst), ctypes.c_uint32(mmio_group))
+        print(ext)
         timeout -= 1
         if(timeout == 0 or ext==0x7FFFFFFF):
             matmul_c_lib.close_all()
@@ -292,7 +293,7 @@ def run_matmul_test(matmul_c_lib, buff_size, n_tests,
             with open("mat_out.txt", "w") as f:
                 for idx in range(int(len(dout))):
                     if(dout[idx] != data_in[idx]):
-                        f.write("| 0x{:02x}, 0x{:02x} |".format(int(data_in[idx]),int(dout[idx])))
+                        f.write("DDR4 CHANGE @ BYTE_ADDR 0x{:08x}: | 0x{:02x}, 0x{:02x} |\n".format(idx, int(data_in[idx]),int(dout[idx])))
                     
             # When we are not profiling send new data
             data_in = bytearray(random.getrandbits(8) & 0x3 for _ in xrange(buff_size))
@@ -381,14 +382,14 @@ def process_power_meas(ret_str_lst, bus_id):
 if __name__ == '__main__':
 
     # CONFIGURATION
-    fclk           = 75 # in MHz
+    fclk           = 60 # in MHz
     check_dma      = False
     debug_dma      = False
-    n_tests        = 100
+    n_tests        = 10
     make_lib_quiet = True
     
     # SET TMI FILE RELATIVE TO GIT TOP
-    tmi_memb_path  = "hw/rtl/ternary_matmul/tmi/process.memb"
+    tmi_memb_path  = "./process.memb"
 
     # AFU IO
     uuid = "bf8a475d-817f-4bec-9e87-7816be249566"
@@ -397,17 +398,16 @@ if __name__ == '__main__':
     matdim = 512
     
     # HOST-FPGA SHARED BUFFER SIZE
-    buff_size = 2*matdim*matdim
+    buff_size = matdim*matdim
 
     # AFU MMAP
-    TMI   = 0x1000
-    READY = 0x500
     START = 0x400
+    READY = 0x404
+    TMI   = 0x1000
 
     # PGM PR
     git_top  = get_git_top()
-    gbs_file = "/home/u204427/ternary_matmul_afu/build_synth/ternary_matmul_S10.gbs"
-    # gbs_file = "{}/build_synth/ternary_matmul_S10.gbs".format(git_top)
+    gbs_file = "{}/afu/build_synth/mu_afu_S10.gbs".format(git_top)
 
     # GET DARBY BUSID
     bus_id = get_bus_id()
@@ -443,8 +443,7 @@ if __name__ == '__main__':
         )
 
     # PROGRAM TMI VIA MMIO
-    tmi_memb_full_path = "{}/{}".format(git_top, tmi_memb_path)
-    configure_tmi(matmul_c_lib, tmi_memb_full_path, TMI, 0x0, debug=True)
+    configure_tmi(matmul_c_lib, tmi_memb_path, TMI, 0x0, debug=True)
 
     run_dma_check_random(matmul_c_lib, buff_size, debug=True)
     meas_d = run_matmul_test(matmul_c_lib, buff_size, n_tests, START, READY, 0x0, 0x0, True)

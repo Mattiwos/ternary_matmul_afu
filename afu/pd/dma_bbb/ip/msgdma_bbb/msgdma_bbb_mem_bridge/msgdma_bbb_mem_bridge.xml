@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.27.14:13:32"
+ date="2024.05.27.16:37:39"
  outputDirectory="/home/u204427/ternary_matmul/afu/pd/dma_bbb/ip/msgdma_bbb/msgdma_bbb_mem_bridge/">
  <perimeter>
   <parameter

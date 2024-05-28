@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.27.14:13:34"
+ date="2024.05.27.16:37:41"
  outputDirectory="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/ip/mu_afu_system/mu_afu_id_afu/">
  <perimeter>
   <parameter

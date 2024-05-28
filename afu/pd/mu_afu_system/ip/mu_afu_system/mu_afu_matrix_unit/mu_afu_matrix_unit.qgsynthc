@@ -33,10 +33,6 @@
             <value>8</value>
           </parameter>
           <parameter>
-            <name>imem_n_instr</name>
-            <value>64</value>
-          </parameter>
-          <parameter>
             <name>imem_w_addr</name>
             <value>6</value>
           </parameter>

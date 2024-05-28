@@ -1162,11 +1162,6 @@
           <ipxact:displayName>csr_data_w</ipxact:displayName>
           <ipxact:value>32</ipxact:value>
         </ipxact:parameter>
-        <ipxact:parameter parameterId="imem_n_instr" type="int">
-          <ipxact:name>imem_n_instr</ipxact:name>
-          <ipxact:displayName>imem_n_instr</ipxact:displayName>
-          <ipxact:value>64</ipxact:value>
-        </ipxact:parameter>
         <ipxact:parameter parameterId="imem_w_instr" type="int">
           <ipxact:name>imem_w_instr</ipxact:name>
           <ipxact:displayName>imem_w_instr</ipxact:displayName>
@@ -1214,7 +1209,7 @@
          type = "String";
       }
    }
-   element matrix_unit_0
+   element mu_afu_matrix_unit
    {
    }
 }

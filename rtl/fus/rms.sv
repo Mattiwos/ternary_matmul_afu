@@ -88,10 +88,15 @@ rowwise_div rowwise_div (
 );
 
 rms_fixed_point_t SQUARE_LUT [UnaryOperationLutSize];
-initial $readmemh("rtl/luts/rms_sqa_lut.memh", SQUARE_LUT);
-
 fixed_point_t SQRT_LUT [RmsUnaryOperationLutSize];
-initial $readmemh("rtl/luts/rms_sqt_lut.memh", SQRT_LUT);
+
+`ifdef REL_MEMB_RD
+    initial $readmemh("./rms_sqa_lut.memh", SQUARE_LUT);
+    initial $readmemh("./rms_sqt_lut.memh", SQRT_LUT);
+`else
+    initial $readmemh("rtl/luts/rms_sqa_lut.memh", SQUARE_LUT);
+    initial $readmemh("rtl/luts/rms_sqt_lut.memh", SQRT_LUT);
+`endif
 
 integer i;
 always_comb begin

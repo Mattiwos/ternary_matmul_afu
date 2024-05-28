@@ -22,7 +22,6 @@ set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -n
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "ZGRyX2RhdGFfdw==::OA==::ZGRyX2RhdGFfdw=="
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "Y3NyX2FkZHJfdw==::OA==::Y3NyX2FkZHJfdw=="
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "Y3NyX2RhdGFfdw==::MzI=::Y3NyX2RhdGFfdw=="
-set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV9uX2luc3Ry::NjQ=::aW1lbV9uX2luc3Ry"
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV93X2luc3Ry::NjQ=::aW1lbV93X2luc3Ry"
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_PARAMETER "aW1lbV93X2FkZHI=::Ng==::aW1lbV93X2FkZHI="
 set_global_assignment -entity "matrix_unit_wrapper" -library "matrix_unit_10" -name IP_COMPONENT_GROUP "VUNTQyAtIEhhcmR3YXJlIFN5c3RlbXMgQ29sbGVjdGl2ZQ=="
@@ -46,6 +45,7 @@ set_global_assignment -entity "mu_afu_matrix_unit" -library "mu_afu_matrix_unit"
 set_global_assignment -library "matrix_unit_10" -name VERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/div.v"]
 set_global_assignment -library "matrix_unit_10" -name VERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/div_lpm_divide_191_56nrcay.v"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rms.sv"]
+set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_unit_wrapper.sv"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_add.sv"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_div.sv"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rowwise_exp.sv"]
@@ -59,6 +59,9 @@ set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file j
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/config_pkg.sv"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_unit.sv"]
 set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/vector_registers.sv"]
-set_global_assignment -library "matrix_unit_10" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/matrix_unit_wrapper.sv"]
+set_global_assignment -library "matrix_unit_10" -name SOURCE_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/exp_lut.memh"]
+set_global_assignment -library "matrix_unit_10" -name SOURCE_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rms_sqa_lut.memh"]
+set_global_assignment -library "matrix_unit_10" -name SOURCE_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/rms_sqt_lut.memh"]
+set_global_assignment -library "matrix_unit_10" -name SOURCE_FILE [file join $::quartus(qip_path) "matrix_unit_10/synth/sig_lut.memh"]
 set_global_assignment -library "mu_afu_matrix_unit" -name VERILOG_FILE [file join $::quartus(qip_path) "synth/mu_afu_matrix_unit.v"]
 

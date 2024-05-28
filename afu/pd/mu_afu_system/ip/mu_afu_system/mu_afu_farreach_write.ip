@@ -1074,7 +1074,7 @@
          type = "String";
       }
    }
-   element matmul_afu_farreach_write
+   element mu_afu_farreach_write
    {
    }
 }

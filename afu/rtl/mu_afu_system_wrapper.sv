@@ -3,9 +3,9 @@ import ccip_avmm_pkg::*;
 
 `include "platform_if.vh"
 
-module mu_afu_system_wrapper import config_pkg::*; #
+module mu_afu_system_wrapper #
 (
-  parameter NUM_LOCAL_MEM_BANKS =                 1
+  parameter NUM_LOCAL_MEM_BANKS = 1
 ) 
 (
   input primary_clk,
@@ -74,16 +74,16 @@ module mu_afu_system_wrapper import config_pkg::*; #
   //  afu/pd/mu_afu_system/mu_afu_system/synth/mu_afu_system.v
   mu_afu_system u0 (
   `ifdef PLATFORM_PROVIDES_LOCAL_MEMORY
-    .ddr4a_host_dma_waitrequest       (local_mem[0].waitrequest),
-    .ddr4a_host_dma_readdata          (local_mem[0].readdata),
-    .ddr4a_host_dma_readdatavalid     (local_mem[0].readdatavalid),
-    .ddr4a_host_dma_burstcount        (local_mem[0].burstcount[2:0]),
-    .ddr4a_host_dma_writedata         (local_mem[0].writedata),
-    .ddr4a_host_dma_address           ({local_mem[0].address,mm_byte_offset[0]}),
-    .ddr4a_host_dma_write             (local_mem[0].write),
-    .ddr4a_host_dma_read              (local_mem[0].read),
-    .ddr4a_host_dma_byteenable        (local_mem[0].byteenable),
-    .ddr4a_host_dma_debugaccess       (),
+    .ddr4a_host_waitrequest       (local_mem[0].waitrequest),
+    .ddr4a_host_readdata          (local_mem[0].readdata),
+    .ddr4a_host_readdatavalid     (local_mem[0].readdatavalid),
+    .ddr4a_host_burstcount        (local_mem[0].burstcount[2:0]),
+    .ddr4a_host_writedata         (local_mem[0].writedata),
+    .ddr4a_host_address           ({local_mem[0].address,mm_byte_offset[0]}),
+    .ddr4a_host_write             (local_mem[0].write),
+    .ddr4a_host_read              (local_mem[0].read),
+    .ddr4a_host_byteenable        (local_mem[0].byteenable),
+    .ddr4a_host_debugaccess       (),
   `endif
     .*
   );

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deploy
- date="2024.05.27.14:13:35"
+ date="2024.05.27.16:37:42"
  outputDirectory="/home/u204427/ternary_matmul/afu/pd/mu_afu_system/mu_afu_system/">
  <perimeter>
   <parameter
@@ -1986,16 +1986,20 @@
             &lt;assignments&gt;
                 &lt;assignmentValueMap&gt;
                     &lt;entry&gt;
+                        &lt;key&gt;embeddedsw.configuration.isFlash&lt;/key&gt;
+                        &lt;value&gt;0&lt;/value&gt;
+                    &lt;/entry&gt;
+                    &lt;entry&gt;
                         &lt;key&gt;embeddedsw.configuration.isMemoryDevice&lt;/key&gt;
-                        &lt;value&gt;false&lt;/value&gt;
+                        &lt;value&gt;0&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;embeddedsw.configuration.isNonVolatileStorage&lt;/key&gt;
-                        &lt;value&gt;false&lt;/value&gt;
+                        &lt;value&gt;0&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;embeddedsw.configuration.isPrintableDevice&lt;/key&gt;
-                        &lt;value&gt;false&lt;/value&gt;
+                        &lt;value&gt;0&lt;/value&gt;
                     &lt;/entry&gt;
                 &lt;/assignmentValueMap&gt;
             &lt;/assignments&gt;
@@ -2035,6 +2039,7 @@
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;bridgedAddressOffset&lt;/key&gt;
+                        &lt;value&gt;0&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;bridgesToMaster&lt;/key&gt;
@@ -7451,6 +7456,7 @@
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;bridgedAddressOffset&lt;/key&gt;
+                        &lt;value&gt;0&lt;/value&gt;
                     &lt;/entry&gt;
                     &lt;entry&gt;
                         &lt;key&gt;bridgesToMaster&lt;/key&gt;

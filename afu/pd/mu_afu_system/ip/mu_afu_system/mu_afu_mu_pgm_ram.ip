@@ -1259,7 +1259,7 @@
          type = "String";
       }
    }
-   element matmul_afu_pgm_ram
+   element mu_afu_mu_pgm_ram
    {
    }
 }

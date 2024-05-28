@@ -69,10 +69,10 @@ if (DdrDataWidth == FixedPointPrecision) begin
             end
         end else if ((state_q == WORKING)&&(vector_operation_q == LDV)) begin
             if(ddr_r_valid_i) begin
-            // data was recieved from mem
-            vector_addr_o = vector_counter_q;
-            vector_w_data_o = ddr_r_data_i;
-            vector_w_en_o = 1;
+                // data was recieved from mem
+                vector_addr_o = vector_counter_q;
+                vector_w_data_o = ddr_r_data_i;
+                vector_w_en_o = 1;
             end 
             if ((vector_counter_q < D-1 )) begin
                 if(ddr_waitrequest_n_i) begin

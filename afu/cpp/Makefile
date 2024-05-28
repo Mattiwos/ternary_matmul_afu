@@ -1,4 +1,7 @@
 CXX = g++
+ifndef VERBOSE
+   CXXFLAGS += -w
+endif
 LDFLAGS ?=
 FPGA_DMA_DEBUG ?= 0
 CXXFLAGS += -D FPGA_DMA_DEBUG=$(FPGA_DMA_DEBUG)  -g -O2 -fPIC -shared -D EMU_MODE=0 -Wall -Wno-unknown-pragmas -I$(TBB_HOME)/include -fpermissive -std=c++11
@@ -35,20 +38,20 @@ SRCS=$(wildcard *.cpp)
 OBJS=$(SRCS:.cpp=.o)
 
 ifndef VERBOSE
-.SILENT:
+.SILENT: all
 endif
 
-all: $(OBJS) matmul_c_lib
+all: $(OBJS) mu_c_lib
 
 fpga_dma.a: fpga_dma.so fpga_dma.o
 	ar rcs $@ $^
 
-matmul_c_lib: matmul_c_lib.so $(OBJS) fpga_dma.a
+mu_c_lib: mu_c_lib.so $(OBJS) fpga_dma.a
 	$(CXX) -c -o $@ $^ $(LDFLAGS)
 
 %.so: %.o ; $(LINK.c) $(LDFLAGS) -shared $^ -o $@
 
 clean:
-	$(RM) matmul_c_lib *.o *.so *.a *.dat *.log
+	$(RM) mu_c_lib *.o *.so *.a *.dat *.log
 
 .PHONY:all clean

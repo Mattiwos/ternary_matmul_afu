@@ -30,7 +30,6 @@ module mu_afu_matrix_unit (
 		.ddr_data_w   (8),
 		.csr_addr_w   (8),
 		.csr_data_w   (32),
-		.imem_n_instr (64),
 		.imem_w_instr (64),
 		.imem_w_addr  (6)
 	) mu_afu_matrix_unit (

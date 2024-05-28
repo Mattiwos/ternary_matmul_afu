@@ -17,9 +17,6 @@ ccip_std_afu.sv
 ../pd/mu_afu_system/components.ipx
 ../pd/dma_bbb/components.ipx
 
-# Intermediate wrapper between mu_afu and afu.sv
-mu_afu_system_wrapper.sv
-
 # UUID component
 ../pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave_hw.tcl
 ../pd/QSYS_IPs/afu_id_avmm_slave/afu_id_avmm_slave.sv
@@ -62,7 +59,11 @@ mu_afu_system_wrapper.sv
 ../pd/QSYS_IPs/far_reach_avalon_mm_bridge/far_reach_avalon_mm_bridge.sv
 
 # top level MU design filelist
+QI:../pd/additional_quartus_settings.qsf
 C:../pd/mu_afu_system/filelist.txt
+
+# Intermediate wrapper between mu_afu and afu.sv
+mu_afu_system_wrapper.sv
 
 # memory-mapped DMA BBB design
 ../pd/dma_bbb/msgdma_bbb.qsys

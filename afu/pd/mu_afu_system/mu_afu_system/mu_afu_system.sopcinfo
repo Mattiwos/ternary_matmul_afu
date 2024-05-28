@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="mu_afu_system" kind="mu_afu_system" version="1.0" fabric="QSYS">
  <!-- Format version 19.2 57 (Future versions may contain additional information.) -->
- <!-- 2024.05.27.14:13:30 -->
+ <!-- 2024.05.27.16:37:37 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -3220,16 +3220,20 @@ the requested settings for a module instance. -->
             <assignments>
                 <assignmentValueMap>
                     <entry>
+                        <key>embeddedsw.configuration.isFlash</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
                         <key>embeddedsw.configuration.isMemoryDevice</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>embeddedsw.configuration.isNonVolatileStorage</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>embeddedsw.configuration.isPrintableDevice</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                 </assignmentValueMap>
             </assignments>
@@ -3269,6 +3273,7 @@ the requested settings for a module instance. -->
                     </entry>
                     <entry>
                         <key>bridgedAddressOffset</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>bridgesToMaster</key>
@@ -12864,6 +12869,7 @@ the requested settings for a module instance. -->
                     </entry>
                     <entry>
                         <key>bridgedAddressOffset</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>bridgesToMaster</key>

@@ -1143,7 +1143,7 @@
          type = "String";
       }
    }
-   element matmul_afu_ddr4_bridge
+   element mu_afu_ddr4_bridge
    {
    }
 }

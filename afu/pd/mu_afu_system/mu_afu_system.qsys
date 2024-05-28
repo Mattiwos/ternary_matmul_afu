@@ -1556,7 +1556,7 @@
     </fileSets>
 </generationInfoDefinition>]]></parameter>
   <parameter name="hlsFile" value="" />
-  <parameter name="logicalView">/home/u204427/ternary_matmul/afu/pd/dma_bbb/msgdma_bbb.qsys</parameter>
+  <parameter name="logicalView">../dma_bbb/msgdma_bbb.qsys</parameter>
   <parameter name="moduleAssignmentDefinition"><![CDATA[<assignmentDefinition>
     <assignmentValueMap/>
 </assignmentDefinition>]]></parameter>
@@ -3522,16 +3522,20 @@
             <assignments>
                 <assignmentValueMap>
                     <entry>
+                        <key>embeddedsw.configuration.isFlash</key>
+                        <value>0</value>
+                    </entry>
+                    <entry>
                         <key>embeddedsw.configuration.isMemoryDevice</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>embeddedsw.configuration.isNonVolatileStorage</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>embeddedsw.configuration.isPrintableDevice</key>
-                        <value>false</value>
+                        <value>0</value>
                     </entry>
                 </assignmentValueMap>
             </assignments>
@@ -3571,6 +3575,7 @@
                     </entry>
                     <entry>
                         <key>bridgedAddressOffset</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>bridgesToMaster</key>
@@ -8593,6 +8598,7 @@
                     </entry>
                     <entry>
                         <key>bridgedAddressOffset</key>
+                        <value>0</value>
                     </entry>
                     <entry>
                         <key>bridgesToMaster</key>

@@ -198,7 +198,7 @@
          type = "String";
       }
    }
-   element matmul_afu_dma_clock
+   element mu_afu_dma_clock
    {
    }
 }

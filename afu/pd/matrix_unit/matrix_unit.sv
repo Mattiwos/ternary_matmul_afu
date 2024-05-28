@@ -1,4 +1,3 @@
-
 module matrix_unit import config_pkg::*; (
     input  logic         clk_i,
     input  logic         rst_ni,
