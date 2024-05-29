@@ -140,6 +140,7 @@ bool allocate_buffer(uint64_t buff_size)
 extern "C"
 void populate_buffer_bytes(unsigned char * byte_pointer, uint64_t n_bytes)
 {
+	memset(battrs.va, 0, battrs.size);
 	debug_print("ptr is 0x%08x\n", battrs.va);
 	unsigned char * battrs_va_init = battrs.va;
 	unsigned char * byte_pointer_init = byte_pointer;
@@ -170,6 +171,7 @@ void get_buffer_bytes(unsigned char * byte_pointer, uint64_t n_bytes)
 	battrs.va = battrs_va_init;
 	byte_pointer = byte_pointer_init;
 	debug_print("ptr is 0x%02x\n", battrs.va);
+	memset(battrs.va, 0, battrs.size);
 }
 
 extern "C"
@@ -333,15 +335,22 @@ out_afc_close:
 extern "C"
 bool dma_host_to_fpga (
 	uint64_t fpga_addr,
+	uint64_t addr_span,
 	uint64_t payload_size
 ) {
 	fpga_result res = FPGA_OK;
 	// clear recieve buffer
 	// memset(battrs.va, 0, battrs.size);
 	fpga_dma_transfer_t transfer;
-	uint64_t total_size = battrs.size;
-	debug_print("total size %d\n", total_size);
-	int64_t  tid = ceil((double) battrs.size /(double)payload_size);
+	int64_t tid, total_size;
+	if(addr_span > battrs.size) {
+		total_size = battrs.size;
+		tid = ceil((double) battrs.size /(double)payload_size);
+		fprintf(stderr, "Warning requested transfer larger than buffer size!");
+	} else {
+		total_size = addr_span;
+		tid = ceil((double) addr_span /(double)payload_size);
+	}
 	uint64_t src = (uint64_t) battrs.iova; // host memory addr
 	uint64_t dst = (uint64_t) fpga_addr; // fpga memory addr
 	debug_print("TRNSFR from 0x%08x to 0x%08x\n", src, dst);
@@ -350,12 +359,10 @@ bool dma_host_to_fpga (
 	while(total_size > 0) {
 		uint64_t transfer_bytes = MIN(total_size, payload_size);
 		debug_print("Transfer src=%lx, dst=%lx, bytes=%ld\n", (uint64_t)src, (uint64_t)dst, transfer_bytes);
-
 		fpgaDMATransferSetSrc(transfer, src);
 		fpgaDMATransferSetDst(transfer, dst);
 		fpgaDMATransferSetLen(transfer, transfer_bytes);
 		fpgaDMATransferSetTransferType(transfer, HOST_MM_TO_FPGA_MM);
-		
 		// perform non-blocking transfers, except for the very last
 		if(tid == 1) {
 			fpgaDMATransferSetLast(transfer, true);
@@ -363,7 +370,6 @@ bool dma_host_to_fpga (
 		} else {
 			fpgaDMATransferSetTransferCallback(transfer, transferComplete, NULL);
 		}
-
 		res = fpgaDMATransfer(dma_h, transfer);
 		ON_ERR_GOTO(res, free_transfer, "transfer error");
 		total_size -= transfer_bytes;
@@ -383,15 +389,22 @@ free_transfer:
 extern "C"
 bool dma_fpga_to_host (
 	uint64_t fpga_addr,
+	uint64_t addr_span,
 	uint64_t payload_size
 ) {
 	fpga_result res = FPGA_OK;
 	// clear recieve buffer
 	memset(battrs.va, 0, battrs.size);
 	fpga_dma_transfer_t transfer;
-	uint64_t total_size = battrs.size;
-	debug_print("total size %d\n", total_size);
-	int64_t  tid = ceil((double)battrs.size /(double)payload_size);
+	int64_t tid, total_size;
+	if(addr_span > battrs.size) {
+		total_size = battrs.size;
+		tid = ceil((double) battrs.size /(double)payload_size);
+		fprintf(stderr, "Critical Warning! requested transfer larger than buffer size!");
+	} else {
+		total_size = addr_span;
+		tid = ceil((double) addr_span /(double)payload_size);
+	}
 	uint64_t src = (uint64_t) fpga_addr; // fpga memory addr
 	uint64_t dst = (uint64_t) battrs.iova; // host memory addr
 	debug_print("TRNSFR from 0x%08x to 0x%08x\n", src, dst);

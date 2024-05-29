@@ -50,7 +50,7 @@
           </parameter>
           <parameter>
             <name>DFH_NEXT_OFFSET</name>
-            <value>4608</value>
+            <value>3840</value>
           </parameter>
           <parameter>
             <name>NEXT_AFU_OFFSET</name>

@@ -8,7 +8,7 @@
    showClockDomains="0"
    showResetDomains="0" />
  <library
-   expandedCategories="Project,Existing IP Variants,Library,Project/UCSC - Hardware Systems Collective" />
+   expandedCategories="Library,Existing IP Variants,Project,Project/UCSC - Hardware Systems Collective" />
  <generation path="" clear_previous="0" />
  <sysinfo autosync="1" />
  <avalontool showOnlyAvalonDomainInterfaces="0" />

@@ -58,9 +58,9 @@ module mu_afu_system (
 	wire          msgdma_bbb_host_write_write;                                // msgdma_bbb:host_write_write -> mu_afu_farreach_write:s_write
 	wire          msgdma_bbb_host_write_writeresponsevalid;                   // mu_afu_farreach_write:s_writeresponsevalid -> msgdma_bbb:host_write_writeresponsevalid
 	wire    [2:0] msgdma_bbb_host_write_burstcount;                           // msgdma_bbb:host_write_burstcount -> mu_afu_farreach_write:s_burst
-	wire          mu_afu_dma_clock_out_clk_clk;                               // mu_afu_dma_clock:out_clk -> [mm_interconnect_4:mu_afu_dma_clock_out_clk_clk, mm_interconnect_5:mu_afu_dma_clock_out_clk_clk, msgdma_bbb:clk_clk, mu_afu_csr_bridge:s_clk, mu_afu_ddr4_bridge:clk, mu_afu_farreach_read:s_clk, mu_afu_farreach_write:s_clk, mu_afu_host_rst:clk, mu_afu_id_afu:clk, mu_afu_id_dma:clk, mu_afu_id_mu:clk]
-	wire          mu_afu_mu_clock_out_clk_clk;                                // mu_afu_mu_clock:out_clk -> [mm_interconnect_0:mu_afu_mu_clock_out_clk_clk, mm_interconnect_1:mu_afu_mu_clock_out_clk_clk, mm_interconnect_4:mu_afu_mu_clock_out_clk_clk, mm_interconnect_5:mu_afu_mu_clock_out_clk_clk, mu_afu_matrix_unit:clk_i, mu_afu_mu_ddr4a_bridge:clk, mu_afu_mu_pgm_ram:clk, rst_controller:clk, rst_controller_001:clk]
-	wire          mu_afu_host_rst_out_reset_reset;                            // mu_afu_host_rst:out_reset -> [mm_interconnect_4:mu_afu_ddr4_bridge_reset_reset_bridge_in_reset_reset, mm_interconnect_5:mu_afu_csr_bridge_master_translator_reset_reset_bridge_in_reset_reset, msgdma_bbb:reset_reset, mu_afu_csr_bridge:reset, mu_afu_ddr4_bridge:reset, mu_afu_farreach_read:reset, mu_afu_farreach_write:reset, mu_afu_id_afu:reset, mu_afu_id_dma:reset, mu_afu_id_mu:reset, rst_controller:reset_in0, rst_controller_001:reset_in0]
+	wire          mu_afu_dma_clock_out_clk_clk;                               // mu_afu_dma_clock:out_clk -> [mm_interconnect_1:mu_afu_dma_clock_out_clk_clk, mm_interconnect_4:mu_afu_dma_clock_out_clk_clk, msgdma_bbb:clk_clk, mu_afu_csr_bridge:s_clk, mu_afu_ddr4_bridge:clk, mu_afu_farreach_read:s_clk, mu_afu_farreach_write:s_clk, mu_afu_host_rst:clk, mu_afu_id_afu:clk, mu_afu_id_dma:clk, mu_afu_id_mu:clk]
+	wire          mu_afu_mu_clock_out_clk_clk;                                // mu_afu_mu_clock:out_clk -> [mm_interconnect_0:mu_afu_mu_clock_out_clk_clk, mm_interconnect_1:mu_afu_mu_clock_out_clk_clk, mm_interconnect_4:mu_afu_mu_clock_out_clk_clk, mu_afu_matrix_unit:clk_i, mu_afu_mu_pgm_ram:clk, rst_controller:clk]
+	wire          mu_afu_host_rst_out_reset_reset;                            // mu_afu_host_rst:out_reset -> [mm_interconnect_1:mu_afu_ddr4_bridge_reset_reset_bridge_in_reset_reset, mm_interconnect_4:mu_afu_csr_bridge_master_translator_reset_reset_bridge_in_reset_reset, msgdma_bbb:reset_reset, mu_afu_csr_bridge:reset, mu_afu_ddr4_bridge:reset, mu_afu_farreach_read:reset, mu_afu_farreach_write:reset, mu_afu_id_afu:reset, mu_afu_id_dma:reset, mu_afu_id_mu:reset, rst_controller:reset_in0]
 	wire          mu_afu_matrix_unit_avalon_a_imem_chipselect;                // mu_afu_matrix_unit:avmm_h_imem_chipselect_o -> mm_interconnect_0:mu_afu_matrix_unit_avalon_a_imem_chipselect
 	wire   [63:0] mu_afu_matrix_unit_avalon_a_imem_readdata;                  // mm_interconnect_0:mu_afu_matrix_unit_avalon_a_imem_readdata -> mu_afu_matrix_unit:avmm_h_imem_readdata_i
 	wire    [5:0] mu_afu_matrix_unit_avalon_a_imem_address;                   // mu_afu_matrix_unit:avmm_h_imem_address_o -> mm_interconnect_0:mu_afu_matrix_unit_avalon_a_imem_address
@@ -80,92 +80,71 @@ module mu_afu_system (
 	wire          mu_afu_matrix_unit_avmm_h_ddr_readdatavalid;                // mm_interconnect_1:mu_afu_matrix_unit_avmm_h_ddr_readdatavalid -> mu_afu_matrix_unit:avmm_h_ddr_readdatavalid_i
 	wire    [7:0] mu_afu_matrix_unit_avmm_h_ddr_writedata;                    // mu_afu_matrix_unit:avmm_h_ddr_writedata_o -> mm_interconnect_1:mu_afu_matrix_unit_avmm_h_ddr_writedata
 	wire          mu_afu_matrix_unit_avmm_h_ddr_write;                        // mu_afu_matrix_unit:avmm_h_ddr_write_o -> mm_interconnect_1:mu_afu_matrix_unit_avmm_h_ddr_write
-	wire    [7:0] mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdata;       // mu_afu_mu_ddr4a_bridge:s0_readdata -> mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_readdata
-	wire          mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_waitrequest;    // mu_afu_mu_ddr4a_bridge:s0_waitrequest -> mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_waitrequest
-	wire          mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_debugaccess;    // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_debugaccess -> mu_afu_mu_ddr4a_bridge:s0_debugaccess
-	wire   [32:0] mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_address;        // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_address -> mu_afu_mu_ddr4a_bridge:s0_address
-	wire          mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_read;           // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_read -> mu_afu_mu_ddr4a_bridge:s0_read
-	wire    [0:0] mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_byteenable;     // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_byteenable -> mu_afu_mu_ddr4a_bridge:s0_byteenable
-	wire          mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdatavalid;  // mu_afu_mu_ddr4a_bridge:s0_readdatavalid -> mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_readdatavalid
-	wire          mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_write;          // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_write -> mu_afu_mu_ddr4a_bridge:s0_write
-	wire    [7:0] mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_writedata;      // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_writedata -> mu_afu_mu_ddr4a_bridge:s0_writedata
-	wire    [0:0] mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_burstcount;     // mm_interconnect_1:mu_afu_mu_ddr4a_bridge_s0_burstcount -> mu_afu_mu_ddr4a_bridge:s0_burstcount
-	wire          mu_afu_mu_ddr4a_bridge_m0_waitrequest;                      // mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_waitrequest -> mu_afu_mu_ddr4a_bridge:m0_waitrequest
-	wire    [7:0] mu_afu_mu_ddr4a_bridge_m0_readdata;                         // mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_readdata -> mu_afu_mu_ddr4a_bridge:m0_readdata
-	wire          mu_afu_mu_ddr4a_bridge_m0_debugaccess;                      // mu_afu_mu_ddr4a_bridge:m0_debugaccess -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_debugaccess
-	wire   [32:0] mu_afu_mu_ddr4a_bridge_m0_address;                          // mu_afu_mu_ddr4a_bridge:m0_address -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_address
-	wire          mu_afu_mu_ddr4a_bridge_m0_read;                             // mu_afu_mu_ddr4a_bridge:m0_read -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_read
-	wire    [0:0] mu_afu_mu_ddr4a_bridge_m0_byteenable;                       // mu_afu_mu_ddr4a_bridge:m0_byteenable -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_byteenable
-	wire          mu_afu_mu_ddr4a_bridge_m0_readdatavalid;                    // mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_readdatavalid -> mu_afu_mu_ddr4a_bridge:m0_readdatavalid
-	wire    [7:0] mu_afu_mu_ddr4a_bridge_m0_writedata;                        // mu_afu_mu_ddr4a_bridge:m0_writedata -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_writedata
-	wire          mu_afu_mu_ddr4a_bridge_m0_write;                            // mu_afu_mu_ddr4a_bridge:m0_write -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_write
-	wire    [0:0] mu_afu_mu_ddr4a_bridge_m0_burstcount;                       // mu_afu_mu_ddr4a_bridge:m0_burstcount -> mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_burstcount
-	wire  [511:0] msgdma_bbb_mem_read_write_readdata;                         // mm_interconnect_4:msgdma_bbb_mem_read_write_readdata -> msgdma_bbb:mem_read_write_readdata
-	wire          msgdma_bbb_mem_read_write_waitrequest;                      // mm_interconnect_4:msgdma_bbb_mem_read_write_waitrequest -> msgdma_bbb:mem_read_write_waitrequest
-	wire   [47:0] msgdma_bbb_mem_read_write_address;                          // msgdma_bbb:mem_read_write_address -> mm_interconnect_4:msgdma_bbb_mem_read_write_address
-	wire   [63:0] msgdma_bbb_mem_read_write_byteenable;                       // msgdma_bbb:mem_read_write_byteenable -> mm_interconnect_4:msgdma_bbb_mem_read_write_byteenable
-	wire          msgdma_bbb_mem_read_write_read;                             // msgdma_bbb:mem_read_write_read -> mm_interconnect_4:msgdma_bbb_mem_read_write_read
-	wire          msgdma_bbb_mem_read_write_readdatavalid;                    // mm_interconnect_4:msgdma_bbb_mem_read_write_readdatavalid -> msgdma_bbb:mem_read_write_readdatavalid
-	wire  [511:0] msgdma_bbb_mem_read_write_writedata;                        // msgdma_bbb:mem_read_write_writedata -> mm_interconnect_4:msgdma_bbb_mem_read_write_writedata
-	wire          msgdma_bbb_mem_read_write_write;                            // msgdma_bbb:mem_read_write_write -> mm_interconnect_4:msgdma_bbb_mem_read_write_write
-	wire    [2:0] msgdma_bbb_mem_read_write_burstcount;                       // msgdma_bbb:mem_read_write_burstcount -> mm_interconnect_4:msgdma_bbb_mem_read_write_burstcount
-	wire  [511:0] mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdata;           // mu_afu_ddr4_bridge:s0_readdata -> mm_interconnect_4:mu_afu_ddr4_bridge_s0_readdata
-	wire          mm_interconnect_4_mu_afu_ddr4_bridge_s0_waitrequest;        // mu_afu_ddr4_bridge:s0_waitrequest -> mm_interconnect_4:mu_afu_ddr4_bridge_s0_waitrequest
-	wire          mm_interconnect_4_mu_afu_ddr4_bridge_s0_debugaccess;        // mm_interconnect_4:mu_afu_ddr4_bridge_s0_debugaccess -> mu_afu_ddr4_bridge:s0_debugaccess
-	wire   [32:0] mm_interconnect_4_mu_afu_ddr4_bridge_s0_address;            // mm_interconnect_4:mu_afu_ddr4_bridge_s0_address -> mu_afu_ddr4_bridge:s0_address
-	wire          mm_interconnect_4_mu_afu_ddr4_bridge_s0_read;               // mm_interconnect_4:mu_afu_ddr4_bridge_s0_read -> mu_afu_ddr4_bridge:s0_read
-	wire   [63:0] mm_interconnect_4_mu_afu_ddr4_bridge_s0_byteenable;         // mm_interconnect_4:mu_afu_ddr4_bridge_s0_byteenable -> mu_afu_ddr4_bridge:s0_byteenable
-	wire          mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdatavalid;      // mu_afu_ddr4_bridge:s0_readdatavalid -> mm_interconnect_4:mu_afu_ddr4_bridge_s0_readdatavalid
-	wire          mm_interconnect_4_mu_afu_ddr4_bridge_s0_write;              // mm_interconnect_4:mu_afu_ddr4_bridge_s0_write -> mu_afu_ddr4_bridge:s0_write
-	wire  [511:0] mm_interconnect_4_mu_afu_ddr4_bridge_s0_writedata;          // mm_interconnect_4:mu_afu_ddr4_bridge_s0_writedata -> mu_afu_ddr4_bridge:s0_writedata
-	wire    [2:0] mm_interconnect_4_mu_afu_ddr4_bridge_s0_burstcount;         // mm_interconnect_4:mu_afu_ddr4_bridge_s0_burstcount -> mu_afu_ddr4_bridge:s0_burstcount
-	wire   [63:0] mu_afu_csr_bridge_master_readdata;                          // mm_interconnect_5:mu_afu_csr_bridge_master_readdata -> mu_afu_csr_bridge:m_readdata
-	wire          mu_afu_csr_bridge_master_waitrequest;                       // mm_interconnect_5:mu_afu_csr_bridge_master_waitrequest -> mu_afu_csr_bridge:m_waitrequest
-	wire   [47:0] mu_afu_csr_bridge_master_address;                           // mu_afu_csr_bridge:m_address -> mm_interconnect_5:mu_afu_csr_bridge_master_address
-	wire    [7:0] mu_afu_csr_bridge_master_byteenable;                        // mu_afu_csr_bridge:m_byteenable -> mm_interconnect_5:mu_afu_csr_bridge_master_byteenable
-	wire          mu_afu_csr_bridge_master_read;                              // mu_afu_csr_bridge:m_read -> mm_interconnect_5:mu_afu_csr_bridge_master_read
-	wire          mu_afu_csr_bridge_master_readdatavalid;                     // mm_interconnect_5:mu_afu_csr_bridge_master_readdatavalid -> mu_afu_csr_bridge:m_readdatavalid
-	wire   [63:0] mu_afu_csr_bridge_master_writedata;                         // mu_afu_csr_bridge:m_writedata -> mm_interconnect_5:mu_afu_csr_bridge_master_writedata
-	wire          mu_afu_csr_bridge_master_write;                             // mu_afu_csr_bridge:m_write -> mm_interconnect_5:mu_afu_csr_bridge_master_write
-	wire    [0:0] mu_afu_csr_bridge_master_burstcount;                        // mu_afu_csr_bridge:m_burst -> mm_interconnect_5:mu_afu_csr_bridge_master_burstcount
-	wire   [63:0] mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_readdata;     // mu_afu_id_afu:avmm_readdata -> mm_interconnect_5:mu_afu_id_afu_afu_cfg_slave_readdata
-	wire    [2:0] mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_address;      // mm_interconnect_5:mu_afu_id_afu_afu_cfg_slave_address -> mu_afu_id_afu:avmm_address
-	wire          mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_read;         // mm_interconnect_5:mu_afu_id_afu_afu_cfg_slave_read -> mu_afu_id_afu:avmm_read
-	wire          mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_write;        // mm_interconnect_5:mu_afu_id_afu_afu_cfg_slave_write -> mu_afu_id_afu:avmm_write
-	wire   [63:0] mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_writedata;    // mm_interconnect_5:mu_afu_id_afu_afu_cfg_slave_writedata -> mu_afu_id_afu:avmm_writedata
-	wire   [63:0] mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_readdata;      // mu_afu_id_mu:avmm_readdata -> mm_interconnect_5:mu_afu_id_mu_afu_cfg_slave_readdata
-	wire    [2:0] mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_address;       // mm_interconnect_5:mu_afu_id_mu_afu_cfg_slave_address -> mu_afu_id_mu:avmm_address
-	wire          mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_read;          // mm_interconnect_5:mu_afu_id_mu_afu_cfg_slave_read -> mu_afu_id_mu:avmm_read
-	wire          mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_write;         // mm_interconnect_5:mu_afu_id_mu_afu_cfg_slave_write -> mu_afu_id_mu:avmm_write
-	wire   [63:0] mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_writedata;     // mm_interconnect_5:mu_afu_id_mu_afu_cfg_slave_writedata -> mu_afu_id_mu:avmm_writedata
-	wire   [63:0] mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_readdata;     // mu_afu_id_dma:avmm_readdata -> mm_interconnect_5:mu_afu_id_dma_afu_cfg_slave_readdata
-	wire    [2:0] mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_address;      // mm_interconnect_5:mu_afu_id_dma_afu_cfg_slave_address -> mu_afu_id_dma:avmm_address
-	wire          mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_read;         // mm_interconnect_5:mu_afu_id_dma_afu_cfg_slave_read -> mu_afu_id_dma:avmm_read
-	wire          mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_write;        // mm_interconnect_5:mu_afu_id_dma_afu_cfg_slave_write -> mu_afu_id_dma:avmm_write
-	wire   [63:0] mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_writedata;    // mm_interconnect_5:mu_afu_id_dma_afu_cfg_slave_writedata -> mu_afu_id_dma:avmm_writedata
-	wire          mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_chipselect; // mm_interconnect_5:mu_afu_matrix_unit_avmm_a_csr_chipselect -> mu_afu_matrix_unit:avmm_a_csr_chipselect_i
-	wire   [31:0] mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_readdata;   // mu_afu_matrix_unit:avmm_a_csr_readdata_o -> mm_interconnect_5:mu_afu_matrix_unit_avmm_a_csr_readdata
-	wire    [7:0] mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_address;    // mm_interconnect_5:mu_afu_matrix_unit_avmm_a_csr_address -> mu_afu_matrix_unit:avmm_a_csr_address_i
-	wire          mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_write;      // mm_interconnect_5:mu_afu_matrix_unit_avmm_a_csr_write -> mu_afu_matrix_unit:avmm_a_csr_write_i
-	wire   [31:0] mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_writedata;  // mm_interconnect_5:mu_afu_matrix_unit_avmm_a_csr_writedata -> mu_afu_matrix_unit:avmm_a_csr_writedata_i
-	wire   [63:0] mm_interconnect_5_msgdma_bbb_csr_readdata;                  // msgdma_bbb:csr_readdata -> mm_interconnect_5:msgdma_bbb_csr_readdata
-	wire          mm_interconnect_5_msgdma_bbb_csr_waitrequest;               // msgdma_bbb:csr_waitrequest -> mm_interconnect_5:msgdma_bbb_csr_waitrequest
-	wire    [7:0] mm_interconnect_5_msgdma_bbb_csr_address;                   // mm_interconnect_5:msgdma_bbb_csr_address -> msgdma_bbb:csr_address
-	wire          mm_interconnect_5_msgdma_bbb_csr_read;                      // mm_interconnect_5:msgdma_bbb_csr_read -> msgdma_bbb:csr_read
-	wire    [7:0] mm_interconnect_5_msgdma_bbb_csr_byteenable;                // mm_interconnect_5:msgdma_bbb_csr_byteenable -> msgdma_bbb:csr_byteenable
-	wire          mm_interconnect_5_msgdma_bbb_csr_readdatavalid;             // msgdma_bbb:csr_readdatavalid -> mm_interconnect_5:msgdma_bbb_csr_readdatavalid
-	wire          mm_interconnect_5_msgdma_bbb_csr_write;                     // mm_interconnect_5:msgdma_bbb_csr_write -> msgdma_bbb:csr_write
-	wire   [63:0] mm_interconnect_5_msgdma_bbb_csr_writedata;                 // mm_interconnect_5:msgdma_bbb_csr_writedata -> msgdma_bbb:csr_writedata
-	wire    [0:0] mm_interconnect_5_msgdma_bbb_csr_burstcount;                // mm_interconnect_5:msgdma_bbb_csr_burstcount -> msgdma_bbb:csr_burstcount
-	wire          mm_interconnect_5_mu_afu_mu_pgm_ram_s1_chipselect;          // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_chipselect -> mu_afu_mu_pgm_ram:chipselect
-	wire   [63:0] mm_interconnect_5_mu_afu_mu_pgm_ram_s1_readdata;            // mu_afu_mu_pgm_ram:readdata -> mm_interconnect_5:mu_afu_mu_pgm_ram_s1_readdata
-	wire    [5:0] mm_interconnect_5_mu_afu_mu_pgm_ram_s1_address;             // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_address -> mu_afu_mu_pgm_ram:address
-	wire    [7:0] mm_interconnect_5_mu_afu_mu_pgm_ram_s1_byteenable;          // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_byteenable -> mu_afu_mu_pgm_ram:byteenable
-	wire          mm_interconnect_5_mu_afu_mu_pgm_ram_s1_write;               // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_write -> mu_afu_mu_pgm_ram:write
-	wire   [63:0] mm_interconnect_5_mu_afu_mu_pgm_ram_s1_writedata;           // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_writedata -> mu_afu_mu_pgm_ram:writedata
-	wire          mm_interconnect_5_mu_afu_mu_pgm_ram_s1_clken;               // mm_interconnect_5:mu_afu_mu_pgm_ram_s1_clken -> mu_afu_mu_pgm_ram:clken
-	wire          rst_controller_reset_out_reset;                             // rst_controller:reset_out -> [mm_interconnect_0:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mm_interconnect_1:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mm_interconnect_4:mu_afu_mu_ddr4a_bridge_m0_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_5:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mu_afu_matrix_unit:rst_n_i, mu_afu_mu_pgm_ram:reset]
-	wire          rst_controller_001_reset_out_reset;                         // rst_controller_001:reset_out -> mu_afu_mu_ddr4a_bridge:reset
+	wire  [511:0] msgdma_bbb_mem_read_write_readdata;                         // mm_interconnect_1:msgdma_bbb_mem_read_write_readdata -> msgdma_bbb:mem_read_write_readdata
+	wire          msgdma_bbb_mem_read_write_waitrequest;                      // mm_interconnect_1:msgdma_bbb_mem_read_write_waitrequest -> msgdma_bbb:mem_read_write_waitrequest
+	wire   [47:0] msgdma_bbb_mem_read_write_address;                          // msgdma_bbb:mem_read_write_address -> mm_interconnect_1:msgdma_bbb_mem_read_write_address
+	wire   [63:0] msgdma_bbb_mem_read_write_byteenable;                       // msgdma_bbb:mem_read_write_byteenable -> mm_interconnect_1:msgdma_bbb_mem_read_write_byteenable
+	wire          msgdma_bbb_mem_read_write_read;                             // msgdma_bbb:mem_read_write_read -> mm_interconnect_1:msgdma_bbb_mem_read_write_read
+	wire          msgdma_bbb_mem_read_write_readdatavalid;                    // mm_interconnect_1:msgdma_bbb_mem_read_write_readdatavalid -> msgdma_bbb:mem_read_write_readdatavalid
+	wire  [511:0] msgdma_bbb_mem_read_write_writedata;                        // msgdma_bbb:mem_read_write_writedata -> mm_interconnect_1:msgdma_bbb_mem_read_write_writedata
+	wire          msgdma_bbb_mem_read_write_write;                            // msgdma_bbb:mem_read_write_write -> mm_interconnect_1:msgdma_bbb_mem_read_write_write
+	wire    [2:0] msgdma_bbb_mem_read_write_burstcount;                       // msgdma_bbb:mem_read_write_burstcount -> mm_interconnect_1:msgdma_bbb_mem_read_write_burstcount
+	wire  [511:0] mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdata;           // mu_afu_ddr4_bridge:s0_readdata -> mm_interconnect_1:mu_afu_ddr4_bridge_s0_readdata
+	wire          mm_interconnect_1_mu_afu_ddr4_bridge_s0_waitrequest;        // mu_afu_ddr4_bridge:s0_waitrequest -> mm_interconnect_1:mu_afu_ddr4_bridge_s0_waitrequest
+	wire          mm_interconnect_1_mu_afu_ddr4_bridge_s0_debugaccess;        // mm_interconnect_1:mu_afu_ddr4_bridge_s0_debugaccess -> mu_afu_ddr4_bridge:s0_debugaccess
+	wire   [32:0] mm_interconnect_1_mu_afu_ddr4_bridge_s0_address;            // mm_interconnect_1:mu_afu_ddr4_bridge_s0_address -> mu_afu_ddr4_bridge:s0_address
+	wire          mm_interconnect_1_mu_afu_ddr4_bridge_s0_read;               // mm_interconnect_1:mu_afu_ddr4_bridge_s0_read -> mu_afu_ddr4_bridge:s0_read
+	wire   [63:0] mm_interconnect_1_mu_afu_ddr4_bridge_s0_byteenable;         // mm_interconnect_1:mu_afu_ddr4_bridge_s0_byteenable -> mu_afu_ddr4_bridge:s0_byteenable
+	wire          mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdatavalid;      // mu_afu_ddr4_bridge:s0_readdatavalid -> mm_interconnect_1:mu_afu_ddr4_bridge_s0_readdatavalid
+	wire          mm_interconnect_1_mu_afu_ddr4_bridge_s0_write;              // mm_interconnect_1:mu_afu_ddr4_bridge_s0_write -> mu_afu_ddr4_bridge:s0_write
+	wire  [511:0] mm_interconnect_1_mu_afu_ddr4_bridge_s0_writedata;          // mm_interconnect_1:mu_afu_ddr4_bridge_s0_writedata -> mu_afu_ddr4_bridge:s0_writedata
+	wire    [2:0] mm_interconnect_1_mu_afu_ddr4_bridge_s0_burstcount;         // mm_interconnect_1:mu_afu_ddr4_bridge_s0_burstcount -> mu_afu_ddr4_bridge:s0_burstcount
+	wire   [63:0] mu_afu_csr_bridge_master_readdata;                          // mm_interconnect_4:mu_afu_csr_bridge_master_readdata -> mu_afu_csr_bridge:m_readdata
+	wire          mu_afu_csr_bridge_master_waitrequest;                       // mm_interconnect_4:mu_afu_csr_bridge_master_waitrequest -> mu_afu_csr_bridge:m_waitrequest
+	wire   [47:0] mu_afu_csr_bridge_master_address;                           // mu_afu_csr_bridge:m_address -> mm_interconnect_4:mu_afu_csr_bridge_master_address
+	wire    [7:0] mu_afu_csr_bridge_master_byteenable;                        // mu_afu_csr_bridge:m_byteenable -> mm_interconnect_4:mu_afu_csr_bridge_master_byteenable
+	wire          mu_afu_csr_bridge_master_read;                              // mu_afu_csr_bridge:m_read -> mm_interconnect_4:mu_afu_csr_bridge_master_read
+	wire          mu_afu_csr_bridge_master_readdatavalid;                     // mm_interconnect_4:mu_afu_csr_bridge_master_readdatavalid -> mu_afu_csr_bridge:m_readdatavalid
+	wire   [63:0] mu_afu_csr_bridge_master_writedata;                         // mu_afu_csr_bridge:m_writedata -> mm_interconnect_4:mu_afu_csr_bridge_master_writedata
+	wire          mu_afu_csr_bridge_master_write;                             // mu_afu_csr_bridge:m_write -> mm_interconnect_4:mu_afu_csr_bridge_master_write
+	wire    [0:0] mu_afu_csr_bridge_master_burstcount;                        // mu_afu_csr_bridge:m_burst -> mm_interconnect_4:mu_afu_csr_bridge_master_burstcount
+	wire   [63:0] mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_readdata;     // mu_afu_id_afu:avmm_readdata -> mm_interconnect_4:mu_afu_id_afu_afu_cfg_slave_readdata
+	wire    [2:0] mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_address;      // mm_interconnect_4:mu_afu_id_afu_afu_cfg_slave_address -> mu_afu_id_afu:avmm_address
+	wire          mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_read;         // mm_interconnect_4:mu_afu_id_afu_afu_cfg_slave_read -> mu_afu_id_afu:avmm_read
+	wire          mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_write;        // mm_interconnect_4:mu_afu_id_afu_afu_cfg_slave_write -> mu_afu_id_afu:avmm_write
+	wire   [63:0] mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_writedata;    // mm_interconnect_4:mu_afu_id_afu_afu_cfg_slave_writedata -> mu_afu_id_afu:avmm_writedata
+	wire   [63:0] mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_readdata;      // mu_afu_id_mu:avmm_readdata -> mm_interconnect_4:mu_afu_id_mu_afu_cfg_slave_readdata
+	wire    [2:0] mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_address;       // mm_interconnect_4:mu_afu_id_mu_afu_cfg_slave_address -> mu_afu_id_mu:avmm_address
+	wire          mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_read;          // mm_interconnect_4:mu_afu_id_mu_afu_cfg_slave_read -> mu_afu_id_mu:avmm_read
+	wire          mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_write;         // mm_interconnect_4:mu_afu_id_mu_afu_cfg_slave_write -> mu_afu_id_mu:avmm_write
+	wire   [63:0] mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_writedata;     // mm_interconnect_4:mu_afu_id_mu_afu_cfg_slave_writedata -> mu_afu_id_mu:avmm_writedata
+	wire   [63:0] mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_readdata;     // mu_afu_id_dma:avmm_readdata -> mm_interconnect_4:mu_afu_id_dma_afu_cfg_slave_readdata
+	wire    [2:0] mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_address;      // mm_interconnect_4:mu_afu_id_dma_afu_cfg_slave_address -> mu_afu_id_dma:avmm_address
+	wire          mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_read;         // mm_interconnect_4:mu_afu_id_dma_afu_cfg_slave_read -> mu_afu_id_dma:avmm_read
+	wire          mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_write;        // mm_interconnect_4:mu_afu_id_dma_afu_cfg_slave_write -> mu_afu_id_dma:avmm_write
+	wire   [63:0] mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_writedata;    // mm_interconnect_4:mu_afu_id_dma_afu_cfg_slave_writedata -> mu_afu_id_dma:avmm_writedata
+	wire          mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_chipselect; // mm_interconnect_4:mu_afu_matrix_unit_avmm_a_csr_chipselect -> mu_afu_matrix_unit:avmm_a_csr_chipselect_i
+	wire   [31:0] mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_readdata;   // mu_afu_matrix_unit:avmm_a_csr_readdata_o -> mm_interconnect_4:mu_afu_matrix_unit_avmm_a_csr_readdata
+	wire    [7:0] mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_address;    // mm_interconnect_4:mu_afu_matrix_unit_avmm_a_csr_address -> mu_afu_matrix_unit:avmm_a_csr_address_i
+	wire          mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_write;      // mm_interconnect_4:mu_afu_matrix_unit_avmm_a_csr_write -> mu_afu_matrix_unit:avmm_a_csr_write_i
+	wire   [31:0] mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_writedata;  // mm_interconnect_4:mu_afu_matrix_unit_avmm_a_csr_writedata -> mu_afu_matrix_unit:avmm_a_csr_writedata_i
+	wire   [63:0] mm_interconnect_4_msgdma_bbb_csr_readdata;                  // msgdma_bbb:csr_readdata -> mm_interconnect_4:msgdma_bbb_csr_readdata
+	wire          mm_interconnect_4_msgdma_bbb_csr_waitrequest;               // msgdma_bbb:csr_waitrequest -> mm_interconnect_4:msgdma_bbb_csr_waitrequest
+	wire    [7:0] mm_interconnect_4_msgdma_bbb_csr_address;                   // mm_interconnect_4:msgdma_bbb_csr_address -> msgdma_bbb:csr_address
+	wire          mm_interconnect_4_msgdma_bbb_csr_read;                      // mm_interconnect_4:msgdma_bbb_csr_read -> msgdma_bbb:csr_read
+	wire    [7:0] mm_interconnect_4_msgdma_bbb_csr_byteenable;                // mm_interconnect_4:msgdma_bbb_csr_byteenable -> msgdma_bbb:csr_byteenable
+	wire          mm_interconnect_4_msgdma_bbb_csr_readdatavalid;             // msgdma_bbb:csr_readdatavalid -> mm_interconnect_4:msgdma_bbb_csr_readdatavalid
+	wire          mm_interconnect_4_msgdma_bbb_csr_write;                     // mm_interconnect_4:msgdma_bbb_csr_write -> msgdma_bbb:csr_write
+	wire   [63:0] mm_interconnect_4_msgdma_bbb_csr_writedata;                 // mm_interconnect_4:msgdma_bbb_csr_writedata -> msgdma_bbb:csr_writedata
+	wire    [0:0] mm_interconnect_4_msgdma_bbb_csr_burstcount;                // mm_interconnect_4:msgdma_bbb_csr_burstcount -> msgdma_bbb:csr_burstcount
+	wire          mm_interconnect_4_mu_afu_mu_pgm_ram_s1_chipselect;          // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_chipselect -> mu_afu_mu_pgm_ram:chipselect
+	wire   [63:0] mm_interconnect_4_mu_afu_mu_pgm_ram_s1_readdata;            // mu_afu_mu_pgm_ram:readdata -> mm_interconnect_4:mu_afu_mu_pgm_ram_s1_readdata
+	wire    [5:0] mm_interconnect_4_mu_afu_mu_pgm_ram_s1_address;             // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_address -> mu_afu_mu_pgm_ram:address
+	wire    [7:0] mm_interconnect_4_mu_afu_mu_pgm_ram_s1_byteenable;          // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_byteenable -> mu_afu_mu_pgm_ram:byteenable
+	wire          mm_interconnect_4_mu_afu_mu_pgm_ram_s1_write;               // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_write -> mu_afu_mu_pgm_ram:write
+	wire   [63:0] mm_interconnect_4_mu_afu_mu_pgm_ram_s1_writedata;           // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_writedata -> mu_afu_mu_pgm_ram:writedata
+	wire          mm_interconnect_4_mu_afu_mu_pgm_ram_s1_clken;               // mm_interconnect_4:mu_afu_mu_pgm_ram_s1_clken -> mu_afu_mu_pgm_ram:clken
+	wire          rst_controller_reset_out_reset;                             // rst_controller:reset_out -> [mm_interconnect_0:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mm_interconnect_1:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mm_interconnect_4:mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset, mu_afu_matrix_unit:rst_n_i, mu_afu_mu_pgm_ram:reset]
 
 	mu_afu_csr_bridge mu_afu_csr_bridge (
 		.s_clk           (mu_afu_dma_clock_out_clk_clk),           //   input,   width = 1,    clk.clk
@@ -193,16 +172,16 @@ module mu_afu_system (
 	mu_afu_ddr4_bridge mu_afu_ddr4_bridge (
 		.clk              (mu_afu_dma_clock_out_clk_clk),                          //   input,    width = 1,   clk.clk
 		.reset            (mu_afu_host_rst_out_reset_reset),                       //   input,    width = 1, reset.reset
-		.s0_waitrequest   (mm_interconnect_4_mu_afu_ddr4_bridge_s0_waitrequest),   //  output,    width = 1,    s0.waitrequest
-		.s0_readdata      (mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdata),      //  output,  width = 512,      .readdata
-		.s0_readdatavalid (mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdatavalid), //  output,    width = 1,      .readdatavalid
-		.s0_burstcount    (mm_interconnect_4_mu_afu_ddr4_bridge_s0_burstcount),    //   input,    width = 3,      .burstcount
-		.s0_writedata     (mm_interconnect_4_mu_afu_ddr4_bridge_s0_writedata),     //   input,  width = 512,      .writedata
-		.s0_address       (mm_interconnect_4_mu_afu_ddr4_bridge_s0_address),       //   input,   width = 33,      .address
-		.s0_write         (mm_interconnect_4_mu_afu_ddr4_bridge_s0_write),         //   input,    width = 1,      .write
-		.s0_read          (mm_interconnect_4_mu_afu_ddr4_bridge_s0_read),          //   input,    width = 1,      .read
-		.s0_byteenable    (mm_interconnect_4_mu_afu_ddr4_bridge_s0_byteenable),    //   input,   width = 64,      .byteenable
-		.s0_debugaccess   (mm_interconnect_4_mu_afu_ddr4_bridge_s0_debugaccess),   //   input,    width = 1,      .debugaccess
+		.s0_waitrequest   (mm_interconnect_1_mu_afu_ddr4_bridge_s0_waitrequest),   //  output,    width = 1,    s0.waitrequest
+		.s0_readdata      (mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdata),      //  output,  width = 512,      .readdata
+		.s0_readdatavalid (mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdatavalid), //  output,    width = 1,      .readdatavalid
+		.s0_burstcount    (mm_interconnect_1_mu_afu_ddr4_bridge_s0_burstcount),    //   input,    width = 3,      .burstcount
+		.s0_writedata     (mm_interconnect_1_mu_afu_ddr4_bridge_s0_writedata),     //   input,  width = 512,      .writedata
+		.s0_address       (mm_interconnect_1_mu_afu_ddr4_bridge_s0_address),       //   input,   width = 33,      .address
+		.s0_write         (mm_interconnect_1_mu_afu_ddr4_bridge_s0_write),         //   input,    width = 1,      .write
+		.s0_read          (mm_interconnect_1_mu_afu_ddr4_bridge_s0_read),          //   input,    width = 1,      .read
+		.s0_byteenable    (mm_interconnect_1_mu_afu_ddr4_bridge_s0_byteenable),    //   input,   width = 64,      .byteenable
+		.s0_debugaccess   (mm_interconnect_1_mu_afu_ddr4_bridge_s0_debugaccess),   //   input,    width = 1,      .debugaccess
 		.m0_waitrequest   (ddr4a_host_waitrequest),                                //   input,    width = 1,    m0.waitrequest
 		.m0_readdata      (ddr4a_host_readdata),                                   //   input,  width = 512,      .readdata
 		.m0_readdatavalid (ddr4a_host_readdatavalid),                              //   input,    width = 1,      .readdatavalid
@@ -269,39 +248,39 @@ module mu_afu_system (
 	mu_afu_id_afu mu_afu_id_afu (
 		.clk            (mu_afu_dma_clock_out_clk_clk),                            //   input,   width = 1,         clock.clk
 		.reset          (mu_afu_host_rst_out_reset_reset),                         //   input,   width = 1,         reset.reset
-		.avmm_readdata  (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
-		.avmm_writedata (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
-		.avmm_address   (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_address),   //   input,   width = 3,              .address
-		.avmm_write     (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_write),     //   input,   width = 1,              .write
-		.avmm_read      (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_read)       //   input,   width = 1,              .read
+		.avmm_readdata  (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
+		.avmm_writedata (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
+		.avmm_address   (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_address),   //   input,   width = 3,              .address
+		.avmm_write     (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_write),     //   input,   width = 1,              .write
+		.avmm_read      (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_read)       //   input,   width = 1,              .read
 	);
 
 	mu_afu_id_dma mu_afu_id_dma (
 		.clk            (mu_afu_dma_clock_out_clk_clk),                            //   input,   width = 1,         clock.clk
 		.reset          (mu_afu_host_rst_out_reset_reset),                         //   input,   width = 1,         reset.reset
-		.avmm_readdata  (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
-		.avmm_writedata (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
-		.avmm_address   (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_address),   //   input,   width = 3,              .address
-		.avmm_write     (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_write),     //   input,   width = 1,              .write
-		.avmm_read      (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_read)       //   input,   width = 1,              .read
+		.avmm_readdata  (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
+		.avmm_writedata (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
+		.avmm_address   (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_address),   //   input,   width = 3,              .address
+		.avmm_write     (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_write),     //   input,   width = 1,              .write
+		.avmm_read      (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_read)       //   input,   width = 1,              .read
 	);
 
 	mu_afu_id_mu mu_afu_id_mu (
 		.clk            (mu_afu_dma_clock_out_clk_clk),                           //   input,   width = 1,         clock.clk
 		.reset          (mu_afu_host_rst_out_reset_reset),                        //   input,   width = 1,         reset.reset
-		.avmm_readdata  (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
-		.avmm_writedata (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
-		.avmm_address   (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_address),   //   input,   width = 3,              .address
-		.avmm_write     (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_write),     //   input,   width = 1,              .write
-		.avmm_read      (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_read)       //   input,   width = 1,              .read
+		.avmm_readdata  (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_readdata),  //  output,  width = 64, afu_cfg_slave.readdata
+		.avmm_writedata (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_writedata), //   input,  width = 64,              .writedata
+		.avmm_address   (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_address),   //   input,   width = 3,              .address
+		.avmm_write     (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_write),     //   input,   width = 1,              .write
+		.avmm_read      (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_read)       //   input,   width = 1,              .read
 	);
 
 	mu_afu_matrix_unit mu_afu_matrix_unit (
-		.avmm_a_csr_address_i       (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_address),    //   input,   width = 8,    avmm_a_csr.address
-		.avmm_a_csr_chipselect_i    (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_chipselect), //   input,   width = 1,              .chipselect
-		.avmm_a_csr_write_i         (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_write),      //   input,   width = 1,              .write
-		.avmm_a_csr_writedata_i     (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_writedata),  //   input,  width = 32,              .writedata
-		.avmm_a_csr_readdata_o      (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_readdata),   //  output,  width = 32,              .readdata
+		.avmm_a_csr_address_i       (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_address),    //   input,   width = 8,    avmm_a_csr.address
+		.avmm_a_csr_chipselect_i    (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_chipselect), //   input,   width = 1,              .chipselect
+		.avmm_a_csr_write_i         (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_write),      //   input,   width = 1,              .write
+		.avmm_a_csr_writedata_i     (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_writedata),  //   input,  width = 32,              .writedata
+		.avmm_a_csr_readdata_o      (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_readdata),   //  output,  width = 32,              .readdata
 		.clk_i                      (mu_afu_mu_clock_out_clk_clk),                                //   input,   width = 1,    user_clock.clk
 		.rst_n_i                    (~rst_controller_reset_out_reset),                            //   input,   width = 1,       reset_n.reset_n
 		.avmm_h_ddr_readdata_i      (mu_afu_matrix_unit_avmm_h_ddr_readdata),                     //   input,   width = 8,    avmm_h_ddr.readdata
@@ -323,39 +302,14 @@ module mu_afu_system (
 		.out_clk (mu_afu_mu_clock_out_clk_clk)  //  output,  width = 1, out_clk.clk
 	);
 
-	mu_afu_mu_ddr4a_bridge mu_afu_mu_ddr4a_bridge (
-		.clk              (mu_afu_mu_clock_out_clk_clk),                               //   input,   width = 1,   clk.clk
-		.reset            (rst_controller_001_reset_out_reset),                        //   input,   width = 1, reset.reset
-		.s0_waitrequest   (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_waitrequest),   //  output,   width = 1,    s0.waitrequest
-		.s0_readdata      (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdata),      //  output,   width = 8,      .readdata
-		.s0_readdatavalid (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdatavalid), //  output,   width = 1,      .readdatavalid
-		.s0_burstcount    (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_burstcount),    //   input,   width = 1,      .burstcount
-		.s0_writedata     (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_writedata),     //   input,   width = 8,      .writedata
-		.s0_address       (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_address),       //   input,  width = 33,      .address
-		.s0_write         (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_write),         //   input,   width = 1,      .write
-		.s0_read          (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_read),          //   input,   width = 1,      .read
-		.s0_byteenable    (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_byteenable),    //   input,   width = 1,      .byteenable
-		.s0_debugaccess   (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_debugaccess),   //   input,   width = 1,      .debugaccess
-		.m0_waitrequest   (mu_afu_mu_ddr4a_bridge_m0_waitrequest),                     //   input,   width = 1,    m0.waitrequest
-		.m0_readdata      (mu_afu_mu_ddr4a_bridge_m0_readdata),                        //   input,   width = 8,      .readdata
-		.m0_readdatavalid (mu_afu_mu_ddr4a_bridge_m0_readdatavalid),                   //   input,   width = 1,      .readdatavalid
-		.m0_burstcount    (mu_afu_mu_ddr4a_bridge_m0_burstcount),                      //  output,   width = 1,      .burstcount
-		.m0_writedata     (mu_afu_mu_ddr4a_bridge_m0_writedata),                       //  output,   width = 8,      .writedata
-		.m0_address       (mu_afu_mu_ddr4a_bridge_m0_address),                         //  output,  width = 33,      .address
-		.m0_write         (mu_afu_mu_ddr4a_bridge_m0_write),                           //  output,   width = 1,      .write
-		.m0_read          (mu_afu_mu_ddr4a_bridge_m0_read),                            //  output,   width = 1,      .read
-		.m0_byteenable    (mu_afu_mu_ddr4a_bridge_m0_byteenable),                      //  output,   width = 1,      .byteenable
-		.m0_debugaccess   (mu_afu_mu_ddr4a_bridge_m0_debugaccess)                      //  output,   width = 1,      .debugaccess
-	);
-
 	mu_afu_mu_pgm_ram mu_afu_mu_pgm_ram (
-		.address     (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_address),    //   input,   width = 6,     s1.address
-		.clken       (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_clken),      //   input,   width = 1,       .clken
-		.chipselect  (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_chipselect), //   input,   width = 1,       .chipselect
-		.write       (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_write),      //   input,   width = 1,       .write
-		.readdata    (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_readdata),   //  output,  width = 64,       .readdata
-		.writedata   (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_writedata),  //   input,  width = 64,       .writedata
-		.byteenable  (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_byteenable), //   input,   width = 8,       .byteenable
+		.address     (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_address),    //   input,   width = 6,     s1.address
+		.clken       (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_clken),      //   input,   width = 1,       .clken
+		.chipselect  (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_chipselect), //   input,   width = 1,       .chipselect
+		.write       (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_write),      //   input,   width = 1,       .write
+		.readdata    (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_readdata),   //  output,  width = 64,       .readdata
+		.writedata   (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_writedata),  //   input,  width = 64,       .writedata
+		.byteenable  (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_byteenable), //   input,   width = 8,       .byteenable
 		.address2    (mm_interconnect_0_mu_afu_mu_pgm_ram_s2_address),    //   input,   width = 6,     s2.address
 		.chipselect2 (mm_interconnect_0_mu_afu_mu_pgm_ram_s2_chipselect), //   input,   width = 1,       .chipselect
 		.clken2      (mm_interconnect_0_mu_afu_mu_pgm_ram_s2_clken),      //   input,   width = 1,       .clken
@@ -369,15 +323,15 @@ module mu_afu_system (
 
 	msgdma_bbb msgdma_bbb (
 		.clk_clk                       (mu_afu_dma_clock_out_clk_clk),                   //   input,    width = 1,            clk.clk
-		.csr_address                   (mm_interconnect_5_msgdma_bbb_csr_address),       //   input,    width = 8,            csr.address
-		.csr_writedata                 (mm_interconnect_5_msgdma_bbb_csr_writedata),     //   input,   width = 64,               .writedata
-		.csr_byteenable                (mm_interconnect_5_msgdma_bbb_csr_byteenable),    //   input,    width = 8,               .byteenable
-		.csr_write                     (mm_interconnect_5_msgdma_bbb_csr_write),         //   input,    width = 1,               .write
-		.csr_read                      (mm_interconnect_5_msgdma_bbb_csr_read),          //   input,    width = 1,               .read
-		.csr_readdata                  (mm_interconnect_5_msgdma_bbb_csr_readdata),      //  output,   width = 64,               .readdata
-		.csr_readdatavalid             (mm_interconnect_5_msgdma_bbb_csr_readdatavalid), //  output,    width = 1,               .readdatavalid
-		.csr_waitrequest               (mm_interconnect_5_msgdma_bbb_csr_waitrequest),   //  output,    width = 1,               .waitrequest
-		.csr_burstcount                (mm_interconnect_5_msgdma_bbb_csr_burstcount),    //   input,    width = 1,               .burstcount
+		.csr_address                   (mm_interconnect_4_msgdma_bbb_csr_address),       //   input,    width = 8,            csr.address
+		.csr_writedata                 (mm_interconnect_4_msgdma_bbb_csr_writedata),     //   input,   width = 64,               .writedata
+		.csr_byteenable                (mm_interconnect_4_msgdma_bbb_csr_byteenable),    //   input,    width = 8,               .byteenable
+		.csr_write                     (mm_interconnect_4_msgdma_bbb_csr_write),         //   input,    width = 1,               .write
+		.csr_read                      (mm_interconnect_4_msgdma_bbb_csr_read),          //   input,    width = 1,               .read
+		.csr_readdata                  (mm_interconnect_4_msgdma_bbb_csr_readdata),      //  output,   width = 64,               .readdata
+		.csr_readdatavalid             (mm_interconnect_4_msgdma_bbb_csr_readdatavalid), //  output,    width = 1,               .readdatavalid
+		.csr_waitrequest               (mm_interconnect_4_msgdma_bbb_csr_waitrequest),   //  output,    width = 1,               .waitrequest
+		.csr_burstcount                (mm_interconnect_4_msgdma_bbb_csr_burstcount),    //   input,    width = 1,               .burstcount
 		.host_read_address             (msgdma_bbb_host_read_address),                   //  output,   width = 48,      host_read.address
 		.host_read_byteenable          (msgdma_bbb_host_read_byteenable),                //  output,   width = 64,               .byteenable
 		.host_read_burstcount          (msgdma_bbb_host_read_burstcount),                //  output,    width = 3,               .burstcount
@@ -422,65 +376,40 @@ module mu_afu_system (
 		.mu_afu_mu_clock_out_clk_clk                            (mu_afu_mu_clock_out_clk_clk)                        //   input,   width = 1,                          mu_afu_mu_clock_out_clk.clk
 	);
 
-	mu_afu_system_altera_mm_interconnect_191_xnlky3q mm_interconnect_1 (
-		.mu_afu_matrix_unit_avmm_h_ddr_address                  (mu_afu_matrix_unit_avmm_h_ddr_address),                     //   input,  width = 33,                    mu_afu_matrix_unit_avmm_h_ddr.address
-		.mu_afu_matrix_unit_avmm_h_ddr_waitrequest              (mu_afu_matrix_unit_avmm_h_ddr_waitrequest),                 //  output,   width = 1,                                                 .waitrequest
-		.mu_afu_matrix_unit_avmm_h_ddr_read                     (mu_afu_matrix_unit_avmm_h_ddr_read),                        //   input,   width = 1,                                                 .read
-		.mu_afu_matrix_unit_avmm_h_ddr_readdata                 (mu_afu_matrix_unit_avmm_h_ddr_readdata),                    //  output,   width = 8,                                                 .readdata
-		.mu_afu_matrix_unit_avmm_h_ddr_readdatavalid            (mu_afu_matrix_unit_avmm_h_ddr_readdatavalid),               //  output,   width = 1,                                                 .readdatavalid
-		.mu_afu_matrix_unit_avmm_h_ddr_write                    (mu_afu_matrix_unit_avmm_h_ddr_write),                       //   input,   width = 1,                                                 .write
-		.mu_afu_matrix_unit_avmm_h_ddr_writedata                (mu_afu_matrix_unit_avmm_h_ddr_writedata),                   //   input,   width = 8,                                                 .writedata
-		.mu_afu_mu_ddr4a_bridge_s0_address                      (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_address),       //  output,  width = 33,                        mu_afu_mu_ddr4a_bridge_s0.address
-		.mu_afu_mu_ddr4a_bridge_s0_write                        (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_write),         //  output,   width = 1,                                                 .write
-		.mu_afu_mu_ddr4a_bridge_s0_read                         (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_read),          //  output,   width = 1,                                                 .read
-		.mu_afu_mu_ddr4a_bridge_s0_readdata                     (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdata),      //   input,   width = 8,                                                 .readdata
-		.mu_afu_mu_ddr4a_bridge_s0_writedata                    (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_writedata),     //  output,   width = 8,                                                 .writedata
-		.mu_afu_mu_ddr4a_bridge_s0_burstcount                   (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_burstcount),    //  output,   width = 1,                                                 .burstcount
-		.mu_afu_mu_ddr4a_bridge_s0_byteenable                   (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_byteenable),    //  output,   width = 1,                                                 .byteenable
-		.mu_afu_mu_ddr4a_bridge_s0_readdatavalid                (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_readdatavalid), //   input,   width = 1,                                                 .readdatavalid
-		.mu_afu_mu_ddr4a_bridge_s0_waitrequest                  (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_waitrequest),   //   input,   width = 1,                                                 .waitrequest
-		.mu_afu_mu_ddr4a_bridge_s0_debugaccess                  (mm_interconnect_1_mu_afu_mu_ddr4a_bridge_s0_debugaccess),   //  output,   width = 1,                                                 .debugaccess
-		.mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                            //   input,   width = 1, mu_afu_matrix_unit_reset_n_reset_bridge_in_reset.reset
-		.mu_afu_mu_clock_out_clk_clk                            (mu_afu_mu_clock_out_clk_clk)                                //   input,   width = 1,                          mu_afu_mu_clock_out_clk.clk
+	mu_afu_system_altera_mm_interconnect_191_rgedibq mm_interconnect_1 (
+		.mu_afu_matrix_unit_avmm_h_ddr_address                  (mu_afu_matrix_unit_avmm_h_ddr_address),                 //   input,   width = 33,                    mu_afu_matrix_unit_avmm_h_ddr.address
+		.mu_afu_matrix_unit_avmm_h_ddr_waitrequest              (mu_afu_matrix_unit_avmm_h_ddr_waitrequest),             //  output,    width = 1,                                                 .waitrequest
+		.mu_afu_matrix_unit_avmm_h_ddr_read                     (mu_afu_matrix_unit_avmm_h_ddr_read),                    //   input,    width = 1,                                                 .read
+		.mu_afu_matrix_unit_avmm_h_ddr_readdata                 (mu_afu_matrix_unit_avmm_h_ddr_readdata),                //  output,    width = 8,                                                 .readdata
+		.mu_afu_matrix_unit_avmm_h_ddr_readdatavalid            (mu_afu_matrix_unit_avmm_h_ddr_readdatavalid),           //  output,    width = 1,                                                 .readdatavalid
+		.mu_afu_matrix_unit_avmm_h_ddr_write                    (mu_afu_matrix_unit_avmm_h_ddr_write),                   //   input,    width = 1,                                                 .write
+		.mu_afu_matrix_unit_avmm_h_ddr_writedata                (mu_afu_matrix_unit_avmm_h_ddr_writedata),               //   input,    width = 8,                                                 .writedata
+		.msgdma_bbb_mem_read_write_address                      (msgdma_bbb_mem_read_write_address),                     //   input,   width = 48,                        msgdma_bbb_mem_read_write.address
+		.msgdma_bbb_mem_read_write_waitrequest                  (msgdma_bbb_mem_read_write_waitrequest),                 //  output,    width = 1,                                                 .waitrequest
+		.msgdma_bbb_mem_read_write_burstcount                   (msgdma_bbb_mem_read_write_burstcount),                  //   input,    width = 3,                                                 .burstcount
+		.msgdma_bbb_mem_read_write_byteenable                   (msgdma_bbb_mem_read_write_byteenable),                  //   input,   width = 64,                                                 .byteenable
+		.msgdma_bbb_mem_read_write_read                         (msgdma_bbb_mem_read_write_read),                        //   input,    width = 1,                                                 .read
+		.msgdma_bbb_mem_read_write_readdata                     (msgdma_bbb_mem_read_write_readdata),                    //  output,  width = 512,                                                 .readdata
+		.msgdma_bbb_mem_read_write_readdatavalid                (msgdma_bbb_mem_read_write_readdatavalid),               //  output,    width = 1,                                                 .readdatavalid
+		.msgdma_bbb_mem_read_write_write                        (msgdma_bbb_mem_read_write_write),                       //   input,    width = 1,                                                 .write
+		.msgdma_bbb_mem_read_write_writedata                    (msgdma_bbb_mem_read_write_writedata),                   //   input,  width = 512,                                                 .writedata
+		.mu_afu_ddr4_bridge_s0_address                          (mm_interconnect_1_mu_afu_ddr4_bridge_s0_address),       //  output,   width = 33,                            mu_afu_ddr4_bridge_s0.address
+		.mu_afu_ddr4_bridge_s0_write                            (mm_interconnect_1_mu_afu_ddr4_bridge_s0_write),         //  output,    width = 1,                                                 .write
+		.mu_afu_ddr4_bridge_s0_read                             (mm_interconnect_1_mu_afu_ddr4_bridge_s0_read),          //  output,    width = 1,                                                 .read
+		.mu_afu_ddr4_bridge_s0_readdata                         (mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdata),      //   input,  width = 512,                                                 .readdata
+		.mu_afu_ddr4_bridge_s0_writedata                        (mm_interconnect_1_mu_afu_ddr4_bridge_s0_writedata),     //  output,  width = 512,                                                 .writedata
+		.mu_afu_ddr4_bridge_s0_burstcount                       (mm_interconnect_1_mu_afu_ddr4_bridge_s0_burstcount),    //  output,    width = 3,                                                 .burstcount
+		.mu_afu_ddr4_bridge_s0_byteenable                       (mm_interconnect_1_mu_afu_ddr4_bridge_s0_byteenable),    //  output,   width = 64,                                                 .byteenable
+		.mu_afu_ddr4_bridge_s0_readdatavalid                    (mm_interconnect_1_mu_afu_ddr4_bridge_s0_readdatavalid), //   input,    width = 1,                                                 .readdatavalid
+		.mu_afu_ddr4_bridge_s0_waitrequest                      (mm_interconnect_1_mu_afu_ddr4_bridge_s0_waitrequest),   //   input,    width = 1,                                                 .waitrequest
+		.mu_afu_ddr4_bridge_s0_debugaccess                      (mm_interconnect_1_mu_afu_ddr4_bridge_s0_debugaccess),   //  output,    width = 1,                                                 .debugaccess
+		.mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                        //   input,    width = 1, mu_afu_matrix_unit_reset_n_reset_bridge_in_reset.reset
+		.mu_afu_ddr4_bridge_reset_reset_bridge_in_reset_reset   (mu_afu_host_rst_out_reset_reset),                       //   input,    width = 1,   mu_afu_ddr4_bridge_reset_reset_bridge_in_reset.reset
+		.mu_afu_mu_clock_out_clk_clk                            (mu_afu_mu_clock_out_clk_clk),                           //   input,    width = 1,                          mu_afu_mu_clock_out_clk.clk
+		.mu_afu_dma_clock_out_clk_clk                           (mu_afu_dma_clock_out_clk_clk)                           //   input,    width = 1,                         mu_afu_dma_clock_out_clk.clk
 	);
 
-	mu_afu_system_altera_mm_interconnect_191_b4phuiq mm_interconnect_4 (
-		.mu_afu_mu_ddr4a_bridge_m0_address                                      (mu_afu_mu_ddr4a_bridge_m0_address),                     //   input,   width = 33,                                        mu_afu_mu_ddr4a_bridge_m0.address
-		.mu_afu_mu_ddr4a_bridge_m0_waitrequest                                  (mu_afu_mu_ddr4a_bridge_m0_waitrequest),                 //  output,    width = 1,                                                                 .waitrequest
-		.mu_afu_mu_ddr4a_bridge_m0_burstcount                                   (mu_afu_mu_ddr4a_bridge_m0_burstcount),                  //   input,    width = 1,                                                                 .burstcount
-		.mu_afu_mu_ddr4a_bridge_m0_byteenable                                   (mu_afu_mu_ddr4a_bridge_m0_byteenable),                  //   input,    width = 1,                                                                 .byteenable
-		.mu_afu_mu_ddr4a_bridge_m0_read                                         (mu_afu_mu_ddr4a_bridge_m0_read),                        //   input,    width = 1,                                                                 .read
-		.mu_afu_mu_ddr4a_bridge_m0_readdata                                     (mu_afu_mu_ddr4a_bridge_m0_readdata),                    //  output,    width = 8,                                                                 .readdata
-		.mu_afu_mu_ddr4a_bridge_m0_readdatavalid                                (mu_afu_mu_ddr4a_bridge_m0_readdatavalid),               //  output,    width = 1,                                                                 .readdatavalid
-		.mu_afu_mu_ddr4a_bridge_m0_write                                        (mu_afu_mu_ddr4a_bridge_m0_write),                       //   input,    width = 1,                                                                 .write
-		.mu_afu_mu_ddr4a_bridge_m0_writedata                                    (mu_afu_mu_ddr4a_bridge_m0_writedata),                   //   input,    width = 8,                                                                 .writedata
-		.mu_afu_mu_ddr4a_bridge_m0_debugaccess                                  (mu_afu_mu_ddr4a_bridge_m0_debugaccess),                 //   input,    width = 1,                                                                 .debugaccess
-		.msgdma_bbb_mem_read_write_address                                      (msgdma_bbb_mem_read_write_address),                     //   input,   width = 48,                                        msgdma_bbb_mem_read_write.address
-		.msgdma_bbb_mem_read_write_waitrequest                                  (msgdma_bbb_mem_read_write_waitrequest),                 //  output,    width = 1,                                                                 .waitrequest
-		.msgdma_bbb_mem_read_write_burstcount                                   (msgdma_bbb_mem_read_write_burstcount),                  //   input,    width = 3,                                                                 .burstcount
-		.msgdma_bbb_mem_read_write_byteenable                                   (msgdma_bbb_mem_read_write_byteenable),                  //   input,   width = 64,                                                                 .byteenable
-		.msgdma_bbb_mem_read_write_read                                         (msgdma_bbb_mem_read_write_read),                        //   input,    width = 1,                                                                 .read
-		.msgdma_bbb_mem_read_write_readdata                                     (msgdma_bbb_mem_read_write_readdata),                    //  output,  width = 512,                                                                 .readdata
-		.msgdma_bbb_mem_read_write_readdatavalid                                (msgdma_bbb_mem_read_write_readdatavalid),               //  output,    width = 1,                                                                 .readdatavalid
-		.msgdma_bbb_mem_read_write_write                                        (msgdma_bbb_mem_read_write_write),                       //   input,    width = 1,                                                                 .write
-		.msgdma_bbb_mem_read_write_writedata                                    (msgdma_bbb_mem_read_write_writedata),                   //   input,  width = 512,                                                                 .writedata
-		.mu_afu_ddr4_bridge_s0_address                                          (mm_interconnect_4_mu_afu_ddr4_bridge_s0_address),       //  output,   width = 33,                                            mu_afu_ddr4_bridge_s0.address
-		.mu_afu_ddr4_bridge_s0_write                                            (mm_interconnect_4_mu_afu_ddr4_bridge_s0_write),         //  output,    width = 1,                                                                 .write
-		.mu_afu_ddr4_bridge_s0_read                                             (mm_interconnect_4_mu_afu_ddr4_bridge_s0_read),          //  output,    width = 1,                                                                 .read
-		.mu_afu_ddr4_bridge_s0_readdata                                         (mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdata),      //   input,  width = 512,                                                                 .readdata
-		.mu_afu_ddr4_bridge_s0_writedata                                        (mm_interconnect_4_mu_afu_ddr4_bridge_s0_writedata),     //  output,  width = 512,                                                                 .writedata
-		.mu_afu_ddr4_bridge_s0_burstcount                                       (mm_interconnect_4_mu_afu_ddr4_bridge_s0_burstcount),    //  output,    width = 3,                                                                 .burstcount
-		.mu_afu_ddr4_bridge_s0_byteenable                                       (mm_interconnect_4_mu_afu_ddr4_bridge_s0_byteenable),    //  output,   width = 64,                                                                 .byteenable
-		.mu_afu_ddr4_bridge_s0_readdatavalid                                    (mm_interconnect_4_mu_afu_ddr4_bridge_s0_readdatavalid), //   input,    width = 1,                                                                 .readdatavalid
-		.mu_afu_ddr4_bridge_s0_waitrequest                                      (mm_interconnect_4_mu_afu_ddr4_bridge_s0_waitrequest),   //   input,    width = 1,                                                                 .waitrequest
-		.mu_afu_ddr4_bridge_s0_debugaccess                                      (mm_interconnect_4_mu_afu_ddr4_bridge_s0_debugaccess),   //  output,    width = 1,                                                                 .debugaccess
-		.mu_afu_ddr4_bridge_reset_reset_bridge_in_reset_reset                   (mu_afu_host_rst_out_reset_reset),                       //   input,    width = 1,                   mu_afu_ddr4_bridge_reset_reset_bridge_in_reset.reset
-		.mu_afu_mu_ddr4a_bridge_m0_translator_reset_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                        //   input,    width = 1, mu_afu_mu_ddr4a_bridge_m0_translator_reset_reset_bridge_in_reset.reset
-		.mu_afu_mu_clock_out_clk_clk                                            (mu_afu_mu_clock_out_clk_clk),                           //   input,    width = 1,                                          mu_afu_mu_clock_out_clk.clk
-		.mu_afu_dma_clock_out_clk_clk                                           (mu_afu_dma_clock_out_clk_clk)                           //   input,    width = 1,                                         mu_afu_dma_clock_out_clk.clk
-	);
-
-	mu_afu_system_altera_mm_interconnect_191_olxxy2a mm_interconnect_5 (
+	mu_afu_system_altera_mm_interconnect_191_olxxy2a mm_interconnect_4 (
 		.mu_afu_csr_bridge_master_address                                      (mu_afu_csr_bridge_master_address),                           //   input,  width = 48,                                        mu_afu_csr_bridge_master.address
 		.mu_afu_csr_bridge_master_waitrequest                                  (mu_afu_csr_bridge_master_waitrequest),                       //  output,   width = 1,                                                                .waitrequest
 		.mu_afu_csr_bridge_master_burstcount                                   (mu_afu_csr_bridge_master_burstcount),                        //   input,   width = 1,                                                                .burstcount
@@ -490,42 +419,42 @@ module mu_afu_system (
 		.mu_afu_csr_bridge_master_readdatavalid                                (mu_afu_csr_bridge_master_readdatavalid),                     //  output,   width = 1,                                                                .readdatavalid
 		.mu_afu_csr_bridge_master_write                                        (mu_afu_csr_bridge_master_write),                             //   input,   width = 1,                                                                .write
 		.mu_afu_csr_bridge_master_writedata                                    (mu_afu_csr_bridge_master_writedata),                         //   input,  width = 64,                                                                .writedata
-		.mu_afu_id_afu_afu_cfg_slave_address                                   (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_address),      //  output,   width = 3,                                     mu_afu_id_afu_afu_cfg_slave.address
-		.mu_afu_id_afu_afu_cfg_slave_write                                     (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_write),        //  output,   width = 1,                                                                .write
-		.mu_afu_id_afu_afu_cfg_slave_read                                      (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_read),         //  output,   width = 1,                                                                .read
-		.mu_afu_id_afu_afu_cfg_slave_readdata                                  (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_readdata),     //   input,  width = 64,                                                                .readdata
-		.mu_afu_id_afu_afu_cfg_slave_writedata                                 (mm_interconnect_5_mu_afu_id_afu_afu_cfg_slave_writedata),    //  output,  width = 64,                                                                .writedata
-		.mu_afu_id_mu_afu_cfg_slave_address                                    (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_address),       //  output,   width = 3,                                      mu_afu_id_mu_afu_cfg_slave.address
-		.mu_afu_id_mu_afu_cfg_slave_write                                      (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_write),         //  output,   width = 1,                                                                .write
-		.mu_afu_id_mu_afu_cfg_slave_read                                       (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_read),          //  output,   width = 1,                                                                .read
-		.mu_afu_id_mu_afu_cfg_slave_readdata                                   (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_readdata),      //   input,  width = 64,                                                                .readdata
-		.mu_afu_id_mu_afu_cfg_slave_writedata                                  (mm_interconnect_5_mu_afu_id_mu_afu_cfg_slave_writedata),     //  output,  width = 64,                                                                .writedata
-		.mu_afu_id_dma_afu_cfg_slave_address                                   (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_address),      //  output,   width = 3,                                     mu_afu_id_dma_afu_cfg_slave.address
-		.mu_afu_id_dma_afu_cfg_slave_write                                     (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_write),        //  output,   width = 1,                                                                .write
-		.mu_afu_id_dma_afu_cfg_slave_read                                      (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_read),         //  output,   width = 1,                                                                .read
-		.mu_afu_id_dma_afu_cfg_slave_readdata                                  (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_readdata),     //   input,  width = 64,                                                                .readdata
-		.mu_afu_id_dma_afu_cfg_slave_writedata                                 (mm_interconnect_5_mu_afu_id_dma_afu_cfg_slave_writedata),    //  output,  width = 64,                                                                .writedata
-		.mu_afu_matrix_unit_avmm_a_csr_address                                 (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_address),    //  output,   width = 8,                                   mu_afu_matrix_unit_avmm_a_csr.address
-		.mu_afu_matrix_unit_avmm_a_csr_write                                   (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_write),      //  output,   width = 1,                                                                .write
-		.mu_afu_matrix_unit_avmm_a_csr_readdata                                (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_readdata),   //   input,  width = 32,                                                                .readdata
-		.mu_afu_matrix_unit_avmm_a_csr_writedata                               (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_writedata),  //  output,  width = 32,                                                                .writedata
-		.mu_afu_matrix_unit_avmm_a_csr_chipselect                              (mm_interconnect_5_mu_afu_matrix_unit_avmm_a_csr_chipselect), //  output,   width = 1,                                                                .chipselect
-		.msgdma_bbb_csr_address                                                (mm_interconnect_5_msgdma_bbb_csr_address),                   //  output,   width = 8,                                                  msgdma_bbb_csr.address
-		.msgdma_bbb_csr_write                                                  (mm_interconnect_5_msgdma_bbb_csr_write),                     //  output,   width = 1,                                                                .write
-		.msgdma_bbb_csr_read                                                   (mm_interconnect_5_msgdma_bbb_csr_read),                      //  output,   width = 1,                                                                .read
-		.msgdma_bbb_csr_readdata                                               (mm_interconnect_5_msgdma_bbb_csr_readdata),                  //   input,  width = 64,                                                                .readdata
-		.msgdma_bbb_csr_writedata                                              (mm_interconnect_5_msgdma_bbb_csr_writedata),                 //  output,  width = 64,                                                                .writedata
-		.msgdma_bbb_csr_burstcount                                             (mm_interconnect_5_msgdma_bbb_csr_burstcount),                //  output,   width = 1,                                                                .burstcount
-		.msgdma_bbb_csr_byteenable                                             (mm_interconnect_5_msgdma_bbb_csr_byteenable),                //  output,   width = 8,                                                                .byteenable
-		.msgdma_bbb_csr_readdatavalid                                          (mm_interconnect_5_msgdma_bbb_csr_readdatavalid),             //   input,   width = 1,                                                                .readdatavalid
-		.msgdma_bbb_csr_waitrequest                                            (mm_interconnect_5_msgdma_bbb_csr_waitrequest),               //   input,   width = 1,                                                                .waitrequest
-		.mu_afu_mu_pgm_ram_s1_address                                          (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_address),             //  output,   width = 6,                                            mu_afu_mu_pgm_ram_s1.address
-		.mu_afu_mu_pgm_ram_s1_write                                            (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_write),               //  output,   width = 1,                                                                .write
-		.mu_afu_mu_pgm_ram_s1_readdata                                         (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_readdata),            //   input,  width = 64,                                                                .readdata
-		.mu_afu_mu_pgm_ram_s1_writedata                                        (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_writedata),           //  output,  width = 64,                                                                .writedata
-		.mu_afu_mu_pgm_ram_s1_byteenable                                       (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_byteenable),          //  output,   width = 8,                                                                .byteenable
-		.mu_afu_mu_pgm_ram_s1_chipselect                                       (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_chipselect),          //  output,   width = 1,                                                                .chipselect
-		.mu_afu_mu_pgm_ram_s1_clken                                            (mm_interconnect_5_mu_afu_mu_pgm_ram_s1_clken),               //  output,   width = 1,                                                                .clken
+		.mu_afu_id_afu_afu_cfg_slave_address                                   (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_address),      //  output,   width = 3,                                     mu_afu_id_afu_afu_cfg_slave.address
+		.mu_afu_id_afu_afu_cfg_slave_write                                     (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_write),        //  output,   width = 1,                                                                .write
+		.mu_afu_id_afu_afu_cfg_slave_read                                      (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_read),         //  output,   width = 1,                                                                .read
+		.mu_afu_id_afu_afu_cfg_slave_readdata                                  (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_readdata),     //   input,  width = 64,                                                                .readdata
+		.mu_afu_id_afu_afu_cfg_slave_writedata                                 (mm_interconnect_4_mu_afu_id_afu_afu_cfg_slave_writedata),    //  output,  width = 64,                                                                .writedata
+		.mu_afu_id_mu_afu_cfg_slave_address                                    (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_address),       //  output,   width = 3,                                      mu_afu_id_mu_afu_cfg_slave.address
+		.mu_afu_id_mu_afu_cfg_slave_write                                      (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_write),         //  output,   width = 1,                                                                .write
+		.mu_afu_id_mu_afu_cfg_slave_read                                       (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_read),          //  output,   width = 1,                                                                .read
+		.mu_afu_id_mu_afu_cfg_slave_readdata                                   (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_readdata),      //   input,  width = 64,                                                                .readdata
+		.mu_afu_id_mu_afu_cfg_slave_writedata                                  (mm_interconnect_4_mu_afu_id_mu_afu_cfg_slave_writedata),     //  output,  width = 64,                                                                .writedata
+		.mu_afu_id_dma_afu_cfg_slave_address                                   (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_address),      //  output,   width = 3,                                     mu_afu_id_dma_afu_cfg_slave.address
+		.mu_afu_id_dma_afu_cfg_slave_write                                     (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_write),        //  output,   width = 1,                                                                .write
+		.mu_afu_id_dma_afu_cfg_slave_read                                      (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_read),         //  output,   width = 1,                                                                .read
+		.mu_afu_id_dma_afu_cfg_slave_readdata                                  (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_readdata),     //   input,  width = 64,                                                                .readdata
+		.mu_afu_id_dma_afu_cfg_slave_writedata                                 (mm_interconnect_4_mu_afu_id_dma_afu_cfg_slave_writedata),    //  output,  width = 64,                                                                .writedata
+		.mu_afu_matrix_unit_avmm_a_csr_address                                 (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_address),    //  output,   width = 8,                                   mu_afu_matrix_unit_avmm_a_csr.address
+		.mu_afu_matrix_unit_avmm_a_csr_write                                   (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_write),      //  output,   width = 1,                                                                .write
+		.mu_afu_matrix_unit_avmm_a_csr_readdata                                (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_readdata),   //   input,  width = 32,                                                                .readdata
+		.mu_afu_matrix_unit_avmm_a_csr_writedata                               (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_writedata),  //  output,  width = 32,                                                                .writedata
+		.mu_afu_matrix_unit_avmm_a_csr_chipselect                              (mm_interconnect_4_mu_afu_matrix_unit_avmm_a_csr_chipselect), //  output,   width = 1,                                                                .chipselect
+		.msgdma_bbb_csr_address                                                (mm_interconnect_4_msgdma_bbb_csr_address),                   //  output,   width = 8,                                                  msgdma_bbb_csr.address
+		.msgdma_bbb_csr_write                                                  (mm_interconnect_4_msgdma_bbb_csr_write),                     //  output,   width = 1,                                                                .write
+		.msgdma_bbb_csr_read                                                   (mm_interconnect_4_msgdma_bbb_csr_read),                      //  output,   width = 1,                                                                .read
+		.msgdma_bbb_csr_readdata                                               (mm_interconnect_4_msgdma_bbb_csr_readdata),                  //   input,  width = 64,                                                                .readdata
+		.msgdma_bbb_csr_writedata                                              (mm_interconnect_4_msgdma_bbb_csr_writedata),                 //  output,  width = 64,                                                                .writedata
+		.msgdma_bbb_csr_burstcount                                             (mm_interconnect_4_msgdma_bbb_csr_burstcount),                //  output,   width = 1,                                                                .burstcount
+		.msgdma_bbb_csr_byteenable                                             (mm_interconnect_4_msgdma_bbb_csr_byteenable),                //  output,   width = 8,                                                                .byteenable
+		.msgdma_bbb_csr_readdatavalid                                          (mm_interconnect_4_msgdma_bbb_csr_readdatavalid),             //   input,   width = 1,                                                                .readdatavalid
+		.msgdma_bbb_csr_waitrequest                                            (mm_interconnect_4_msgdma_bbb_csr_waitrequest),               //   input,   width = 1,                                                                .waitrequest
+		.mu_afu_mu_pgm_ram_s1_address                                          (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_address),             //  output,   width = 6,                                            mu_afu_mu_pgm_ram_s1.address
+		.mu_afu_mu_pgm_ram_s1_write                                            (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_write),               //  output,   width = 1,                                                                .write
+		.mu_afu_mu_pgm_ram_s1_readdata                                         (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_readdata),            //   input,  width = 64,                                                                .readdata
+		.mu_afu_mu_pgm_ram_s1_writedata                                        (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_writedata),           //  output,  width = 64,                                                                .writedata
+		.mu_afu_mu_pgm_ram_s1_byteenable                                       (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_byteenable),          //  output,   width = 8,                                                                .byteenable
+		.mu_afu_mu_pgm_ram_s1_chipselect                                       (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_chipselect),          //  output,   width = 1,                                                                .chipselect
+		.mu_afu_mu_pgm_ram_s1_clken                                            (mm_interconnect_4_mu_afu_mu_pgm_ram_s1_clken),               //  output,   width = 1,                                                                .clken
 		.mu_afu_matrix_unit_reset_n_reset_bridge_in_reset_reset                (rst_controller_reset_out_reset),                             //   input,   width = 1,                mu_afu_matrix_unit_reset_n_reset_bridge_in_reset.reset
 		.mu_afu_csr_bridge_master_translator_reset_reset_bridge_in_reset_reset (mu_afu_host_rst_out_reset_reset),                            //   input,   width = 1, mu_afu_csr_bridge_master_translator_reset_reset_bridge_in_reset.reset
 		.mu_afu_dma_clock_out_clk_clk                                          (mu_afu_dma_clock_out_clk_clk),                               //   input,   width = 1,                                        mu_afu_dma_clock_out_clk.clk
@@ -593,69 +522,6 @@ module mu_afu_system (
 		.reset_req_in14 (1'b0),                            // (terminated),                       
 		.reset_in15     (1'b0),                            // (terminated),                       
 		.reset_req_in15 (1'b0)                             // (terminated),                       
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
-		.OUTPUT_RESET_SYNC_EDGES   ("both"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_001 (
-		.reset_in0      (mu_afu_host_rst_out_reset_reset),    //   input,  width = 1, reset_in0.reset
-		.clk            (mu_afu_mu_clock_out_clk_clk),        //   input,  width = 1,       clk.clk
-		.reset_out      (rst_controller_001_reset_out_reset), //  output,  width = 1, reset_out.reset
-		.reset_req      (),                                   // (terminated),                       
-		.reset_req_in0  (1'b0),                               // (terminated),                       
-		.reset_in1      (1'b0),                               // (terminated),                       
-		.reset_req_in1  (1'b0),                               // (terminated),                       
-		.reset_in2      (1'b0),                               // (terminated),                       
-		.reset_req_in2  (1'b0),                               // (terminated),                       
-		.reset_in3      (1'b0),                               // (terminated),                       
-		.reset_req_in3  (1'b0),                               // (terminated),                       
-		.reset_in4      (1'b0),                               // (terminated),                       
-		.reset_req_in4  (1'b0),                               // (terminated),                       
-		.reset_in5      (1'b0),                               // (terminated),                       
-		.reset_req_in5  (1'b0),                               // (terminated),                       
-		.reset_in6      (1'b0),                               // (terminated),                       
-		.reset_req_in6  (1'b0),                               // (terminated),                       
-		.reset_in7      (1'b0),                               // (terminated),                       
-		.reset_req_in7  (1'b0),                               // (terminated),                       
-		.reset_in8      (1'b0),                               // (terminated),                       
-		.reset_req_in8  (1'b0),                               // (terminated),                       
-		.reset_in9      (1'b0),                               // (terminated),                       
-		.reset_req_in9  (1'b0),                               // (terminated),                       
-		.reset_in10     (1'b0),                               // (terminated),                       
-		.reset_req_in10 (1'b0),                               // (terminated),                       
-		.reset_in11     (1'b0),                               // (terminated),                       
-		.reset_req_in11 (1'b0),                               // (terminated),                       
-		.reset_in12     (1'b0),                               // (terminated),                       
-		.reset_req_in12 (1'b0),                               // (terminated),                       
-		.reset_in13     (1'b0),                               // (terminated),                       
-		.reset_req_in13 (1'b0),                               // (terminated),                       
-		.reset_in14     (1'b0),                               // (terminated),                       
-		.reset_req_in14 (1'b0),                               // (terminated),                       
-		.reset_in15     (1'b0),                               // (terminated),                       
-		.reset_req_in15 (1'b0)                                // (terminated),                       
 	);
 
 endmodule

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="mu_afu_id_mu" kind="mu_afu_id_mu" version="1.0" fabric="QSYS">
  <!-- Format version 19.2 57 (Future versions may contain additional information.) -->
- <!-- 2024.05.27.16:37:35 -->
+ <!-- 2024.05.28.22:00:55 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
@@ -152,7 +152,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="DFH_NEXT_OFFSET">
    <type>java.math.BigInteger</type>
-   <value>4608</value>
+   <value>3840</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>

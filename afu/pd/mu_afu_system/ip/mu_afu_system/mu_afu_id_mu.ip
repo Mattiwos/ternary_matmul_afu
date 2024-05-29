@@ -525,7 +525,7 @@
         <ipxact:parameter parameterId="DFH_NEXT_OFFSET" type="string">
           <ipxact:name>DFH_NEXT_OFFSET</ipxact:name>
           <ipxact:displayName>DFH_NEXT_OFFSET</ipxact:displayName>
-          <ipxact:value>4608</ipxact:value>
+          <ipxact:value>3840</ipxact:value>
         </ipxact:parameter>
         <ipxact:parameter parameterId="DFH_FEATURE_ID" type="string">
           <ipxact:name>DFH_FEATURE_ID</ipxact:name>

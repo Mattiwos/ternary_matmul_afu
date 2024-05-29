@@ -23,7 +23,7 @@ set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX0FGVV9NSU5PUl9SRVY=::MA==::REZIX0FGVV9NSU5PUl9SRVY="
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX0FGVV9NQUpPUl9SRVY=::MQ==::REZIX0FGVV9NQUpPUl9SRVY="
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX0VORF9PRl9MSVNU::MQ==::REZIX0VORF9PRl9MSVNU"
-set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX05FWFRfT0ZGU0VU::NDYwOA==::REZIX05FWFRfT0ZGU0VU"
+set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX05FWFRfT0ZGU0VU::Mzg0MA==::REZIX05FWFRfT0ZGU0VU"
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "REZIX0ZFQVRVUkVfSUQ=::MjczMA==::REZIX0ZFQVRVUkVfSUQ="
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "TkVYVF9BRlVfT0ZGU0VU::MA==::TkVYVF9BRlVfT0ZGU0VU"
 set_global_assignment -entity "afu_id_avmm_slave" -library "afu_id_avmm_slave_10" -name IP_COMPONENT_PARAMETER "Q1JFQVRFX1NDUkFUQ0hfUkVH::MA==::Q1JFQVRFX1NDUkFUQ0hfUkVH"
