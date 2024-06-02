@@ -21,7 +21,7 @@
 ### Development
 1. After logging into an S10 node the Quartus GUI may be accessed using X2Go. See documentation [here](https://devcloud.intel.com/oneapi/documentation/shell-commands/#graphics-usage-on-the-fpga-devcloud).
 
-2. The Matrix Unit RTL modified for the AFU may be found at ```afu/pd/matrix_unit```.
+2. The Matrix Unit RTL that is modified for the AFU may be found at ```afu/pd/matrix_unit```.
 
 3. The Platform Designer system instantiating the Matrix Unit IP may be opened from the Quartus GUI
 
@@ -88,7 +88,7 @@
 
 ### Running the AFU
 
-After the design compiles, the ```afu/py/profile_core.py``` script may be run to profile the AFU. The script programs the .gbs file, assembles and programs the matrix unit core instruction memory, and applies random test vectors. The script will not perform functional verification beyond checking that output vectors are updated. TODO: compare the output to a golden reference model. Prebuilt GBS files are available w/ varyious vector dimensions in the gbs_archive directory. To procedure to test the designs is as follows
+After the design compiles, the ```afu/py/profile_core.py``` script may be run to profile the AFU. The script programs the .gbs file, assembles and programs the matrix unit core instruction memory, and applies random test vectors. Prebuilt GBS files are available w/ various vector dimensions in the gbs_archive directory. The procedure to test the designs is shown below. The script will not perform functional verification beyond checking that output vectors are updated (when the --debug switch is set). TODO: compare the output to a golden reference model.
 
 1. Untar the archive (this example will show the flow for a design with D=512)
 
