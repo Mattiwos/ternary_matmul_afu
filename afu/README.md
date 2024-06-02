@@ -1,5 +1,32 @@
 ## Matrix Unit AFU
 
+### Overview
+This directory is structured as follows
+
+- ```afu/cpp/``` 
+    
+    - CPP code for the DMA basic building block (BBB) IP modified to work with the Matrix Unit IP. These functions are imported as ctypes functions for use with Python.
+
+- ```afu/gbs_archive```
+    
+    - An archive of precompiled designs with various D settings (512, 1024, 2048).
+
+- ```afu/pd```
+    
+    - All assets used in the modified DMA BBB Platform Designer system that contains the Matrix Unit IP.
+
+- ```afu/py```
+
+    - Python script and package to run tests on the Matrix Unit IP
+
+- ```afu/rtl```
+
+    - RTL instantiating all shims between the FPGA Interface Manager (FIM/Blue Bitstream) and the AFU, the AFU itself, and the Platform Designer system.
+
+- ```afu/devcloud_batch.sh```
+
+    - Example script for compile job submission.
+
 ### DevCloud login
 1. Get an SSH key from DevCloud
     - If you weren't issued one or it was lost navigate [here](https://devcloud.intel.com/oneapi/documentation/), login, and follow the access instructions for your OS.
@@ -84,7 +111,7 @@
     make sim
     ```
 
-4. You may use the OPAE C/C++ API to run tests and observe the AFU waveforms. The wrapper for the Matrix Unit AFU is similar to the DMA AFU example included in cd ```$OPAE_PLATFORM_ROOT/hw/samples/dma_afu/sw```. As such a testbench may be developed using the example see [here](https://www.intel.com/content/www/us/en/docs/programmable/683270/2-0-1/running-dma-afu-example.html) for documentation. TODO: implement ASE testbench.
+4. You may use the OPAE C/C++ API to run tests and observe the AFU waveforms. The wrapper for the Matrix Unit AFU is similar to the DMA AFU example included in cd ```$OPAE_PLATFORM_ROOT/hw/samples/dma_afu/sw```. A testbench may be developed using the DMA example see [here](https://www.intel.com/content/www/us/en/docs/programmable/683270/2-0-1/running-dma-afu-example.html) for documentation. TODO: implement ASE testbench.
 
 ### Running the AFU
 
