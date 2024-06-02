@@ -2,3 +2,4 @@ build_synth*
 *.log
 *.rpt
 *.sof
+*__init__.pyc
