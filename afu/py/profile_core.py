@@ -1,7 +1,10 @@
+import sys, os
+script_path = os.path.dirname(os.path.abspath(__file__))
 from mu_afu_d5005 import MUAFUClib, MUAFUD5005
 from math import log2, ceil
 import numpy as np
 import argparse
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -34,6 +37,8 @@ if __name__ == '__main__':
     
     parser.add_argument('--fclk_mhz', default=50, dest='fclk_mhz', type=int,
         help='integer dimension of input vector.')
+    
+    
     
     args            = parser.parse_args()
     dim             = args.dim
@@ -79,8 +84,9 @@ if __name__ == '__main__':
     buffer_size = int(2**(ceil(log2(buffer_size))))
     
     # Instantiate clib class
+    clib_dir = f"{script_path}/../cpp"
     clib = MUAFUClib(
-        clib_dir="../cpp",
+        clib_dir=clib_dir,
         quiet_comp=True,
         # Enable this to see print statements from C-drivers
         debug_clib=False
@@ -135,7 +141,7 @@ if __name__ == '__main__':
         print(df_power)
     
     # Print key results
-    print("********* RESULTS ********* ")
+    print("\n************* RESULTS ************* ")
     avg_core_time = df_time["Core Time"].mean()
     print(f"      AVG CORE TIME : {avg_core_time:05.4f} s")
     ddr4_total_time = df_time["DMA Tx Time"].values + df_time["DMA Rx Time"].values

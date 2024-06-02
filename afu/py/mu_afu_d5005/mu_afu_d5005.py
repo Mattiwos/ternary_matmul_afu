@@ -22,7 +22,6 @@ class MUAFUD5005():
         user_fclk_mhz=75
     ):
         # User-defined accelerator ID
-        self.clib=clib
         self.asm=asm
         self.uuid=uuid
         self.gbs_path=gbs_path

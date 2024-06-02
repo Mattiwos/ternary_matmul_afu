@@ -93,9 +93,9 @@ After the design compiles, the ```afu/py/profile_core.py``` script may be run to
 1. Untar the archive (this example will show the flow for a design with D=512)
 
     ``` console
-    uXXXXX@s00X-n00X:~$ tar -xvf afu/gbs_archive/512.tar afu/gbs_archive/512/
+    uXXXXX@s00X-n00X:~$ tar -xvf afu/gbs_archive/512.tar -C afu/gbs_archive/
     uXXXXX@s00X-n00X:~$ tools_setup -t S10DS
-    uXXXXX@s00X-n00X:~$ quartus [/path/to/repo/]afu/build_synth/build/dcp.qpf &                             
+    uXXXXX@s00X-n00X:~$ quartus [/path/to/repo/]afu/build_synth/build/dcp.qpf                      
     ```
 2. Setup the tools
 

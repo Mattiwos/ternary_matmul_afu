@@ -1,5 +1,7 @@
-import sys
-sys.path.append('../../tmi')
+import sys, os
+script_path = os.path.dirname(os.path.abspath(__file__))
+print(script_path)
+sys.path.append(os.path.join(script_path, "../../../tmi"))
 from sim import parse_tmi_file
 
 class TMIAssembler():
