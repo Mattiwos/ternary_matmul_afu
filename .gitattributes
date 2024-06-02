@@ -9,5 +9,3 @@
 *.f     linguist-language=SystemVerilog
 # Vivado
 *.xci   linguist-language=XML
-
-*.png binary
