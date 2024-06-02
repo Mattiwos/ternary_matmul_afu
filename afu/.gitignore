@@ -1,1 +1,4 @@
 build_synth*
+*.log
+*.rpt
+*.sof
