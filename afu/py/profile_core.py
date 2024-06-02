@@ -7,7 +7,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description=
             'This application will (1) update the FPGA PR with the core bitstream '
-            'defined by the input .gbs file (2) assemble and program the core instruction memory '
+            'given by the input .gbs file, (2) assemble and program the core instruction memory, '
             '(3) perform the program n-times populating new test-vectors each time. '
             'In (3), the execution time of the program is recorded. Finally, the '
             'application will (4) spawn a subprocess to continuously operate the core '
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     parser.add_argument('--debug', default=False, dest='debug', type=bool,
         help='integer dimension of input vector.')
     
-    parser.add_argument('--fclk_mhz', default=50, dest='fclk_mhz', type=bool,
+    parser.add_argument('--fclk_mhz', default=50, dest='fclk_mhz', type=int,
         help='integer dimension of input vector.')
     
     args            = parser.parse_args()
@@ -115,6 +115,8 @@ if __name__ == '__main__':
     df_time = afu.random_timed_test(mu_ddr_addr_spec, start_offset, 
                                     ready_offset, mmio_grp, n=num_runs_time, 
                                     payload_size=2**22)
+    
+    # DMA transfers and core runtime are profiled separately
     if(debug):
         print(df_time)
     
@@ -127,6 +129,8 @@ if __name__ == '__main__':
     #   (2) Post process data
     df_power = afu.random_power_test(start_offset, ready_offset, mmio_grp, 
                                      n=num_runs_pwr, payload_size=2**22)
+    
+    # Average power dissipation from all rails is returned
     if(debug):
         print(df_power)
     
