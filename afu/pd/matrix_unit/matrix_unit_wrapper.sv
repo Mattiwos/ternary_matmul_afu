@@ -35,7 +35,7 @@ module matrix_unit_wrapper
     input logic [imem_w_instr-1:0]  
         avmm_h_imem_readdata_i,
     // CSR AVMM-AGENT interface
-    input logic [7:0]  
+    input logic [csr_addr_w-1:0]  
         avmm_a_csr_address_i,
     input logic
         avmm_a_csr_chipselect_i,

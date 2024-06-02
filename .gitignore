@@ -1,8 +1,11 @@
 
 __pycache__
+.vscode
 sim_dir
 gls_dir
 *.fst
 synth/build
 *.memb
 *.memh
+devcloud_batch.sh.e*
+devcloud_batch.sh.o*

@@ -353,7 +353,7 @@ bool dma_host_to_fpga (
 	}
 	uint64_t src = (uint64_t) battrs.iova; // host memory addr
 	uint64_t dst = (uint64_t) fpga_addr; // fpga memory addr
-	debug_print("TRNSFR from 0x%08x to 0x%08x\n", src, dst);
+	debug_print("HOST to FPGA TRNSFR from 0x%08x to 0x%08x\n", src, dst);
 	res = fpgaDMATransferInit(&transfer);
 	debug_print("init transfer\n");
 	while(total_size > 0) {
@@ -407,7 +407,7 @@ bool dma_fpga_to_host (
 	}
 	uint64_t src = (uint64_t) fpga_addr; // fpga memory addr
 	uint64_t dst = (uint64_t) battrs.iova; // host memory addr
-	debug_print("TRNSFR from 0x%08x to 0x%08x\n", src, dst);
+	debug_print("FPGA to HOST TRNSFR from 0x%08x to 0x%08x\n", src, dst);
 	res = fpgaDMATransferInit(&transfer);
 	debug_print("init transfer %d\n", res);
 	while(total_size > 0) {

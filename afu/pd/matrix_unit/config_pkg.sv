@@ -11,7 +11,7 @@ localparam fixed_point_t FixedPointMax = (FixedPointMin - 1);
 
 localparam UnaryOperationLutSize = (2 ** FixedPointPrecision);
 
-parameter D = 512;
+parameter D = 1024;
 
 // index into dimension size
 typedef logic [$clog2(D)-1:0] DI_t;
