@@ -45,7 +45,7 @@
 
     4. The position of the Platform Designer system in the hierarchy can be viewed by clicking the ```Hierarchy``` tab in the main Quartus window.
 
-        <img src="./img/hierarchy.png?raw=True" alt="drawing" style="display:block;margin-left:auto;margin-right:auto;width:30%;" width="200"/>
+        <img src="./img/hierarchy.png?raw=True" style="display:block;margin-left:auto;margin-right:auto;width:30%;" width="200"/>
 
 
 ### Compiling the design
