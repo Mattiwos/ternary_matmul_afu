@@ -13,12 +13,9 @@
 
 	norm	v0 ; v0 = norm(X)
 
-	tmatmul	v6,v0,WK ; v6 = K
-
 	ldv	v2,eM ; v2 = eM
 	exp	v6,v6 ; v6 = eK
 
-	tmatmul	v5,v0,WV ; v5 = V
 	mul	v2,v2,v6 ; v2 = eM * eK
 
 	mul	v1,v2,v5 ; v1 = eM * eK * V
@@ -32,8 +29,6 @@
 
 	norm	v0 ; v0 = norm(X)
 	div	v1,v1,v2 ; v1 = big division
-
-	tmatmul	v2,v0,WQ ; v2 = Q
 
 	sig	v2,v2 ; v2 = sig(Q)
 
